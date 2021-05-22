@@ -1,7 +1,0 @@
-$border-width:1px;
-
-.header {
-    width: calc(100% - (#{$border-width}*2));
-    height: calc(5vh - (#{$border-width}*2));
-    border: $border-width solid black;
-}
