@@ -12,7 +12,7 @@ import { UserManagementComponent } from './user-management/user-management.compo
 
 const routes: Routes = [
     {
-        path: 'dashboard',
+        path: '',
         component: PagesComponent,
         children: [
             { path: '', component: DashboardComponent, data: {} },
