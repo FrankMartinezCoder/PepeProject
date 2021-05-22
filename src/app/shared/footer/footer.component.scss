@@ -1,0 +1,6 @@
+$border-width:1px;
+$test:1%;
+.footer {
+    width: calc(100% - $test);
+    border: $border-width solid black;
+}
