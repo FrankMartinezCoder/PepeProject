@@ -1,0 +1,3 @@
+[  PLUGINS  ]
+typeDoc --> npm install typedoc
+    - how to use: (ejemplo) npx typedoc src/index.ts
