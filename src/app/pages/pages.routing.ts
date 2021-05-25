@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ReserveDetailsComponent } from './reserve-details/reserve-details.component';
 import { SearchReserveComponent } from './search-reserve/search-reserve.component';
 import { UserManagementComponent } from './user-management/user-management.component';
+import { MyBookingsComponent } from '../my-bookings/my-bookings.component';
 
 
 const routes: Routes = [
@@ -19,9 +20,10 @@ const routes: Routes = [
             { path: 'dashboard', component: DashboardComponent, data: {} },
             { path: 'hotel-management', component: HotelManagementComponent, data: {} },
             { path: 'profile', component: ProfileComponent, data: {} },
-            { path: 'reserve/details', component: ReserveDetailsComponent, data: {} },
-            { path: 'reserves', component: SearchReserveComponent, data: {} },
+            { path: 'booking/details', component: ReserveDetailsComponent, data: {} },
+            { path: 'booking', component: SearchReserveComponent, data: {} },
             { path: 'user-management', component: UserManagementComponent, data: {} },
+            { path: 'my-bookings', component: MyBookingsComponent, data: {} },
         ]
     }
 ];

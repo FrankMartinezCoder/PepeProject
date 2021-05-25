@@ -1,0 +1,60 @@
+$border-width: 1px;
+$color-breakline: lightgray;
+#header {
+    width: calc(100% - (#{$border-width}* 2));
+    height: calc(5vh - (#{$border-width}* 2));
+    min-height: 44px;
+    border-bottom: $border-width solid $color-breakline;
+    & div {
+        display: inline-block;
+        height: calc(5vh - (#{$border-width}* 2));
+    }
+    .brand {
+        width: 10%;
+        .main_logo {
+        }
+    }
+    // TODO: arreglar efecto hover
+    .header- {
+        &items {
+            width: 90%;
+            text-align: right;
+        }
+
+        &item {
+            padding: 1% 2%;
+            $link-color: gray;
+            $link-color-hover: black;
+            a {
+                display: inline-block;
+                text-transform: uppercase;
+                font-family: "B612";
+                color: gray;
+                text-decoration: none;
+                position: relative;
+                transition: all 0.3s;
+                &:hover {
+                    color: $link-color;
+                    &::after {
+                        content: "";
+                        transform: rotateX(0deg);
+                        transition: transform 0.4s;
+                        border-color: $link-color-hover;
+                    }
+                }
+                &::after {
+                    pointer-events: none;
+                    content: "";
+                    display: inline-block;
+                    position: absolute;
+                    left: 0px;
+                    bottom: 0px;
+                    width: 97%;
+                    transform: rotateX(90deg);
+                    transition: transform 0.3s;
+                    border: 1px solid;
+                }
+            }
+        }
+    }
+}

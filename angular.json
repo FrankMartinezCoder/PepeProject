@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/assets/css/bootstrap3.min.css",
+              "src/styles.scss",
+              "src/assets/css/fonts_loader.scss"
             ],
             "scripts": [
               "src/javascript.js"
