@@ -30,10 +30,12 @@
             "styles": [
               "src/assets/css/bootstrap3.min.css",
               "src/styles.scss",
+              "src/assets/css/common-styles.scss",
               "src/assets/css/fonts_loader.scss"
             ],
             "scripts": [
-              "src/javascript.js"
+              "src/assets/js/jquery-3.6.0.min.js",
+              "src/assets/js/javascript.js"
             ]
           },
           "configurations": {

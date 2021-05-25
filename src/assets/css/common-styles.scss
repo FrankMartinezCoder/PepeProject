@@ -1,0 +1,16 @@
+body {
+    & * {
+        margin: 0;
+        border: 0;
+        padding: 0;
+        box-sizing: content-box;
+    }
+}
+
+// Añadir estilos y variables comunes SCSS
+:root {
+    --color-primary: rgb(255, 157, 0);
+    --color-secondary: rgb(255, 255, 255);
+    --color-terciary: rgb(42, 195, 255);
+}
+
