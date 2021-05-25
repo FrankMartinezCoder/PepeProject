@@ -28,9 +28,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/app/shared/styles/colorvar.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/app/shared/js/javascript.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -123,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "PepeProject"
+    }
+  },
+  "defaultProject": "PepeProject",
+  "cli": {
+    "analytics": false
+  }
 }
