@@ -28,11 +28,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/app/shared/styles/colorvar.scss"
+              "src/styles.scss"
             ],
             "scripts": [
-              "src/app/shared/js/javascript.js"
+              "src/javascript.js"
             ]
           },
           "configurations": {
