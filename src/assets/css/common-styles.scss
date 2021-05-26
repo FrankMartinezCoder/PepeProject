@@ -1,4 +1,3 @@
-@import "variables.scss";
 
 body {
     & * {
@@ -15,13 +14,7 @@ body {
     --color-secondary: rgb(255, 255, 255);
     --color-terciary: rgb(42, 195, 255);
 
-    -btn-clr-primary: rgb(132, 255, 159);
-    -btn-clr-secondary: rgb(104, 217, 255);
-    -btn-clr-terciary: rgb(255, 157, 0);
-}
-
-.pep-content{
-    background-color: $black;
-    width: 20rem;
-
+    --btn-clr-primary: rgb(132, 255, 159);
+    --btn-clr-secondary: rgb(104, 217, 255);
+    --btn-clr-terciary: rgb(255, 157, 0);
 }
