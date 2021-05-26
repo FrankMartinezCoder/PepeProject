@@ -41,6 +41,6 @@ export class HeaderProvider {
 
   getMenu():HeaderMenuObject {
 
-    return this.admin_logging_menu;
+    return this.user_logging_menu;
   }
 }
