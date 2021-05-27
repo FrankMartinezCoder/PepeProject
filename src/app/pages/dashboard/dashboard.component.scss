@@ -9,25 +9,36 @@
         // background-color: green;
     }
     &-register{
+        border-bottom: 4px solid orange;
+        &-text{
+            position: absolute;
+            top: 23rem;
+            width: 75vh;
+            left: 5rem;
+            z-index: 9;
+            color: var(--color-secondary);
+            text-align: center;
+            &_text{
+                padding-top: 2rem;
+            }
+        }
         &-img{
             width: 100%;
             height: 95vh;
-            background-image: url("../../../assets/imgs/utilities/banner_bg.jpg");
-            filter: blur(3px);
-            background-color: pink;
+            background: url("../../../assets/imgs/utilities/banner_bg.jpg") no-repeat scroll center 0/cover;
+            opacity: 0.7555555555555555555;
         }
         &-load{
             display: block;
             position: absolute;
-            width: 65ch;
-            height: 14rem;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            width: 63rem;
+            height: 94.9%;
+            top: 3.3rem;
             text-align: center;
-            background-color: var(--color-primary);
-            border-radius: 23px;
-            padding: 30px;
+            -webkit-clip-path: polygon(0 0, 66% 0, 100% 100%, 0% 100%);
+            clip-path: polygon(0 0, 72% 0, 100% 100%, 0% 100%);
+            background-color: var(--text-clr-primary);
+            opacity: 0.7;
         }
     }
     &-room{

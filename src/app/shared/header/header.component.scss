@@ -3,9 +3,11 @@ $color-breakline: lightgray;
 #header {
     width: calc(100% - (#{$border-width}* 2));
     height: calc(5vh - (#{$border-width}* 2));
-    min-height: 44px;
+    // min-height: 44px;
+    min-height: 52px;
     display: flex;
-    border-bottom: 5px solid var(--color-primary);
+    background-color: var(--color-natural);
+    // border-bottom: 5px solid var(--color-primary);
     &>div {
         height: 100%;
     }
