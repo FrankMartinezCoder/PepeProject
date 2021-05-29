@@ -1,50 +1,65 @@
 $border-width: 1px;
 $color-breakline: lightgray;
-#header {
-    width: calc(100% - (#{$border-width}* 2));
-    height: calc(5vh - (#{$border-width}* 2));
-    // min-height: 44px;
-    min-height: 52px;
-    display: flex;
-    background-color: var(--color-natural);
-    // border-bottom: 5px solid var(--color-primary);
-    &>div {
-        height: 100%;
+$global-height: 3em;
+.header {
+    width: 100%;
+    height: $global-height;
+    border-bottom: .3em solid var(--color-primary);
+    min-height: 44px;
+    & div:not([class|='header--item']) {
+        height: inherit;
+        padding: 0;
     }
-    & .brand {
-        width: 30%;
-        
+    &--enterprise-container {
+        transform: translate(2em,0);
     }
 
-    & .header- {
-        &items {
-            width: 70%;
-            display: flex;
-            flex-flow: row;
-            justify-content: flex-end;
-            place-items: center;
-        }
+    &--title-container {
+        font-family: 'KoHo';
+        font-weight: bold;
+        color: var(--color-primary--opacity);
+        font-size: 2.3em;
+        text-transform: uppercase;
+        position: relative;
+        right: 1em;
+        bottom: 0.1em;
+        text-shadow: 2px 2px 1px var(--color-primary);
+    }
 
-        &item {
-            padding: 2em;
-            text-transform: uppercase;
-            & a{
-                position: relative;
-                color: var(--text-clr-primary);
+    &--logo {
+        width: $global-height;
+        position: relative;
+        left: 2em;
+    }
 
-                &::after{
-                    pointer-events: none;
-                    content: '';
-                    display: block;
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-                    width: 100%;
-                    height: 100%;
-                    border-bottom: 0.2em solid var(--color-primary);
+    &--items {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    &--item {
+        font-family: 'KoHo';
+        margin: 30px;
+        font-size: 1.3em;
+        color: var(--text-clr-header);
+        text-shadow: 1px 1px 1px var(--text-clr-header-shadow);
+        &>a {
+            &::after {
+                content: '';
+                display: block;
+                width: inherit;
+                height: 3px;
+                background-color: var(--color-primary);
+                transform: rotateX(90deg);
+                transition: transform calc(var(--default-transition-speed) + 1s);
+            }
+            &:hover {
+                &::after {
+                    transform: rotateX(0deg);
+                    transition: transform var(--default-transition-speed);
                 }
             }
         }
     }
-        
 }

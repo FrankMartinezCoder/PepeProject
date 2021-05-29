@@ -9,6 +9,7 @@ import { ReserveDetailsComponent } from './reserve-details/reserve-details.compo
 import { SearchReserveComponent } from './search-reserve/search-reserve.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { MyBookingsComponent } from '../my-bookings/my-bookings.component';
+import { TestingComponent } from './testing/testing.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
             { path: 'booking', component: SearchReserveComponent, data: {} },
             { path: 'user-management', component: UserManagementComponent, data: {} },
             { path: 'my-bookings', component: MyBookingsComponent, data: {} },
+            { path: 'testing', component: TestingComponent, data: {} },
         ]
     }
 ];

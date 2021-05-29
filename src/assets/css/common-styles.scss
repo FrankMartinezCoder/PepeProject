@@ -1,16 +1,23 @@
-
 body {
+    overflow-x: hidden;
     & * {
         margin: 0;
         border: 0;
         padding: 0;
         box-sizing: content-box;
     }
+    & a {
+        &:hover,&:active,&:visited {
+            text-decoration: none;
+            color: inherit;
+        }
+    }
 }
 
 // Añadir estilos y variables comunes SCSS
 :root {
     --color-primary: rgb(255, 157, 0);
+    --color-primary--opacity: rgba(255, 157, 0, 0.4);
     --color-secondary: rgb(255, 255, 255);
     --color-terciary: rgb(42, 195, 255);
 
@@ -19,7 +26,8 @@ body {
     --btn-clr-terciary: rgb(255, 157, 0);
 
     --text-clr-primary: black;
+    --text-clr-header: rgb(255, 193, 94);
+    --text-clr-header-shadow: red;
 
-    --color-natural: rgb(255 254 245);
-
+    --default-transition-speed: 0.7s;
 }

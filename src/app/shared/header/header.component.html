@@ -1,12 +1,22 @@
-<div id="header">
-    <div class="brand">
-        <div class="{{headerMenu.icon}}"></div>
-        <div class="title">{{headerMenu.title}}</div>
-    </div>
-    <div class="header-items">
-        <div class="header-item" *ngFor="let item of headerMenu.items">
-            <a [routerLink]="item.url" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact:true}">{{item.title}}</a>
+<div class="header">
+    <div class="fluid-container">
+        <div class="row">
+            <div class="col-6">
+                <div class="row header--enterprise-container">
+                    <div class="col-2 header--logo-container">
+                        <img class="header--logo" src="/assets/imgs/{{headerMenu.icon}}" alt="{{headerMenu.title}}">
+                    </div>
+                    <div class="col-10 header--title-container">
+                        <div class="title">{{headerMenu.title}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 header--items">
+                <div class="header--item" *ngFor="let item of headerMenu.items">
+                    <a [routerLink]="item.url" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact:true}">{{item.title}}</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

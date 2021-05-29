@@ -7,7 +7,7 @@ import { HeaderMenuObject } from '../models/header-menu-object';
 export class HeaderProvider {
 
   private no_logging_menu:HeaderMenuObject = {
-    icon: 'main_logo',
+    icon: '',
     title: 'royal hotel',
     items: [
       { title: 'registrarse', url: '/register' },
@@ -17,7 +17,7 @@ export class HeaderProvider {
   }
 
   private user_logging_menu:HeaderMenuObject = {
-    icon: 'main_logo',
+    icon: '',
     title: 'royal hotel',
     items: [
       { title: 'realizar reserva', url: '/booking'},
@@ -28,7 +28,7 @@ export class HeaderProvider {
   }
   
   private admin_logging_menu:HeaderMenuObject = {
-    icon: 'main_logo',
+    icon: '',
     title: 'administracion royal hotel',
     items: [
       { title: 'usuarios', url: '/user-management'},
@@ -37,10 +37,12 @@ export class HeaderProvider {
     ]
   }
 
+  private logosUrl:String = 'utilities/logo.svg';
   constructor() {}
 
   getMenu():HeaderMenuObject {
-
-    return this.user_logging_menu;
+    let menu = this.user_logging_menu;
+    menu.icon = this.logosUrl;
+    return menu;
   }
 }
