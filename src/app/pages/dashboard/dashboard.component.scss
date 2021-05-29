@@ -73,6 +73,10 @@
             grid-gap: 3%;
         }
         &-card{
+            &:hover{
+                transform: scale(1.1);
+                transition: 0.4s;
+            }
             &-text_bold{
                 position: absolute;
                 display: block;
