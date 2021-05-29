@@ -4,36 +4,34 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
-
-
-import { SearchReserveComponent } from './search-reserve/search-reserve.component';
-import { ReserveDetailsComponent } from './reserve-details/reserve-details.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { HotelManagementComponent } from './hotel-management/hotel-management.component';
+import { BookingSearchComponent } from './booking-search/booking-search.component';
+import { BookingDetailsComponent } from './booking-details/booking-details.component';
 
 
 
 @NgModule({
   declarations: [
-    SearchReserveComponent,
-    ReserveDetailsComponent,
     ProfileComponent,
     PagesComponent,
     DashboardComponent,
     UserManagementComponent,
-    HotelManagementComponent
+    HotelManagementComponent,
+    BookingSearchComponent,
+    BookingDetailsComponent
     ],
     exports: [
-      SearchReserveComponent,
-      ReserveDetailsComponent,
       ProfileComponent,
       PagesComponent,
       DashboardComponent,
       UserManagementComponent,
-      HotelManagementComponent
+      HotelManagementComponent,
+      BookingSearchComponent,
+      BookingDetailsComponent
       ],
   imports: [
     CommonModule,

@@ -6,6 +6,8 @@ $global-height: 3em;
     height: $global-height;
     border-bottom: .3em solid var(--color-primary);
     min-height: 44px;
+
+    & .floating-header-button { display: none; }
     & div:not([class|='header--item']) {
         height: inherit;
         padding: 0;
@@ -60,6 +62,66 @@ $global-height: 3em;
                     transition: transform var(--default-transition-speed);
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 950px) {
+    .header {
+        width: 50%;
+        height: 100vh;
+        border-left: .3em solid var(--color-primary);
+        background-color: var(--color-secondary);
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        & div:not([class|='header--item']) {
+            height: unset;
+            padding: 0;
+        }
+        &--enterprise-container {
+            transform: translate(2em,0);
+        }
+    
+        &--title-container {
+            font-family: 'KoHo';
+            font-weight: bold;
+            color: var(--color-primary--opacity);
+            font-size: 2.3em;
+            text-transform: uppercase;
+            position: relative;
+            right: 1em;
+            bottom: 0.1em;
+            text-shadow: 2px 2px 1px var(--color-primary);
+        }
+    
+        &--logo {
+            width: $global-height;
+            position: relative;
+            left: 2em;
+        }
+    
+        &--items {
+            
+        }
+    
+        &--item {
+            
+        }
+        $floatingButtonSize: 3em;
+        & .floating-header-button {
+            display: inline-block;
+            width: $floatingButtonSize;
+            height: $floatingButtonSize;
+            
+            position: fixed;
+            top: 0;
+            right: calc(50% + 15px);
+
+            background-color: var(--color-secondary);
+            
+            z-index: 10;
         }
     }
 }

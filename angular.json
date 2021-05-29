@@ -29,13 +29,14 @@
             ],
             "styles": [
               "src/assets/css/bootstrap3.min.css",
-              "src/styles.scss",
+              "src/assets/css/fonts_loader.scss",
               "src/assets/css/common-styles.scss",
-              "src/assets/css/fonts_loader.scss"
+              "src/styles.scss"
             ],
             "scripts": [
               "src/assets/js/jquery-3.6.0.min.js",
-              "src/assets/js/javascript.js"
+              "src/assets/js/javascript.js",
+              "src/assets/js/headerFunctions.js"
             ]
           },
           "configurations": {
