@@ -4,9 +4,7 @@
         // background-color: grey;
     }
     &-content{
-        width: 90%;
-        margin: 0 auto;
-        // background-color: green;
+        padding: 3rem 0;
     }
     &-register{
         border-bottom: 4px solid orange;
@@ -60,7 +58,7 @@
     }
     &-room{
         width: 100%;
-        padding-bottom: 2rem;
+        padding-bottom: 5rem;
         // background-color: rgb(185, 163, 122);
         
         &-text_bold-mediun{
@@ -106,6 +104,8 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 3%;
+        padding: 2rem 0;
+        padding-bottom: 2rem;
         // background-color: rgb(185, 122, 125);
         &-text{
             padding: 3em 0;
@@ -114,6 +114,25 @@
         }
         &-img > img{
             border-radius: 10px;
+        }
+    }
+    &-service{
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+        color: var(--color-secondary);
+        position: relative;
+        // z-index: 1;
+        background: var(--color-primary);
+        // overflow: hidden;
+        // opacity: 0.5;
+        &-cards{
+            background: url("../../../assets/imgs/utilities/facilites_bg.jpg") no-repeat scroll center 0/cover;
+            opacity: 0.15;
+        }
+        &-card{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 3%;
         }
     }
     // Textos
@@ -156,6 +175,9 @@
 
 @media (max-width: 950px) {
     .pep{
+        &-content{
+            padding: 0rem 0;
+        }
         &-register{
             &::after{
                 width: 100%;
@@ -175,13 +197,27 @@
         &-text{
             &_bold{
                 &-max{
+                    text-align: center;
+                    padding-bottom: 1rem;
                     // text-shadow: -3px -3px 20px #d1b634, -7px -5px 10px #96a1e2;
                 }
             }
         }
+        &-abaut{
+            grid-template-columns: repeat(1, 1fr);
+            &-text{
+                padding-top: 0rem;
+                padding-bottom: 1rem;
+            }
+        }
     }
     .pep-room-cards {
-        grid-template-columns: repeat(2, 50%);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
+@media (max-width: 600px) {
+    .pep-room-cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
