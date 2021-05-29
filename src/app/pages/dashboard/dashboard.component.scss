@@ -73,6 +73,7 @@
             font-size: 20px;
             font-weight: 500;
             &-max{
+                display: block;
                 font-size: 50px;
                 font-weight: bold;
             }
@@ -97,6 +98,21 @@
             line-height: 1.5;
         }
     }
+}
+
+
+.pep-room-text_bold-mediun{
+    text-align: center;
+    padding: 2rem 0;
+}
+.pep-room-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-column-gap: 2%;
+}
+
+.pep-room-card_img > img{
+    border-radius: 10px;
 }
 
 
@@ -126,4 +142,8 @@
             }
         }
     }
+    .pep-room-cards {
+        grid-template-columns: repeat(2, 50%);
+    }
 }
+
