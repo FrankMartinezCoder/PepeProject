@@ -60,7 +60,42 @@
     }
     &-room{
         width: 100%;
+        padding-bottom: 2rem;
         // background-color: rgb(185, 163, 122);
+        
+        &-text_bold-mediun{
+            text-align: center;
+            padding: 2rem 0;
+        }
+        &-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 22%);
+            grid-gap: 3%;
+        }
+        &-card{
+            &-text_bold{
+                position: absolute;
+                display: block;
+                bottom: 7px;
+                left: 0;
+                width: 100%;
+                font-size: 17px;
+                font-weight: 500;
+                color: white;
+                text-align: center;
+            }
+            &_img{
+                position: relative;
+                border-radius: 10px;
+                background: -webkit-linear-gradient(transparent,black);
+                &> img{
+                    position: relative;
+                    display: block;
+                    width: 100%;
+                    opacity: 0.65;
+                }
+            }
+        }
     }
     &-abaut{
         width: 100%;
@@ -98,22 +133,6 @@
             line-height: 1.5;
         }
     }
-}
-
-
-.pep-room-text_bold-mediun{
-    text-align: center;
-    padding: 2rem 0;
-}
-.pep-room-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 25%);
-    grid-column-gap: 2%;
-}
-
-.pep-room-card_img > img{
-    display: block;
-    border-radius: 10px;
 }
 
 
