@@ -112,11 +112,12 @@
 }
 
 .pep-room-card_img > img{
+    display: block;
     border-radius: 10px;
 }
 
 
-@media (max-width: 780px) {
+@media (max-width: 950px) {
     .pep{
         &-register{
             &::after{
