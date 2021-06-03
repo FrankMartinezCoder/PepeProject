@@ -147,7 +147,7 @@
             // color: #a82727;
             display: grid;
             grid-template: repeat(2, 1fr) / repeat(4, 1fr);
-            height: 25rem;
+            height: 100%;
             width: 100%;
             box-shadow: 0 20px 60px 18px rgb(0 0 0 / 20%);
             border-radius: 25px;
@@ -186,6 +186,7 @@
                 background: #fff;
                 // background-color: orange;
                 box-shadow: 0 40px 120px -20px rgb(0 0 0 / 60%);
+                background-color: var(--color-primary);
             }
             &_content {
                 position: relative;
@@ -195,6 +196,7 @@
                 transform: translate(-50%, -50%);
                 & > span {
                     display: block;
+                    font-weight: bold;
                 }
                 & > img {
                     width: 5rem;
@@ -337,7 +339,7 @@
         }
         &-room {
             width: 100%;
-            padding-bottom: 5rem;
+            // padding-bottom: 5rem;
             padding-right: 0;
             padding-left: 0;
             margin-right: 0;
@@ -362,6 +364,13 @@
                 &:nth-child(4) {
                     display: none;
                 }
+            }
+        }
+        &-service {
+            &-cards {
+                display: grid;
+                grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+                box-shadow: none;
             }
         }
     }
