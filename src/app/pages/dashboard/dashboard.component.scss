@@ -143,11 +143,63 @@
         // &-cards {
         //     background: url("../../../assets/imgs/utilities/facilites_bg.jpg") no-repeat scroll center 0 / cover;
         //     opacity: 0.15;
-        // }
-        &-card {
+        &-cards {
+            // color: #a82727;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 3%;
+            grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+            height: 25rem;
+            width: 100%;
+            box-shadow: 0 20px 60px 18px rgb(0 0 0 / 20%);
+            border-radius: 25px;
+            &_content {
+                display: block;
+                width: 100%;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        &-card {
+            transition: transform 0.25s cubic-bezier(0.215, 0.61, 0.355, 1),
+                background 0.15s cubic-bezier(0.215, 0.61, 0.355, 1),
+                box-shadow 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+            // background-color: black;
+            height: 12.5rem;
+            &:nth-child(1) {
+                border-top-left-radius: 25px;
+            }
+            &:nth-child(4) {
+                border-top-right-radius: 25px;
+            }
+            &:nth-child(5) {
+                border-bottom-left-radius: 25px;
+            }
+            &:nth-child(8) {
+                border-bottom-right-radius: 25px;
+            }
+            &:hover {
+                height: 12.5rem;
+                transform: scale3d(1.06, 1.06, 1);
+                z-index: 1;
+                border-width: 1px !important;
+                background: #fff;
+                // background-color: orange;
+                box-shadow: 0 40px 120px -20px rgb(0 0 0 / 60%);
+            }
+            &_content {
+                position: relative;
+                text-align: center;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                & > span {
+                    display: block;
+                }
+                & > img {
+                    width: 5rem;
+                }
+            }
         }
     }
     &-info {
