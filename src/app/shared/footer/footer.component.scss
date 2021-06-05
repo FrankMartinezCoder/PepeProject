@@ -1,8 +1,15 @@
-$border-width: 1px;
-$color-breakline:lightgray;
-#footer {
-    width: calc(100% - (#{$border-width}* 2));
-    height: calc(7vh - (#{$border-width}* 2));
-    min-height: 44px;
-    border-top: $border-width solid $color-breakline;
+.pep{
+    &-footer{
+        background-color: var(--text-clr-primary);
+        color: var(--color-secondary);
+        &-content{
+            padding: 2rem 0 0;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+        &-contact{
+            padding: 1rem 0;
+            text-align: center;
+        }
+    }
 }
