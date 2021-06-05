@@ -8,28 +8,27 @@ export class HeaderProvider {
 
   private no_logging_menu:HeaderMenuObject = {
     icon: '',
-    title: 'royal hotel',
+    title: 'Royal Hotel',
     items: [
-      { title: 'registrarse', url: '/register' },
-      { title: 'iniciar sesión', url: '/login' },
-      { title: 'Hoteles', url: '/' }
+      { title: 'Registrarse', url: '/register' },
+      { title: 'Iniciar Sesión', url: '/login' }
     ]
   }
 
   private user_logging_menu:HeaderMenuObject = {
     icon: '',
-    title: 'royal hotel',
+    title: 'Royal Hotel',
     items: [
-      { title: 'realizar reserva', url: '/booking'},
-      { title: 'mis reservas', url: '/my-bookings'},
-      { title: 'contáctanos', url: ''},
-      { title: 'desconectar', url: ''}
+      { title: 'Realizar Reserva', url: '/booking'},
+      { title: 'Mis reservas', url: '/my-bookings'},
+      { title: 'Contáctanos', url: ''},
+      { title: 'Desconectar', url: ''}
     ]
   }
   
   private admin_logging_menu:HeaderMenuObject = {
     icon: '',
-    title: 'administracion royal hotel',
+    title: 'Administración Royal Hotel',
     items: [
       { title: 'usuarios', url: '/user-management'},
       { title: 'habitaciones', url: '/hotel-management'},
@@ -42,6 +41,12 @@ export class HeaderProvider {
 
   getMenu():HeaderMenuObject {
     let menu = this.user_logging_menu;
+    menu.icon = this.logosUrl;
+    return menu;
+  }
+
+  getMenuNoLogging():HeaderMenuObject {
+    let menu = this.no_logging_menu;
     menu.icon = this.logosUrl;
     return menu;
   }
