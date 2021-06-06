@@ -10,6 +10,7 @@ import { MyBookingsComponent } from '../my-bookings/my-bookings.component';
 import { TestingComponent } from './testing/testing.component';
 import { BookingDetailsComponent } from './booking-details/booking-details.component';
 import { BookingSearchComponent } from './booking-search/booking-search.component';
+import { StaticPages } from '../config/pageUrls';
 
 
 const routes: Routes = [
@@ -18,14 +19,14 @@ const routes: Routes = [
         component: PagesComponent,
         children: [
             { path: '', component: DashboardComponent, data: {} },
-            { path: 'dashboard', component: DashboardComponent, data: {} },
-            { path: 'hotel-management', component: HotelManagementComponent, data: {} },
-            { path: 'profile', component: ProfileComponent, data: {} },
-            { path: 'booking/details', component: BookingDetailsComponent, data: {} },
-            { path: 'booking', component: BookingSearchComponent, data: {} },
-            { path: 'user-management', component: UserManagementComponent, data: {} },
-            { path: 'my-bookings', component: MyBookingsComponent, data: {} },
-            { path: 'testing', component: TestingComponent, data: {} },
+            { path: StaticPages.dashboard, component: DashboardComponent, data: {} },
+            { path: StaticPages.profile, component: ProfileComponent, data: {} },
+            { path: StaticPages.bookingDetails, component: BookingDetailsComponent, data: {} },
+            { path: StaticPages.bookings, component: BookingSearchComponent, data: {} },
+            { path: StaticPages.myBookings, component: MyBookingsComponent, data: {} },
+            { path: StaticPages.hotelManagement, component: HotelManagementComponent, data: {} },
+            { path: StaticPages.userManagement, component: UserManagementComponent, data: {} },
+            { path: StaticPages.testing, component: TestingComponent, data: {} },
         ]
     }
 ];

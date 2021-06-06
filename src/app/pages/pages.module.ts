@@ -11,6 +11,8 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { HotelManagementComponent } from './hotel-management/hotel-management.component';
 import { BookingSearchComponent } from './booking-search/booking-search.component';
 import { BookingDetailsComponent } from './booking-details/booking-details.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 
 
@@ -22,7 +24,9 @@ import { BookingDetailsComponent } from './booking-details/booking-details.compo
     UserManagementComponent,
     HotelManagementComponent,
     BookingSearchComponent,
-    BookingDetailsComponent
+    BookingDetailsComponent,
+    LoginComponent,
+    RegisterComponent
     ],
     exports: [
       ProfileComponent,
@@ -31,7 +35,9 @@ import { BookingDetailsComponent } from './booking-details/booking-details.compo
       UserManagementComponent,
       HotelManagementComponent,
       BookingSearchComponent,
-      BookingDetailsComponent
+      BookingDetailsComponent,
+      LoginComponent,
+      RegisterComponent
       ],
   imports: [
     CommonModule,

@@ -109,7 +109,7 @@
             }
         }
     }
-    &-abaut {
+    &-about {
         // width: 100%;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -306,7 +306,7 @@
                 }
             }
         }
-        &-abaut {
+        &-about {
             grid-template-columns: repeat(1, 1fr);
             padding: 0;
             padding-bottom: 0;
@@ -333,9 +333,10 @@
 
 @media (max-width: 600px) {
     .pep {
-        &-abaut {
-            padding-right: 15px;
-            padding-left: 15px;
+        &-about {
+           &-text{
+               padding-left: 10px;
+           }
         }
         &-room {
             width: 100%;

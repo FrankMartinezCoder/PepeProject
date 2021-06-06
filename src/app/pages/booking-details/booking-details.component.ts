@@ -8,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class BookingDetailsComponent implements OnInit {
 
   constructor() { }
-
+  /*
+  
+  para cuando el usuario no ha sido logado.
+  this.router.navigate(['/login']);  
+  
+  */
   ngOnInit(): void {
   }
 

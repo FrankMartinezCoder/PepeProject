@@ -28,5 +28,5 @@ export class UserProvider {
             console.error(err);
         }
         return currentUser;
-    }    
+    }
 }

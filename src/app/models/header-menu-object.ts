@@ -1,5 +1,3 @@
-import { Component } from "@angular/compiler/src/core";
-
 export class HeaderMenuObject {
     constructor(
         public title: String,

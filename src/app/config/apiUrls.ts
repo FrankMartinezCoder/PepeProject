@@ -1,5 +1,5 @@
 export class Static {
-    private static serverIp:String = "127.0.0.1/"
+    private static serverIp:String = "http://127.0.0.1:8080/"
 
     private static users:String = Static.serverIp+"usuarios/";
     private static rooms:String = Static.serverIp+"usuarios/";

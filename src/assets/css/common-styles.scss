@@ -1,6 +1,6 @@
 body {
     overflow-x: hidden;
-    font-family: 'KoHo';
+    font-family: "KoHo";
     & * {
         margin: 0;
         border: 0;
@@ -8,11 +8,27 @@ body {
         box-sizing: content-box;
     }
     & a {
-        &:hover,&:active,&:visited {
+        &:hover,
+        &:active,
+        &:visited {
             text-decoration: none;
             color: inherit;
         }
     }
+}
+
+.locked {
+    overflow: hidden;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
 }
 
 // Añadir estilos y variables comunes SCSS
@@ -25,6 +41,8 @@ body {
     --btn-clr-primary: rgb(132, 255, 159);
     --btn-clr-secondary: rgb(104, 217, 255);
     --btn-clr-terciary: rgb(255, 157, 0);
+
+    --btn-cancel-clr: rgb(255, 104, 104);
 
     --text-clr-primary: black;
     --text-clr-header: rgb(255, 193, 94);
