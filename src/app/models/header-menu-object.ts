@@ -1,10 +1,15 @@
+import { Component } from "@angular/compiler/src/core";
+
 export class HeaderMenuObject {
-    icon: String;
-    title: String;
-    items: Array<Link>;
+    constructor(
+        public title: String,
+        public items: Array<Link>
+    ) {}
 }
 
 class Link {
-    title:String;
-    url:String;
+    constructor(
+        public title:String,
+        public url:String,
+    ) {}    
 }

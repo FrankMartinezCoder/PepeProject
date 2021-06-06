@@ -1,3 +1,6 @@
 [  PLUGINS  ]
 typeDoc --> npm install typedoc
     - how to use: (ejemplo) npx typedoc src/index.ts
+
+jquery --> npm install jquery --save | instalar tambien: npm install -D @types/jquery
+    

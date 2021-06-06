@@ -1,0 +1,169 @@
+header {
+    & .floating-button--header {
+        &-box,
+        &-checkbox {
+            display: none;
+        }
+    }
+    & #navbar-container-brand {
+        & .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+
+    & .navbar-nav {
+        &--custom {
+            display: flex;
+            flex-direction: row !important;
+
+            & > .nav-item {
+                padding-right: 2em;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    $headerWidth: 70%;
+    $floatingButtonSize: 3em;
+    header {
+        & .floating-button--header {
+            &-box,
+            &-checkbox {
+                width: $floatingButtonSize;
+                height: $floatingButtonSize;
+                display: block;
+                position: fixed;
+                top: 0;
+                right: $headerWidth;
+                margin: 10px;
+                z-index: 10;
+            }
+            &-box {
+                display: block;
+                box-shadow: 0 0 3px var(--text-clr-primary);
+                background-color: var(--color-secondary);
+                border-radius: 50%;
+                text-align: center;
+            }
+            &-checkbox {
+                z-index: 11 !important;
+                opacity: 0;
+            }
+        }
+        .floating-button--header-checkbox:not(:checked),
+        .floating-button--header-checkbox:not(:checked) + .floating-button--header-box {
+            right: 0px;
+            margin-right: 40px;
+            transition: all 1s;
+        }
+        .floating-button--header-checkbox:checked,
+        .floating-button--header-checkbox:checked + .floating-button--header-box {
+            right: $headerWidth;
+            margin-right: 10px;
+            transition: all 1s;
+        }
+        .floating-button--header-checkbox:not(:checked) + .floating-button--header-box {
+            & > span.line {
+                display: block;
+                width: 65%;
+                height: 2px;
+                background-color: black;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 1;
+                transition: opacity 1s ease;
+            }
+            &::before,
+            &::after {
+                content: "";
+                display: inline-block;
+                width: 65%;
+                height: 2px;
+                background-color: black;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, 0%);
+                transition: all 1s;
+            }
+            &::before {
+                top: 0.7em;
+            }
+            &::after {
+                bottom: 0.7em;
+            }
+        }
+        .floating-button--header-checkbox:checked + .floating-button--header-box {
+            & > span.line {
+                opacity: 0;
+                transition: opacity 1s ease;
+            }
+            &::before,
+            &::after {
+                content: "";
+                display: inline-block;
+                width: 65%;
+                height: 2px;
+                background-color: black;
+                position: absolute;
+                left: 50%;
+                transition: all 1s;
+            }
+            &::before {
+                transform: translate(-50%, 0%) rotateZ(45deg);
+                top: 48%;
+            }
+            &::after {
+                transform: translate(-50%, 0%) rotateZ(-45deg);
+                bottom: 47%;
+            }
+        }
+        .floating-button--header-checkbox:checked ~ #header-container {
+            width: $headerWidth;
+            transition: width 1s;
+        }
+        & #header-container {
+            display: block;
+            width: 0px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            transition: width 1s;
+            background-color: var(--color-secondary);
+            z-index: 10;
+            & nav.navbar {
+                padding-left: 5px;
+                & #navbar-container-brand {
+                    display: block;
+                    width: 100%;
+                    margin-bottom: 2em;
+                    text-align: left;
+                    & .navbar-brand {
+                        padding-left: 1.2em;
+                    }
+                }
+                & .navbar-nav {
+                    &--custom {
+                        display: block;
+                        width: 100%;
+                        & > .nav-item {
+                            width: 85%;
+                            padding-right: 0em;
+                            margin-bottom: 1em;
+                            border-left: 10px solid var(--color-primary);
+                            padding-left: 5px;
+                            &:hover,&:active {
+                                border: 1px solid var(--color-primary);
+                                border-left: 10px solid var(--color-primary);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HeaderMenuObject } from '../models/header-menu-object';
+import { User } from '../models/User';
+import { UserType } from '../models/UserType';
+import { UserProvider } from './user.provider';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeaderProvider {
 
-  private no_logging_menu:HeaderMenuObject = {
-    icon: '',
+  private free_access:HeaderMenuObject = {
     title: 'Royal Hotel',
     items: [
-      { title: 'Registrarse', url: '/register' },
-      { title: 'Iniciar Sesión', url: '/login' }
+      { title: 'Registrarse', url: '' },
+      { title: 'Iniciar Sesión', url: '' }
     ]
   }
 
-  private user_logging_menu:HeaderMenuObject = {
-    icon: '',
+  private standar_access:HeaderMenuObject = {
     title: 'Royal Hotel',
     items: [
       { title: 'Realizar Reserva', url: '/booking'},
@@ -26,8 +27,7 @@ export class HeaderProvider {
     ]
   }
   
-  private admin_logging_menu:HeaderMenuObject = {
-    icon: '',
+  private admin_access:HeaderMenuObject = {
     title: 'Administración Royal Hotel',
     items: [
       { title: 'usuarios', url: '/user-management'},
@@ -36,18 +36,16 @@ export class HeaderProvider {
     ]
   }
 
-  private logosUrl:String = 'utilities/logo.svg';
-  constructor() {}
+  constructor(private userProvider: UserProvider) {}
 
   getMenu():HeaderMenuObject {
-    let menu = this.user_logging_menu;
-    menu.icon = this.logosUrl;
-    return menu;
-  }
+    let userLogged:User = this.userProvider.getUserLogged();
 
-  getMenuNoLogging():HeaderMenuObject {
-    let menu = this.no_logging_menu;
-    menu.icon = this.logosUrl;
+    let menu = this.free_access;
+
+    if(userLogged) {
+      menu = userLogged.userType == UserType.ADMIN ? this.admin_access : this.standar_access;
+    }
     return menu;
   }
 }

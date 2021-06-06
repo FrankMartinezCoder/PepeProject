@@ -1,19 +1,19 @@
-<nav class="navbar navbar-expand-md navbar-light bg-dark fixed-top">
+<header>
+    <input class="floating-button--header-checkbox" type="checkbox">
+    <div class="floating-button--header-box"><span class="line"></span></div>
+    <div id="header-container">
+        <nav class="navbar">
+            <div id="navbar-container-brand">
+                <a class="navbar-brand" [routerLink]="dashboardUrl" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}" (click)="hideHeader()">{{headerMenu.title}}</a>
+            </div>
 
-    <a class="navbar-brand" href="/">{{headerMenu.title}}</a>
-
-    <button type="button" class="navbar-toggler bg-light" data-toggle="collapse" data-target="#nav">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-between" id="nav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link text-light font-weight-bold px-3" href="#">{{headerMenu.title}}</a>
-            </li>
-            <li class="nav-item" *ngFor="let item of headerMenu.items">
-                <a class="nav-link text-light font-weight-bold " [routerLink]="item.url" routerLinkActive="active"
-                    [routerLinkActiveOptions]="{exact:true}">{{item.title}}</a>
-            </li>
-        </ul>
+            <ul class="navbar-nav navbar-nav--custom">
+                <li class="nav-item" *ngFor="let item of headerMenu.items">
+                    <a class="nav-link" [routerLink]="item.url" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact:true}" (click)="hideHeader()">{{item.title}}</a>
+                </li>
+            </ul>
+        </nav>
     </div>
-</nav>
+</header>
