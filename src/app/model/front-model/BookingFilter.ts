@@ -1,13 +1,11 @@
 export class BookingFilter {
-    constructor(
-        public dateIn:Date,
-        public dateOut:Date,
-        public minPrice:number,
-        public maxPrice:number,
-        public numOccupant:number
-    ) {}
+    public dateIn: Date;
+    public dateOut: Date;
+    public minPrice: number;
+    public maxPrice: number;
+    public numOccupant: number;
 
-    public clear():void {
+    public clear(): void {
         this.dateIn = null;
         this.dateOut = null;
         this.minPrice = 0;
