@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BookingFilter } from 'src/app/model/front-model/BookingFilter';
 
 @Component({
   selector: 'app-booking-search',
@@ -7,16 +6,15 @@ import { BookingFilter } from 'src/app/model/front-model/BookingFilter';
   styleUrls: ['./booking-search.component.scss']
 })
 export class BookingSearchComponent implements OnInit {
+<<<<<<< HEAD
   
-  public filter:BookingFilter;
+  public filter:BookingFilter = new BookingFilter();
+=======
+>>>>>>> parent of 534eaa7f (model structure modified)
 
   constructor() { }
 
   ngOnInit(): void {
-    this.filter.clear();
   }
 
-  checkFilter():void {
-    
-  }
 }
