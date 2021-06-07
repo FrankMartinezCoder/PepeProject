@@ -1,0 +1,41 @@
+.details {
+    &-cards {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    &-card {
+        &-rom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            &_ver-mas {
+            }
+        }
+        &-img {
+        }
+        &-content {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+        &-title {
+            & > span {
+            }
+        }
+        &-descripcion {
+            & > span {
+            }
+        }
+        &-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            &-valorar {
+                grid-gap: 2%;
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+            }
+            &-location {
+            }
+            &-iframe {
+            }
+        }
+    }
+}
