@@ -1,4 +1,4 @@
-import { Booking } from "./Booking";
+import { Booking } from "./back-model/Booking";
 import { User } from "./User";
 
 export class Valoration {

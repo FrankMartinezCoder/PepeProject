@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Booking } from '../models/Booking';
+import { Booking } from '../model/back-model/Booking';
 import { Observable } from 'rxjs';
 import { Static } from '../config/apiUrls';
 

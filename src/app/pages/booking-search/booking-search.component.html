@@ -1,5 +1,8 @@
 <div id="booking-list-container">
-    <div class="search-bar-container"></div>
-    <div class="booking-filter-container"></div>
+    <div class="booking-filter-container">
+        <form #filterForm="ngForm" (ngSubmit)="checkFilter()">
+            
+        </form>
+    </div>
     <div class="booking-list"></div>
 </div>

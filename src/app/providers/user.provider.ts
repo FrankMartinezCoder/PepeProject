@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as EventEmitter from 'events';
-import { User } from '../models/User';
+import { User } from '../model/back-model/User';
 
 @Injectable({
   providedIn: 'root'

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { StaticPages } from '../config/pageUrls';
-import { HeaderMenuObject } from '../models/header-menu-object';
-import { User } from '../models/User';
-import { UserType } from '../models/UserType';
+import { HeaderMenuObject } from '../model/front-model/header-menu-object';
+import { User } from '../model/back-model/User';
+import { UserType } from '../model/back-model/UserType';
 import { UserProvider } from './user.provider';
 
 @Injectable({

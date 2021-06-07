@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderMenuObject } from 'src/app/models/header-menu-object';
+import { HeaderMenuObject } from 'src/app/model/front-model/header-menu-object';
 import { HeaderProvider } from '../../providers/header.provider';
 import * as $ from 'jquery';
 import { UserService } from 'src/app/services/user-service.service';
@@ -29,20 +29,19 @@ export class HeaderComponent implements OnInit {
   }
   ngOnInit(): void {
     this.headerMenu = this.provider.getMenu();
-    console.log("HEADER", this.headerMenu);
   }
   eventTrigger(id: number) {
 
     switch (id) {
-      case 0:
+      case 0: //login
         $("#login-component,#login-background").removeAttr("hidden");
         break;
       case 1:
         this.userService.logout();
         this.router.navigate(['/']);
         break;
-      case 2:
-        $(".floating-button--header-checkbox").prop('checked', false);
+      case 2: //registro
+        //$(".floating-button--header-checkbox").prop('checked', false);
         break;
     }
 
