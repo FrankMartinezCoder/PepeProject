@@ -1,4 +1,4 @@
-import { Booking } from "./back-model/Booking";
+import { Booking } from "./Booking";
 import { RoomType } from "./RoomType";
 
 export class Room {
