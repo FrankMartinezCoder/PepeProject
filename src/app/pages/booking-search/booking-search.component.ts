@@ -8,7 +8,7 @@ import { BookingFilter } from 'src/app/model/front-model/BookingFilter';
 })
 export class BookingSearchComponent implements OnInit {
   
-  public filter:BookingFilter;
+  public filter:BookingFilter = new BookingFilter();
 
   constructor() { }
 

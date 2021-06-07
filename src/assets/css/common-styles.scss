@@ -1,6 +1,6 @@
 body {
     overflow-x: hidden;
-    font-family: "KoHo";
+    font-family: "KoHo" !important;
     & * {
         margin: 0;
         border: 0;
@@ -50,3 +50,6 @@ body {
 
     --default-transition-speed: 0.7s;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
