@@ -33,5 +33,6 @@ export class UserService {
 
   public logout():void {
     sessionStorage.removeItem("currentLogin");
+    this.watcher.emit();
   }
 }

@@ -7,7 +7,8 @@ export class HeaderMenuObject {
 
 class Link {
     constructor(
-        public title:String,
+        public id:number,
+        public name:String,
         public url:String
     ) {}    
 }

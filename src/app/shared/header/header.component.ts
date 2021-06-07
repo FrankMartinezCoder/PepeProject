@@ -14,7 +14,6 @@ declare function isPhone(): boolean;
 export class HeaderComponent implements OnInit {
 
   public headerMenu: HeaderMenuObject;
-  public dashboardUrl: string = "/";
 
   constructor(private provider: HeaderProvider, private userService: UserService) {
     const _ = this;
@@ -31,7 +30,20 @@ export class HeaderComponent implements OnInit {
     this.headerMenu = this.provider.getMenu();
     console.log("HEADER", this.headerMenu);
   }
-  hideHeader() {
+  eventTrigger(id: number) {
+
+    switch (id) {
+      case 0:
+        $("#login-component,#login-background").removeAttr("hidden");
+        break;
+      case 1:
+        this.userService.logout();
+        break;
+      case 2:
+        $(".floating-button--header-checkbox").prop('checked', false);
+        break;
+    }
+
     if (!isPhone()) {
       $(".floating-button--header-checkbox").prop('checked', false);
     }

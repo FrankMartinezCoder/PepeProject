@@ -4,14 +4,16 @@
     <div id="header-container">
         <nav class="navbar">
             <div id="navbar-container-brand">
-                <a class="navbar-brand" [routerLink]="dashboardUrl" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact:true}" (click)="hideHeader()">{{headerMenu.title}}</a>
+                <a class="navbar-brand" [routerLink]="'/'" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}" (click)="eventTrigger(-1)">{{headerMenu.title}}</a>
             </div>
 
             <ul class="navbar-nav navbar-nav--custom">
                 <li class="nav-item" *ngFor="let item of headerMenu.items">
-                    <a class="nav-link" [routerLink]="item.url" routerLinkActive="active"
-                        [routerLinkActiveOptions]="{exact:true}" (click)="hideHeader()">{{item.title}}</a>
+                    <a class="nav-link" *ngIf="item.url" [routerLink]="item.url" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact:true}" (click)="eventTrigger(item.id)">{{item.name}}</a>
+
+                    <a class="nav-link" *ngIf="!item.url" (click)="eventTrigger(item.id)">{{item.name}}</a>
                 </li>
             </ul>
         </nav>

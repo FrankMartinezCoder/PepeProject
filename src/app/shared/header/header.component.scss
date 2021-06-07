@@ -19,6 +19,10 @@ header {
 
             & > .nav-item {
                 padding-right: 2em;
+                .nav-link {
+                    color: black;
+                    cursor: pointer;
+                }
             }
         }
     }
