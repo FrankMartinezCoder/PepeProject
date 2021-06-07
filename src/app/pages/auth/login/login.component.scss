@@ -123,7 +123,9 @@
                             border: 1px solid var(--color-primary);
                             transition: all 0.3s;
                         }
-
+                        &:disabled {
+                            opacity: 0.5;
+                        }
                         &[loading]{
                             position: relative;
                             background-color: var(--color-secondary);
