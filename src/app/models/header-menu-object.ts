@@ -8,6 +8,6 @@ export class HeaderMenuObject {
 class Link {
     constructor(
         public title:String,
-        public url:String,
+        public url:String
     ) {}    
 }

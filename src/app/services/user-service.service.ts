@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Static } from '../config/apiUrls';
 import { User } from '../models/User';
-import { AppService } from './app-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService { 
+  
+  public watcher = new EventEmitter<User>();
 
-  constructor(private httpClient: HttpClient, private appService:AppService) { }
+  constructor(private httpClient: HttpClient) {}
+  
   public login(parameters:any):Observable<User> {
     const _ = this;
     let observable:Observable<User>;
@@ -19,7 +21,7 @@ export class UserService {
     observable.subscribe(
       data => {
         sessionStorage.setItem("currentLogin",JSON.stringify(data));
-        this.appService.throwTrigger();
+        _.watcher.emit(data);
       },
       err => {
         console.error("[UserService]\n",err);

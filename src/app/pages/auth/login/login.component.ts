@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import * as $ from 'jquery';
-import { AppService } from 'src/app/services/app-service.service';
 import { UserService } from 'src/app/services/user-service.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginComponent {
   public emailError:string = '';
   public passwordError:string = '';
   
-  constructor(private userService:UserService, private appService:AppService) { }
+  constructor(private userService:UserService, private router:RouterModule) { }
 
 
   private reset():void {
@@ -35,10 +35,10 @@ export class LoginComponent {
       'password':this.password
     }).subscribe(
       data => {
-        _.reset()
+        _.reset();
       },
       err => {
-        _.reset()
+        _.reset();
       }
     )
   }

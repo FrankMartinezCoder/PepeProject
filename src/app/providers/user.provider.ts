@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as EventEmitter from 'events';
 import { User } from '../models/User';
 
 @Injectable({
