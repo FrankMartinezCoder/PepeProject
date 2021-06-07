@@ -46,7 +46,7 @@ export class HeaderProvider {
         menu = this.standar_access;
 
       }
-      menu.items = menu.items.concat({ name: 'Desconectar', url: '', id:1});
+      menu.items = menu.items.filter((item)=>item.id!=1).concat({ name: 'Desconectar', url: '', id:1});
     }
     else {
       menu.items = [
