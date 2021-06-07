@@ -1,0 +1,16 @@
+#booking-list-container{
+    width: 100%;
+    height: 100vh;
+    .booking{
+        &-filter-container{
+            width: 100%;
+            height: 5rem;
+            background-color: red;
+        }
+        &-list{
+            width: 100%;
+            height: 100%;
+            background-color: blue;
+        }
+    }
+}
