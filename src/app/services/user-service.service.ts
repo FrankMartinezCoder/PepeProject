@@ -31,6 +31,24 @@ export class UserService {
     return observable;
   }
 
+  public register(parameters:any):Observable<User> {
+    const _ = this;
+    let observable:Observable<User>;
+    observable = this.httpClient.get<User>(Static.user.login,{params:parameters});
+    
+    observable.subscribe(
+      data => {
+        sessionStorage.setItem("currentLogin",JSON.stringify(data));
+        _.watcher.emit(data);
+      },
+      err => {
+        console.error("[UserService]\n",err);
+        _.logout();
+      }
+    )
+    return observable;
+  }
+
   public logout():void {
     sessionStorage.removeItem("currentLogin");
     this.watcher.emit();

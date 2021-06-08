@@ -1,5 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component } from '@angular/core';
 import * as $ from 'jquery';
 import { UserService } from 'src/app/services/user-service.service';
 
@@ -18,7 +17,7 @@ export class LoginComponent {
 
   public buttonValidator:boolean = true;
   
-  constructor(private userService:UserService, private router:RouterModule) { }
+  constructor(private userService:UserService) { }
 
   private reset():void {
     this.email = '';
@@ -85,12 +84,5 @@ export class LoginComponent {
       this.passwordError = "";
     }
     this.buttonValidator = temp;
-  }
-
-  private validateButton(isValid:boolean):void {
-    if(isValid) {
-      this.passwordError = "";
-      this.emailError = "";
-    }
   }
 }
