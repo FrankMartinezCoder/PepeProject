@@ -37,7 +37,10 @@ export class LoginComponent {
       'password':this.password
     }).subscribe(
       data => {
-        _.reset();
+        let timeOut = setTimeout(function() {
+          clearTimeout(timeOut);
+          _.reset();
+        },700);
       },
       err => {
         _.reset();

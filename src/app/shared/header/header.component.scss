@@ -1,4 +1,5 @@
 header {
+    height: var(--default-header-heigth);
     & .floating-button--header {
         &-box,
         &-checkbox {
