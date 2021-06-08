@@ -43,6 +43,8 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['/']);
         break;
       case 2:
+        $("#register-component,#register-background").removeAttr("hidden");
+        $("body").addClass("locked");
         $(".floating-button--header-checkbox").prop('checked', false);
         break;
     }

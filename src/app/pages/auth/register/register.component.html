@@ -1,0 +1,36 @@
+<div id="register-component" hidden>
+    <div id="register_form">
+        <h1 class="form-title">Formulario de Registro</h1>
+        <div class="input_group">
+            <input id="name" type="text" [(ngModel)]="name" (focusout)="nameValidator()" required>
+            <label for="name" class="noselect">Nombre</label>
+        </div>
+        <span class="error-message"><span *ngIf="nameError!=''" class="warning-icon"></span>{{nameError}}</span>
+        <div class="input_group">
+            <input id="surname" type="text" [(ngModel)]="surname" (focusout)="surnameValidator()" required>
+            <label for="surname" class="noselect">Apellidos</label>
+        </div>
+        <span class="error-message"><span *ngIf="surnameError!=''" class="warning-icon"></span>{{surnameError}}</span>
+        <div class="input_group">
+            <input id="birthDate" type="date" [(ngModel)]="birthDate" (focusout)="birthDateValidator()" required>
+            <label for="birthDate" class="noselect">Fecha de Nacimiento</label>
+        </div>
+        <span class="error-message"><span *ngIf="birthDateError!=''" class="warning-icon"></span>{{birthDateError}}</span>
+        <div class="input_group">
+            <input id="email" type="text" [(ngModel)]="email" (focusout)="emailValidator()" required>
+            <label for="email" class="noselect">Email</label>
+        </div>
+        <span class="error-message"><span *ngIf="emailError!=''" class="warning-icon"></span>{{emailError}}</span>
+        <div class="input_group">
+            <input id="password" type="password" [(ngModel)]="password" (focusout)="passwordValidator()" required>
+            <label for="password" class="noselect">Contraseña</label>
+        </div>
+        <span class="error-message"><span *ngIf="passwordError!=''" class="warning-icon"></span>{{passwordError}}</span>
+
+        <div class="button-group">
+            <button class="button-ok noselect" [disabled]="!buttonValidator" (click)="registerCheck()">Acceder</button>
+            <button class="button-cancel noselect" (click)="cancel()" >Cancelar</button>
+        </div>
+    </div>
+</div>
+<div id="register-background" hidden></div>
