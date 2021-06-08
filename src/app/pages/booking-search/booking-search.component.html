@@ -10,14 +10,32 @@
         </div>
 
         <div class="occupants-group">
-            <label for="occupants"></label>
-            <span id="prev"></span>
-            <input type="number" id="ocuppants">
-            <span id="next"></span>
+            <label for="occupants">Número de ocupantes</label>
+            <div class="input-control-group">
+                <span class="input-button-control" id="prev" (click)="less(1)">&#45;</span>
+                <input type="number" id="ocuppants" [(ngModel)]="filter.numOccupant" min="1" max="99" (keyup.enter)="checkNumOccupant()">
+                <span class="input-button-control" id="next" (click)="plus(1)">&#43;</span>
+            </div>
+        </div>
+        <div class="occupants-group">
+            <label for="minPrice">Precio mínimo (€)</label>
+            <div class="input-control-group">
+                <span class="input-button-control prev" (click)="less(2)">&#45;</span>
+                <input type="number" id="minPrice" [(ngModel)]="filter.minPrice" min="1" max="99" (keyup.enter)="checkNumOccupant()">
+                <span class="input-button-control next" (click)="plus(2)">&#43;</span>
+            </div>
+        </div>
+        <div class="occupants-group">
+            <label for="maxPrice">Precio máximo (€)</label>
+            <div class="input-control-group">
+                <span class="input-button-control prev" (click)="less(3)">&#45;</span>
+                <input type="number" id="maxPrice" [(ngModel)]="filter.maxPrice" min="1" max="99" (keyup.enter)="checkNumOccupant()">
+                <span class="input-button-control next" (click)="plus(3)">&#43;</span>
+            </div>
         </div>
         <div class="button-group">
+            <button class="btn btn-warning" (click)="clearData()">Limpiar</button>
             <button class="btn btn-info button-ok">Filtar</button>
-            <button class="btn btn-warning">Limpiar</button>
         </div>
     </div>
     <div class="booking-list"></div>
