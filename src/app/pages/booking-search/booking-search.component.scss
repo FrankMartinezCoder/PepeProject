@@ -26,7 +26,38 @@
             & > div {
                 display: flex;
                 align-self: flex-end;
-                margin-bottom: 1.8em;
+                margin-bottom: 1.5em;
+            }
+            .input-control-group {
+                display: block;
+                position: relative;
+                padding-top: 0.3em;
+                text-align: left;
+                input {
+                    width: 30%;
+                    text-align: center;
+                }
+                .input-button-control {
+                    display: inline-block;
+                    width: 15%;
+                    height: 1.2em;
+                    border-radius: 5px;
+                    background-color: var(--color-primary);
+                    color: var(--color-secondary);
+                    border: 1px solid var(--color-secondary);
+                    font-weight: bold;
+                    text-align: center;
+                    padding-bottom: 3%;
+                    transition: all 0.3s;
+                    cursor: pointer;
+                    user-select: none;
+                }
+                .prev {
+                    margin-right: 2px;
+                }
+                .next {
+                    margin-left: 2px;
+                }
             }
             .input-group {
                 width: 15%;
@@ -34,20 +65,16 @@
                 input {
                     display: block;
                 }
+                input {
+                    padding-top: 0.3em;
+                }
             }
 
             .occupants-group {
                 width: 15%;
-                /* Chrome, Safari, Edge, Opera */
-                input::-webkit-outer-spin-button,
-                input::-webkit-inner-spin-button {
-                    -webkit-appearance: none;
-                    margin: 0;
-                }
-
-                /* Firefox */
-                input[type="number"] {
-                    -moz-appearance: textfield;
+                display: block;
+                label {
+                    display: block;
                 }
             }
 

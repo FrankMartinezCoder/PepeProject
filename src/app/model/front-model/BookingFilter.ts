@@ -1,9 +1,9 @@
 export class BookingFilter {
     public dateIn: Date;
     public dateOut: Date;
-    public minPrice: number;
-    public maxPrice: number;
-    public numOccupant: number;
+    public minPrice: number = 0;
+    public maxPrice: number = 0;
+    public numOccupant: number = 1;
 
     public clear(): void {
         this.dateIn = null;
