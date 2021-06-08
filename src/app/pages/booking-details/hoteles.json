@@ -1,6 +1,7 @@
 [
     {
         "title": "Hotel 1",
+        "img":"../../../assets/imgs/utilities/about_bg.jpg",
         "descripcion": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.",
         "valoracion": 1,
         "direccion": "Calle 1",
@@ -8,6 +9,7 @@
     },
     {
         "title": "Hotel 2",
+        "img":"../../../assets/imgs/utilities/about_bg.jpg",
         "descripcion": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.",
         "valoracion": 2,
         "direccion": "Calle 2",
@@ -15,6 +17,7 @@
     },
     {
         "title": "Hotel 3",
+        "img":"../../../assets/imgs/utilities/about_bg.jpg",
         "descripcion": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.",
         "valoracion": 3,
         "direccion": "Calle 3",
@@ -22,6 +25,7 @@
     },
     {
         "title": "Hotel 4",
+        "img":"../../../assets/imgs/utilities/about_bg.jpg",
         "descripcion": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.",
         "valoracion": 4,
         "direccion": "Calle 4",
@@ -29,6 +33,7 @@
     },
     {
         "title": "Hotel 5",
+        "img":"../../../assets/imgs/utilities/about_bg.jpg",
         "descripcion": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.",
         "valoracion": 5,
         "direccion": "Calle 5",

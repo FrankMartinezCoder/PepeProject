@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import * as data from './hoteles.json';
+import * as data from './hoteles.json';
 
 @Component({
   selector: 'app-booking-details',
@@ -10,10 +10,10 @@ export class BookingDetailsComponent implements OnInit {
 
   constructor() { }
 
-  // products: any = (data as any).default;
+  hoteles: any = (data as any).default;
 
   ngOnInit(): void {
-    // console.log(data);
+    console.log(data[1].title);
   }
 
 }

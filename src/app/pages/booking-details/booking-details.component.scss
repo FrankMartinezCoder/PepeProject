@@ -2,30 +2,34 @@
     &-cards-room {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-
         border: 1px solid lightgray;
-        margin: 7em;
-        border-radius: 5px;
-        box-shadow: 0 0 5px lightgray;
+        margin: 2%;
+        border-radius: 25px;
+        box-shadow: 0 0 15px lightgrey;
     }
     &-card {
         &-room {
             display: grid;
             grid-template-columns: 30% 70%;
-            width: 100%;
+            // width: 100%;
             &_ver-mas {
             }
         }
         &-img {
+            margin: 5%;
+            text-align: center;
             // margin: 2% auto;
             & > img {
-                width: 100%;
+                width: 17.5rem;
+                border-radius: 8px;
+                object-fit: cover;
             }
         }
         &-content {
             display: grid;
             grid-template-rows: 10% 20% 10%;
             margin: 2%;
+            grid-gap: 10%;
         }
         &-title {
             & > span {
