@@ -1,5 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component } from '@angular/core';
 import * as $ from 'jquery';
 import { UserService } from 'src/app/services/user-service.service';
 
@@ -9,6 +8,7 @@ import { UserService } from 'src/app/services/user-service.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+
   public name: string = '';
   public surname: string = '';
   public birthdate: Date = new Date();
@@ -23,7 +23,7 @@ export class RegisterComponent {
 
   public buttonValidator: boolean = true;
 
-  constructor(private userService: UserService, private router: RouterModule) { }
+  constructor(private userService: UserService) { }
 
   public nameValidator(): void{
     let temp = true;
@@ -81,16 +81,19 @@ export class RegisterComponent {
     this.buttonValidator = temp;
   }
 
-  private validateButton(isValid: boolean): void {
-    if (isValid) {
-      this.nameError = "";
-      this.surnameError="";
-      this.birthdateError = "";
-      this.passwordError = "";
-      this.emailError = "";
-    }
-  }
+  public registerCheck() {
+    let params: {
 
+    }
+    this.userService.register(params).subscribe(
+      user => {
+
+      },
+      err => {
+        
+      }
+    )
+  }
 
   private reset(): void {
     this.name = '';
