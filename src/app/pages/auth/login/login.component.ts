@@ -17,6 +17,7 @@ export class LoginComponent {
   public passwordError:string = ''; 
 
   public buttonValidator:boolean = true;
+  
   constructor(private userService:UserService, private router:RouterModule) { }
 
   private reset():void {
@@ -24,6 +25,7 @@ export class LoginComponent {
     this.password = '';
     $("#login-component,#login-background").attr("hidden","true");
     $(".button-ok").removeAttr('loading');
+    $("body").removeClass("locked");
     this.emailError = "";
     this.passwordError = "";
   }

@@ -1,18 +1,23 @@
 <div id="booking-list-container">
     <div class="booking-filter">
-        <div class="booking-filter-date">
-            <label for="date">Fecha</label>
-            <input type="date" id="start" name="fechaEntrada" value="">
-            <input type="date" id="finish" name="fechaSalida" value="">
+        <div class="input-group">
+            <label for="startingDate">Fecha de entrada:</label>
+            <input type="date" id="startingDate">
         </div>
-        <div class="booking-filter-precio">
-            <label for="precios">Precios</label>
-            <input type="number" name="max" id="precioMax">
-            <input type="number" name="min" id="precioMin">
+        <div class="input-group">
+            <label for="endingDate">Fecha de salida:</label>
+            <input type="date" id="endingDate">
         </div>
-        <div class="booking-filter-ocupantes">
-            <label for="ocipantes">Ocupantes</label>
-            <input type="number" name="ocupantes" id="nOcupantes">
+
+        <div class="occupants-group">
+            <label for="occupants"></label>
+            <span id="prev"></span>
+            <input type="number" id="ocuppants">
+            <span id="next"></span>
+        </div>
+        <div class="button-group">
+            <button class="btn btn-info button-ok">Filtar</button>
+            <button class="btn btn-warning">Limpiar</button>
         </div>
     </div>
     <div class="booking-list"></div>

@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
     switch (id) {
       case 0:
         $("#login-component,#login-background").removeAttr("hidden");
+        $("body").addClass("locked");
         break;
       case 1:
         this.userService.logout();
