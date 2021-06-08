@@ -23,6 +23,26 @@ export class RegisterComponent {
 
   public buttonValidator: boolean = true;
 
+  public registerCheck() {
+    const _ = this;
+    let params:object = {
+      email:this.email,
+      password:this.password,
+      nombre:this.name,
+      apellidos:this.surname
+    }
+    this.userService.register(params).subscribe(
+      user => {
+        _.reset();
+      },
+      err => {
+        _.reset();
+      }
+    )
+  }
+
+
+
   constructor(private userService: UserService) { }
 
   public nameValidator(): void{
@@ -79,20 +99,6 @@ export class RegisterComponent {
       this.passwordError = "";
     }
     this.buttonValidator = temp;
-  }
-
-  public registerCheck() {
-    let params: {
-
-    }
-    this.userService.register(params).subscribe(
-      user => {
-
-      },
-      err => {
-        
-      }
-    )
   }
 
   private reset(): void {

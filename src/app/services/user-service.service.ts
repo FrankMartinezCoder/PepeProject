@@ -34,7 +34,7 @@ export class UserService {
   public register(parameters:any):Observable<User> {
     const _ = this;
     let observable:Observable<User>;
-    observable = this.httpClient.get<User>(Static.user.login,{params:parameters});
+    observable = this.httpClient.get<User>(Static.user.create,{params:parameters});
     
     observable.subscribe(
       data => {
