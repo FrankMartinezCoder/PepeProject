@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import * as data from './hoteles.json';
 
 @Component({
   selector: 'app-booking-details',
@@ -8,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class BookingDetailsComponent implements OnInit {
 
   constructor() { }
-  /*
-  para cuando el usuario no ha sido logado.
-  this.router.navigate(['/login']);  
-  */
+
+  // products: any = (data as any).default;
+
   ngOnInit(): void {
+    // console.log(data);
   }
 
 }
