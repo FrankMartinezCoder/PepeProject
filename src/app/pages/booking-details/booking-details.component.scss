@@ -11,15 +11,21 @@
     &-card {
         &-room {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 30% 70%;
+            width: 100%;
             &_ver-mas {
             }
         }
         &-img {
+            // margin: 2% auto;
+            & > img {
+                width: 100%;
+            }
         }
         &-content {
             display: grid;
-            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: 10% 20% 10%;
+            margin: 2%;
         }
         &-title {
             & > span {
