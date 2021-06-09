@@ -70,4 +70,8 @@ export class BookingSearchComponent implements OnInit {
   public clearData() {   
     this.filter.clear();
   }
+
+  public searchRooms() {
+    
+  }
 }

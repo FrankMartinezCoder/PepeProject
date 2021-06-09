@@ -31,6 +31,7 @@
               "src/assets/css/bootstrap3.min.css",
               "src/assets/css/fonts_loader.scss",
               "src/assets/css/common-styles.scss",
+              "src/assets/css/modal.scss",
               "src/styles.scss"
             ],
             "scripts": [

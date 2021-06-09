@@ -25,6 +25,65 @@ body {
     input[type="number"] {
         -moz-appearance: textfield;
     }
+
+    .button {
+        padding: 10px 20px;
+        border-radius: 10px;
+        margin: 5px;
+        &:not([loading]):hover,
+        &:not([loading]):active,
+        &[loading] {
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            transform: scale(1.05);
+            border: 1px solid var(--color-primary);
+            transition: all 0.3s;
+        }
+        &:disabled {
+            opacity: 0.5;
+        }
+        &[loading] {
+            position: relative;
+            color: var(--color-secondary);
+            &::before {
+                content: "";
+                position: absolute;
+                width: 50%;
+                height: 100%;
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, 0%);
+                background-image: url(/assets/imgs/icons/loader.svg);
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+        }
+
+        &--default {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            border: 1px solid var(--color-secondary);
+            transition: all 0.3s;
+        }
+        &--danger {
+            background-color: var(--btn-cancel-clr);
+            color: var(--color-secondary);
+            border: 1px solid var(--color-secondary);
+            transition: all 0.3s;
+            &:not([loading]):hover,
+            &:not([loading]):active,
+            &[loading] {
+                background-color: var(--color-secondary);
+                color: var(--btn-cancel-clr);
+                transform: scale(1.05);
+                border: 1px solid var(--btn-cancel-clr);
+                transition: all 0.3s;
+            }
+            &[loading] {
+                color: var(--color-secondary);
+            }
+        }
+    }
 }
 
 .locked {
@@ -60,6 +119,6 @@ body {
 
     --default-transition-speed: 0.3s;
 
-    --default-header-heigth:8vh;
-    --scrolling-header-heigth:6vh;
+    --default-header-heigth: 8vh;
+    --scrolling-header-heigth: 6vh;
 }

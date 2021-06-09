@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Static } from '../config/apiUrls';
-import { User } from '../models/User';
+import { User } from '../model/back-model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -38,8 +38,7 @@ export class UserService {
     
     observable.subscribe(
       data => {
-        sessionStorage.setItem("currentLogin",JSON.stringify(data));
-        _.watcher.emit(data);
+        
       },
       err => {
         console.error("[UserService]\n",err);

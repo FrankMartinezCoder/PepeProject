@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderMenuObject } from 'src/app/models/header-menu-object';
+import { HeaderMenuObject } from '../../model/front-model/header-menu-object';
 import { HeaderProvider } from '../../providers/header.provider';
 import * as $ from 'jquery';
 import { UserService } from 'src/app/services/user-service.service';
@@ -29,13 +29,12 @@ export class HeaderComponent implements OnInit {
   }
   ngOnInit(): void {
     this.headerMenu = this.provider.getMenu();
-    console.log("HEADER", this.headerMenu);
   }
   eventTrigger(id: number) {
 
     switch (id) {
       case 0:
-        $("#login-component,#login-background").removeAttr("hidden");
+        $("#login-component,#login-background").fadeIn(500);
         $("body").addClass("locked");
         break;
       case 1:
@@ -43,9 +42,8 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['/']);
         break;
       case 2:
-        $("#register-component,#register-background").removeAttr("hidden");
+        $("#register-component,#register-background").fadeIn(500);
         $("body").addClass("locked");
-        $(".floating-button--header-checkbox").prop('checked', false);
         break;
     }
 
