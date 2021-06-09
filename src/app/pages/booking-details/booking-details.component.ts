@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as data from './hoteles.json';
+import { HotelDataMock } from 'src/app/config/GetHoteles';
 
 @Component({
   selector: 'app-booking-details',
@@ -10,10 +10,14 @@ export class BookingDetailsComponent implements OnInit {
 
   constructor() { }
 
-  hoteles: any = (data as any).default;
+  public hoteles: object = HotelDataMock.data;
 
   ngOnInit(): void {
-    console.log(data[1].title);
+    console.log(this.hoteles);
   }
+
+  counter(i: number) {
+    return new Array(i);
+}
 
 }
