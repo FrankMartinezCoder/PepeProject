@@ -7,11 +7,15 @@ import { Static } from '../config/apiUrls';
 @Injectable({providedIn: 'root'})
 export class BookingServiceService {
 
-  public watcher = new EventEmitter<Booking[]>();
-
   constructor(private httpClient: HttpClient) {}
   
   public getRoomList():Observable<Booking[]> {
     return this.httpClient.get<Booking[]>(Static.room.list);
   }
+
+  public addBookingRoom():Observable<Booking[]> {
+    return null //this.httpClient.get<Booking[]>(Static.room.list);
+  }
+
+  
 }

@@ -1,22 +1,24 @@
 import { of } from "rxjs";
 
-export class InputObject {
-    public value:any;
+export class InputObject<T> {
+    public fieldName:string;
+    public value:T;
     public isValid:boolean = false;
     public hasModified:boolean = false;
     public errorMessage:string = "";
 
-    constructor() {
-        const _ = this;
+    constructor(field:string=null) {
+        this.fieldName = field;
         of(this.value).subscribe(
-            newValue => {
-                _.hasModified = true;
+            _ => {
+                this.hasModified = true;
             }
         );
     }
 
     public reset():void {
-        this.value = "";
+
+        this.value = null;
         this.isValid = false;
         this.hasModified = false;
         this.errorMessage = "";

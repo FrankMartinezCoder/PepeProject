@@ -1,33 +1,65 @@
-import { Injectable } from '@angular/core';
-import * as EventEmitter from 'events';
+import { EventEmitter, Injectable } from '@angular/core';
 import { User } from '../model/back-model/User';
+import { UserService } from '../services/user-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserProvider {
+    public watcher = new EventEmitter<User>();
 
-    isUserLogged():boolean {
-        let response:boolean = true;
-        try {
-            let userLogged:User = JSON.parse(sessionStorage.getItem("currentLogin"));
-            
-            response = User.validate(userLogged);
+    constructor(private userService:UserService) {}
+
+    public login(user:User):void {
+        let parameters:object = {
+            'email':user.email,
+            'password':user.password
         }
-        catch(err) {
-            response = false;
-        }
-        return response;
+        this.userService.login(parameters).subscribe(
+            data => {
+              sessionStorage.setItem("currentUser",JSON.stringify(data));
+              this.watcher.emit(data);
+            },
+            err => {
+              this.watcher.emit(null);
+            }
+          )
     }
 
-    getUserLogged():User {
-        let currentUser:User = null;
-        try {
-            currentUser = JSON.parse(sessionStorage.getItem("currentLogin"));
+    public register(user:User):void {
+        let parameters:object = {
+            'email':user.email,
+            'password':user.password,
+            'nombre':user.name,
+            'apellidos':user.surname
         }
-        catch(err) {
-            console.error(err);
-        }
-        return currentUser;
+        this.userService.login(parameters).subscribe(
+            data => {
+              this.watcher.emit(data);
+            },
+            err => {
+              this.watcher.emit(null);
+            }
+          )
+    }
+
+    public logout():void {
+        this.userService.logout().subscribe(
+            _=> {
+                this.watcher.emit(null);
+            }
+        )
+    }
+
+    public isUserLogged():boolean {
+      let user:User = User.parse(JSON.parse(sessionStorage.getItem('currentUser')));
+
+
+        return user?true:false;
+    }
+
+    public getUserLogged():User {
+      let user:User = User.parse(JSON.parse(sessionStorage.getItem('currentUser')));
+      return user;
     }
 }
