@@ -114,3 +114,53 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .details {
+        &-card {
+            &-title {
+                display: flex;
+                align-content: flex-start;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 1.5rem;
+                & > p {
+                    width: 75%;
+                }
+            }
+            &-img {
+                & > img {
+                    width: 100%;
+                }
+            }
+            &-info {
+                width: 68%;
+            }
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .details {
+        &-card {
+            &-room {
+                grid-template-columns: repeat(1, 1fr);
+            }
+            &-content {
+                margin: 0 5% 5%;
+            }
+            &-title {
+                display: block;
+                & > p {
+                    width: 100%;
+                }
+            }
+            &-info {
+                width: 100%;
+            }
+            &-reservation_btn {
+                justify-content: center;
+            }
+        }
+    }
+}
