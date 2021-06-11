@@ -9,8 +9,6 @@ import { User } from '../model/back-model/User';
 })
 export class UserService { 
   
-  
-
   constructor(private httpClient: HttpClient) {}
   
   public login(parameters:any):Observable<User> {

@@ -1,11 +1,11 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Booking } from '../model/back-model/Booking';
 import { Observable } from 'rxjs';
 import { Static } from '../config/apiUrls';
 
 @Injectable({providedIn: 'root'})
-export class BookingServiceService {
+export class BookingService {
 
   constructor(private httpClient: HttpClient) {}
   

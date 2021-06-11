@@ -29,7 +29,7 @@
 
         <div class="button-group">
             <button class="button-ok noselect" [disabled]="(!email.isValid)||(!name.isValid)||(!surname.isValid)||(!birthdate.isValid)||(!password.isValid)" (click)="registerCheck()">Acceder</button>
-            <button class="button-cancel noselect" (click)="cancel()" >Cancelar</button>
+            <button class="button-cancel noselect" (click)="reset()" >Cancelar</button>
         </div>
     </div>
 </div>

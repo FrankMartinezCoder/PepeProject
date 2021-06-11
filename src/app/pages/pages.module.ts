@@ -13,6 +13,7 @@ import { BookingSearchComponent } from './booking-search/booking-search.componen
 import { BookingDetailsComponent } from './booking-details/booking-details.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { LoadingModalComponent } from '../shared/loading-modal/loading-modal.component';
 
 
 
@@ -26,7 +27,8 @@ import { RegisterComponent } from './auth/register/register.component';
     BookingSearchComponent,
     BookingDetailsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoadingModalComponent
     ],
     exports: [
       ProfileComponent,
@@ -37,7 +39,8 @@ import { RegisterComponent } from './auth/register/register.component';
       BookingSearchComponent,
       BookingDetailsComponent,
       LoginComponent,
-      RegisterComponent
+      RegisterComponent,
+      LoadingModalComponent
       ],
   imports: [
     CommonModule,

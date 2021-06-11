@@ -16,12 +16,10 @@ export class RegisterComponent {
   public email: InputObject<string> = new InputObject('email');
   public password: InputObject<string> = new InputObject('password');
 
-  public buttonValidator: boolean = true;
-
   constructor(private userService: UserService) { }
 
   public validator(elem: InputObject<any>): void {
-    let temp: boolean = true;
+
     let errorMessage: string = "";
     switch (elem.fieldName) {
       case 'name':
@@ -77,7 +75,7 @@ export class RegisterComponent {
 
   }
 
-  private reset(): void {
+  public reset(): void {
     this.name.reset();
     this.surname.reset();
     this.birthdate.reset();
@@ -104,9 +102,5 @@ export class RegisterComponent {
         _.reset();
       }
     )
-  }
-
-  public cancel(): void {
-    this.reset();
   }
 }

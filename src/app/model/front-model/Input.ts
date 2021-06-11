@@ -17,7 +17,6 @@ export class InputObject<T> {
     }
 
     public reset():void {
-
         this.value = null;
         this.isValid = false;
         this.hasModified = false;

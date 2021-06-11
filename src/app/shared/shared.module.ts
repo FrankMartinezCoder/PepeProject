@@ -4,12 +4,9 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoadingModalComponent } from './loading-modal/loading-modal.component';
-
-
 
 @NgModule({
-  declarations: [ HeaderComponent, FooterComponent, LoadingModalComponent],
+  declarations: [ HeaderComponent, FooterComponent],
   exports: [HeaderComponent, FooterComponent],
   imports: [
     CommonModule, RouterModule
