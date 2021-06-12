@@ -1,9 +1,5 @@
-<div class="container">
-    <div class="details-cards-room" *ngFor="let item of hoteles; let view = index">
-        <span class="details-card-view" [attr.data-view]="view">
-            <img src="../../../assets/imgs/icons/eye1.svg" alt="Ver detalle" title="Ver detalle">
-            <img src="../../../assets/imgs/icons/eye2.svg" alt="Ver detalle" title="Ocultar detalle" hidden>
-        </span>
+<div class="details">
+    <div class="details-cards-room" *ngFor="let item of hoteles">
         <div class="details-card-room">
             <div class="details-card-img">
                 <img src="{{item.img}}" alt="Sobre nosotros" title="Sobre nosotros">
@@ -13,36 +9,32 @@
                     <p>
                         {{item.title}}
                     </p>
-                    
+
                     <div class="details-card-valoration">
                         <span *ngFor="let value of counter(5); let i = index" style="width: 10px; height: 10px;">
-                            <img *ngIf="i < item.valoration" src="../../../assets/imgs/icons/star2.svg" alt="Valoración">
-                            <img *ngIf="(i > item.valoration)||(i == item.valoration)" src="../../../assets/imgs/icons/star1.svg" alt="Valoración">
+                            <img *ngIf="i < item.valoration" src="../../../assets/imgs/icons/star2.svg"
+                                alt="Valoración">
+                            <img *ngIf="(i > item.valoration)||(i == item.valoration)"
+                                src="../../../assets/imgs/icons/star1.svg" alt="Valoración">
                         </span>
                     </div>
                 </div>
-                <div class="details-card-descripcion">
+                <div class="details-card-descripcion mt-2">
                     <p>
                         {{item.descripcion}}
                     </p>
                 </div>
-                <div class="details-card-info">
+                <div class="details-card-info mt-2">
                     <div class="details-card-info-address">
                         <p>
                             {{item.direccion}}
                         </p>
                     </div>
                 </div>
-                <div class="details-card-reservation">
-                    <button class="button-group-ok">Reservar</button>
-                </div>
-            </div>
-        </div>
-        <div class="details-card-room_ver-mas" hidden>
-            <div class="details-card-room">
-                <div class="details-card-info_info">
-                    <div class="details-card-info-iframe">
-                        <iframe src="" frameborder="0"></iframe>
+                <div class="details-card-reservation mt-2">
+                    <div class="details-card-reservation_btn">
+                        <button class="button button--default">Reservar</button>
+                        <button class="button button--info">Ir al detalles</button>
                     </div>
                 </div>
             </div>
