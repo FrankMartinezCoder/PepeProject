@@ -32,3 +32,10 @@ $.create = (node, id, classes, attributes) => {
     }
     return nodeElem;
 }
+
+showModal = () => {
+    $(".loading-modal").fadeIn();
+}
+hideModal = () => {
+    $(".loading-modal").fadeOut();
+}

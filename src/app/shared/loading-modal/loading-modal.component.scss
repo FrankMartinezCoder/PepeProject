@@ -1,8 +1,8 @@
 $spinnerSize: 2em;
 $spinnerSpeed: 3s;
 .loading-modal {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -13,31 +13,39 @@ $spinnerSpeed: 3s;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
     border-radius: 50%;
+    animation: LoadingModal 2s infinite;
     * {
         box-sizing: border-box;
     }
     .svg-container {
         position: absolute;
-        width: 100%;
-        height: 100%;
-        padding: 10%;
-        .gif-container {
-            width: 50%;
-            height: 50%;
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        .text {
+            width: 60px;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            font-weight: bold;
+            text-align: left;
+        }
+        .gif-container {
+            width: 150px;
+            height: 150px;
             svg {
                 width: 150px;
                 height: 150px;
                 position: absolute;
-                
                 animation: Rotate 1.8s both infinite linear;
                 path {
                     animation: DrawLine 1s both infinite alternate linear;
                     fill: none;
-                    stroke: #000;
+                    stroke: var(--color-primary);
                     stroke-width: 50;
                     transform-origin: 0px 0px;
                     stroke-dasharray: 0 126;
@@ -71,5 +79,19 @@ $spinnerSpeed: 3s;
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+
+@keyframes LoadingModal {
+    0% {
+        border-radius: 50%;
+    }
+
+    50% {
+        border-radius: 40%;
+    }
+    100% {
+        border-radius: 50%;
     }
 }
