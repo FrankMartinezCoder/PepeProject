@@ -2,7 +2,7 @@ export class Static {
     private static serverIp:string = "http://127.0.0.1:8080/"
 
     private static users:string = Static.serverIp+"usuarios/";
-    private static rooms:string = Static.serverIp+"usuarios/";
+    private static rooms:string = Static.serverIp+"habitaciones/";
     private static bookings:string = Static.serverIp+"bookings/";
     private static valorations:string = Static.serverIp+"usuarios/";   
     

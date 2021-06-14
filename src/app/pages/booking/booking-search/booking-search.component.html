@@ -2,18 +2,21 @@
     <div class="booking-filter">
         <div class="input-group">
             <label for="startingDate">Fecha de entrada:</label>
-            <input type="date" id="startingDate" [value]="currDate" [placeholder]="currDate">
+            <input type="date" id="startingDate2" [value]="currDate" [placeholder]="currDate">
+            <input type="date" id="startingDate" [(ngModel)]="filter.fechaEntrada"
+                placeholder="{{filter.fechaEntrada}}">
         </div>
         <div class="input-group">
             <label for="endingDate">Fecha de salida:</label>
-            <input type="date" id="endingDate">
+            <input type="date" id="endingDate" [(ngModel)]="filter.fechaSalida">
         </div>
 
         <div class="occupants-group">
             <label for="occupants">Número de ocupantes</label>
             <div class="input-control-group">
                 <span class="input-button-control" id="prev" (click)="less(1)">&#45;</span>
-                <input type="number" id="ocuppants" [(ngModel)]="filter.numOccupant" min="1" max="99" (keyup.enter)="checkNumOccupant()">
+                <input type="number" id="ocuppants" [(ngModel)]="filter.ocupantes" min="1" max="99"
+                    (keyup.enter)="checkNumOccupant()">
                 <span class="input-button-control" id="next" (click)="plus(1)">&#43;</span>
             </div>
         </div>
@@ -21,7 +24,8 @@
             <label for="minPrice">Precio mínimo (€)</label>
             <div class="input-control-group">
                 <span class="input-button-control prev" (click)="less(2)">&#45;</span>
-                <input type="number" id="minPrice" [(ngModel)]="filter.minPrice" min="1" max="99" (keyup.enter)="checkNumOccupant()">
+                <input type="number" id="minPrice" [(ngModel)]="filter.precio1" min="1" max="99"
+                    (keyup.enter)="checkNumOccupant()">
                 <span class="input-button-control next" (click)="plus(2)">&#43;</span>
             </div>
         </div>
@@ -29,7 +33,8 @@
             <label for="maxPrice">Precio máximo (€)</label>
             <div class="input-control-group">
                 <span class="input-button-control prev" (click)="less(3)">&#45;</span>
-                <input type="number" id="maxPrice" [(ngModel)]="filter.maxPrice" min="1" max="99" (keyup.enter)="checkNumOccupant()">
+                <input type="number" id="maxPrice" [(ngModel)]="filter.precio2" min="1" max="99"
+                    (keyup.enter)="checkNumOccupant()">
                 <span class="input-button-control next" (click)="plus(3)">&#43;</span>
             </div>
         </div>
@@ -38,9 +43,55 @@
             <button class="btn btn-info" (click)="searchRooms()">Filtar</button>
         </div>
     </div>
-    <div class="container booking-list">
-
+    <div class="container booking-list" *ngIf="!bookingList">
         <div class="no-bookings">Aún no ha realizado ninguna búsqueda</div>
 
+        <div class="booking-list-detail--container" *ngIf="bookingList">
+            <div class="bookingsSearched">
+                <div class="details-cards-room" *ngFor="let item of null">
+                    <div class="details-card-room">
+                        <div class="details-card-img">
+                            <img src="{{item.img}}" alt="Sobre nosotros" title="Sobre nosotros">
+                        </div>
+                        <div class="details-card-content">
+                            <div class="details-card-title">
+                                <p>
+                                    {{item.title}}
+                                </p>
+
+                                <div class="details-card-valoration">
+                                    <span *ngFor="let value of counter(5); let i = index"
+                                        style="width: 10px; height: 10px;">
+                                        <img *ngIf="i < item.valoration" src="../../../assets/imgs/icons/star2.svg"
+                                            alt="Valoración">
+                                        <img *ngIf="(i > item.valoration)||(i == item.valoration)"
+                                            src="../../../assets/imgs/icons/star1.svg" alt="Valoración">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="details-card-descripcion mt-2">
+                                <p>
+                                    {{item.descripcion}}
+                                </p>
+                            </div>
+                            <div class="details-card-info mt-2">
+                                <div class="details-card-info-address">
+                                    <p>
+                                        {{item.direccion}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="details-card-reservation mt-2">
+                                <div class="details-card-reservation_btn">
+                                    <button class="button button--default">Reservar</button>
+                                    <button class="button button--info">Ir al detalles</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination"></div>
+        </div>
     </div>
 </div>
