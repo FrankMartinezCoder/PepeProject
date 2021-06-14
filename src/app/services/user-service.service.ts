@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Static } from '../config/apiUrls';
 import { User } from '../model/back-model/User';
 
@@ -20,6 +20,11 @@ export class UserService {
   }
 
   public logout():Observable<void> {
-    return of(sessionStorage.removeItem("currentLogin"));
+    let temporalObserver: EventEmitter<void> = new EventEmitter();
+    console.log("hola");
+    
+    sessionStorage.removeItem("currentUser")
+    temporalObserver.emit();
+    return temporalObserver;
   }
 }

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { StaticPages } from '../config/pageUrls';
 import { HeaderMenuObject } from '../model/front-model/header-menu-object';
 import { User } from '../model/back-model/User';
-import { UserType } from '../model/back-model/UserType';
 import { UserProvider } from './user.provider';
 
 @Injectable({
@@ -39,7 +38,7 @@ export class HeaderProvider {
     let menu = this.free_access;
 
     if(userLogged) {
-      if(userLogged.userType == UserType.ADMIN) {
+      if(userLogged.esAdmin) {
         menu = this.admin_access;
       }
       else {

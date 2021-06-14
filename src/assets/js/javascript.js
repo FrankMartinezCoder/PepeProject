@@ -35,7 +35,9 @@ $.create = (node, id, classes, attributes) => {
 
 showModal = () => {
     $(".loading-modal").fadeIn();
+    $(".loading-modal-background").show();
 }
 hideModal = () => {
     $(".loading-modal").fadeOut();
+    $(".loading-modal-background").hide();
 }

@@ -1,21 +1,19 @@
-import { UserType } from "./UserType";
-
 export class User {
-    public id: number;
-    public name: string;
-    public surname: string;
+    public usuarioID: number;
+    public nombre: string;
+    public apellidos: string;
     public email: string;
     public password: string;
     public birthDate: Date;
-    public userType: UserType;
+    public esAdmin: boolean;
 
 
-    public static validate(user: User): boolean {
+    public static valusuarioIDate(user: User): boolean {
         if (!user)
             return false;
 
-        if (!user.id || user.id < 0 ||
-            !user.name || !user.email || !user.surname)
+        if (!user.usuarioID || user.usuarioID < 0 ||
+            !user.nombre || !user.email || !user.apellidos)
             return false;
 
 
@@ -25,13 +23,13 @@ export class User {
     public static parse(object: any): User {
         let userTemp: User = new User();
         try {
-            userTemp.id = object.id;
-            userTemp.name = object.name;
-            userTemp.surname = object.surname;
+            userTemp.usuarioID = object.usuarioID;
+            userTemp.nombre = object.nombre;
+            userTemp.apellidos = object.apellidos;
             userTemp.email = object.email;
             userTemp.password = object.password;
             userTemp.birthDate = object.birthDate;
-            userTemp.userType = object.userType;
+            userTemp.esAdmin = object.esAdmin;
         } catch (error) {
             userTemp = null;
         }

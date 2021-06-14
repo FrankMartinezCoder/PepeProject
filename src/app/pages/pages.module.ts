@@ -4,22 +4,20 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
-import { ProfileComponent } from './profile/profile.component';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { HotelManagementComponent } from './hotel-management/hotel-management.component';
-import { BookingSearchComponent } from './booking-search/booking-search.component';
-import { BookingDetailsComponent } from './booking-details/booking-details.component';
+import { BookingSearchComponent } from './booking/booking-search/booking-search.component';
+import { BookingDetailsComponent } from './booking/booking-details/booking-details.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { LoadingModalComponent } from '../shared/loading-modal/loading-modal.component';
+import { BookingFlowComponent } from './booking/booking-flow/booking-flow.component';
 
 
 
 @NgModule({
   declarations: [
-    ProfileComponent,
     PagesComponent,
     DashboardComponent,
     UserManagementComponent,
@@ -28,10 +26,9 @@ import { LoadingModalComponent } from '../shared/loading-modal/loading-modal.com
     BookingDetailsComponent,
     LoginComponent,
     RegisterComponent,
-    LoadingModalComponent
+    BookingFlowComponent
     ],
     exports: [
-      ProfileComponent,
       PagesComponent,
       DashboardComponent,
       UserManagementComponent,
@@ -40,7 +37,7 @@ import { LoadingModalComponent } from '../shared/loading-modal/loading-modal.com
       BookingDetailsComponent,
       LoginComponent,
       RegisterComponent,
-      LoadingModalComponent
+      BookingFlowComponent
       ],
   imports: [
     CommonModule,

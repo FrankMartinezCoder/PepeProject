@@ -18,18 +18,19 @@ export class LoginComponent implements OnInit {
   constructor(private userProvider: UserProvider) { }
 
   ngOnInit() {
+    const _ = this;
     this.userProvider.watcher.subscribe(
-      _ => {
+      user => {
         let timeOut = setTimeout(function () {
           clearTimeout(timeOut);
-          this.reset();
+          _.reset();
         }, 700);
       },
       err => {
         $(".button--default").removeAttr('loading');
-        this.form.errorMessage = "El login ha fallado, por favor vuelva a introducir los datos introducidos"
-        this.email.reset();
-        this.password.reset();
+        _.form.errorMessage = "El login ha fallado, por favor vuelva a introducir los datos introducidos"
+        _.email.reset();
+        _.password.reset();
       }
     )
   }
