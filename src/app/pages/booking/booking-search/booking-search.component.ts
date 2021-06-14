@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform, Inject, LOCALE_ID } from '@angular/core';
 import { BookingFilter } from 'src/app/model/front-model/BookingFilter';
+import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-booking-search',
@@ -9,10 +10,15 @@ import { BookingFilter } from 'src/app/model/front-model/BookingFilter';
 export class BookingSearchComponent implements OnInit {
 
   public filter: BookingFilter = new BookingFilter();
+  currDate: string;
 
-  constructor() { }
+  constructor(private dp: DatePipe ) {
+    this.currDate = dp.transform(Date.now(),'dd/MM/yyyy', "en");
+    console.log(this.currDate);
+  }
 
   ngOnInit(): void {
+    this.currDate = this.dp.transform( new Date(Date.now()), 'dd-MM-yyyy' );
   }
 
   public plus(elem: number) {
