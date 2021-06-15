@@ -59,7 +59,7 @@ body {
             }
         }
 
-        &--default,&--danger,&--info {
+        &--default,&--danger,&--info,&--verified {
             @extend .button;
         }
         &--default {
@@ -99,6 +99,26 @@ body {
                 color: var(--btn-info-clr);
                 transform: scale(1.05);
                 border: 1px solid var(--btn-info-clr);
+                transition: all 0.3s;
+            }
+            &[loading] {
+                color: var(--color-secondary);
+            }
+        }
+        &--verified {
+            background-color: rgb(88, 235, 108);
+            color: var(--color-secondary);
+            text-shadow: 1px 1px 2px rgb(0, 0, 0);
+            border: 1px solid var(--color-secondary);
+            transition: all 0.3s;
+            &:not([loading]):hover,
+            &:not([loading]):active,
+            &[loading] {
+                background-color: var(--color-secondary);
+                color:  rgb(96, 255, 117);
+                text-shadow: 1px 1px 0px rgb(73, 194, 89);
+                transform: scale(1.05);
+                border: 1px solid  rgb(96, 255, 117);
                 transition: all 0.3s;
             }
             &[loading] {

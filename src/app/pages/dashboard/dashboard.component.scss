@@ -23,6 +23,8 @@
             clip-path: polygon(0 0, 72% 0, 100% 100%, 0% 100%);
             background-color: var(--text-clr-primary);
             opacity: 0.7;
+            transform: translate(-100%,0%);
+            animation: welcome 1.5s 0.3s forwards;
         }
         &-text {
             position: absolute;
@@ -374,5 +376,11 @@
                 box-shadow: none;
             }
         }
+    }
+}
+
+@keyframes welcome {
+    to {
+        transform: translate(0%,0%);
     }
 }

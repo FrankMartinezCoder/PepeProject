@@ -1,0 +1,6 @@
+<div class="input-control-group">
+    <span class="input-button-control prev" (click)="less()">&#45;</span>
+    <input type="number" [(ngModel)]="currentValue" min="{{min}}" max="{{max}}" (keyup.enter)="checkValue()">
+
+    <span class="input-button-control next" (click)="plus()">&#43;</span>
+</div>

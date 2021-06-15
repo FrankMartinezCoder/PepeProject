@@ -1,6 +1,5 @@
-import { Component, OnInit, Pipe, PipeTransform, Inject, LOCALE_ID } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BookingFilter } from 'src/app/model/front-model/BookingFilter';
-import { DatePipe, formatDate } from '@angular/common';
 import { Booking } from 'src/app/model/back-model/Booking';
 import { BookingProvider } from 'src/app/providers/booking.provider';
 
@@ -14,11 +13,8 @@ declare function hideModal(): boolean;
 export class BookingSearchComponent implements OnInit {
 
   public filter: BookingFilter = new BookingFilter();
-  currDate: string;
 
-  constructor(private bookingProvider: BookingProvider, private dp: DatePipe) {
-    this.currDate = dp.transform(Date.now(),'dd/MM/yyyy', "en");
-    console.log(this.currDate);
+  constructor(private bookingProvider: BookingProvider) {
   }
 
   public bookingList: Booking[];
@@ -26,8 +22,6 @@ export class BookingSearchComponent implements OnInit {
   public lastPage: number;
 
   ngOnInit(): void {
-    this.currDate = this.dp.transform( new Date(Date.now()), 'dd-MM-yyyy' );
-
     this.filter.clear();
   }
 

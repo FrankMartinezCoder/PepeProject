@@ -13,8 +13,7 @@ import { BookingDetailsComponent } from './booking/booking-details/booking-detai
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { BookingFlowComponent } from './booking/booking-flow/booking-flow.component';
-
-
+import { NumberInputComponent } from '../components/number-input/number-input.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,8 @@ import { BookingFlowComponent } from './booking/booking-flow/booking-flow.compon
     BookingDetailsComponent,
     LoginComponent,
     RegisterComponent,
-    BookingFlowComponent
+    BookingFlowComponent,
+    NumberInputComponent
     ],
     exports: [
       PagesComponent,
@@ -37,7 +37,8 @@ import { BookingFlowComponent } from './booking/booking-flow/booking-flow.compon
       BookingDetailsComponent,
       LoginComponent,
       RegisterComponent,
-      BookingFlowComponent
+      BookingFlowComponent,
+      NumberInputComponent
       ],
   imports: [
     CommonModule,

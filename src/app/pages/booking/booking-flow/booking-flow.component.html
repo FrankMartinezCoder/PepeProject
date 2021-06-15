@@ -1,1 +1,39 @@
-<p>booking-flow works!</p>
+<div class="booking-flow">
+    <div class="booking-flow--header">
+        <div class="title">Proceso de Reserva</div>
+        <ul class="header-dots">
+            <li class="header-item-dot" done>
+                <a (click)="goTo(0)">Ocupantes</a>
+            </li>
+            <li class="header-item-dot">
+                <a (click)="goTo(1)">Servicios</a>
+            </li>
+            <li class="header-item-dot">
+                <a (click)="goTo(2)">Resumen</a>
+            </li>
+        </ul>
+
+        <div class="close" (click)="close()">
+            Salir
+        </div>
+    </div>
+    <div class="booking-flow--view-steps">
+        <section class="step step-1">
+            step 1
+            <app-number-input [max]="10"></app-number-input>
+        </section>
+        <section class="step step-2" style="display: none;">step 2</section>
+        <section class="step step-3" style="display: none;">step 3</section>
+    </div>
+    <div class="booking-flow--buttons">
+        <div class="container">
+            <button class="{{currentScene.backButton.class}}" (click)="back()">
+                {{currentScene.backButton.text}}</button>
+            <button class="{{currentScene.nextButton.class}}" (click)="next()"
+                [disabled]="!currentScene.nextButton.isValid">{{currentScene.nextButton.text}}</button>
+        </div>
+    </div>
+</div>
+<div class="booking-flow--background">
+
+</div>

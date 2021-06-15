@@ -2,9 +2,7 @@
     <div class="booking-filter">
         <div class="input-group">
             <label for="startingDate">Fecha de entrada:</label>
-            <input type="date" id="startingDate2" [value]="currDate" [placeholder]="currDate">
-            <input type="date" id="startingDate" [(ngModel)]="filter.fechaEntrada"
-                placeholder="{{filter.fechaEntrada}}">
+            <input type="date" id="startingDate" [(ngModel)]="filter.fechaEntrada">
         </div>
         <div class="input-group">
             <label for="endingDate">Fecha de salida:</label>
@@ -48,7 +46,7 @@
 
         <div class="booking-list-detail--container" *ngIf="bookingList">
             <div class="bookingsSearched">
-                <div class="details-cards-room" *ngFor="let item of null">
+                <div class="details-cards-room" *ngFor="let item of bookingList">
                     <div class="details-card-room">
                         <div class="details-card-img">
                             <img src="{{item.img}}" alt="Sobre nosotros" title="Sobre nosotros">
