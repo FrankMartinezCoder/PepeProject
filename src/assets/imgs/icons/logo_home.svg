@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.5, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 683.9 247.8" style="enable-background:new 0 0 683.9 247.8;" xml:space="preserve">
+<style type="text/css">
+	.st0{font-family:'Impact';}
+	.st1{font-size:260.511px;}
+	.st2{fill:#FFAA00;}
+	.st3{font-size:98.1371px;}
+	.st4{fill:#FFAA00;stroke:#DB9600;stroke-width:2;stroke-miterlimit:10;}
+	.st5{display:none;}
+	.st6{display:inline;}
+	.st7{fill:#DB9600;}
+	.st8{fill:#211915;}
+</style>
+<g>
+	<text transform="matrix(1 0 0 1 89.698 215.2248)" class="st0 st1">Royal</text>
+	<text transform="matrix(3.464102e-07 -1 1 3.464102e-07 82.4607 215.2257)" class="st2 st0 st3">Hotel</text>
+	<line class="st4" x1="480.1" y1="236.7" x2="683.9" y2="236.7"/>
+	<g class="st5">
+		<g class="st6">
+			<path class="st7" d="M178.9,135.2l409.8,170.4c25.8,10.7,42.6,35.9,42.6,63.9v24.6c0,27.9-16.8,53.1-42.5,63.9L179,629.1
+				c-45.6,19.1-95.9-14.4-95.9-63.9l0,0c0-28.2,17.1-53.6,43.3-64.2l135.4-54.6c57.8-23.3,57.8-105.2-0.1-128.4l-135.2-54.2
+				c-26.2-10.5-43.4-36-43.4-64.2v-0.5C83.1,149.8,133.3,116.3,178.9,135.2z"/>
+		</g>
+		<g class="st6">
+			<path class="st8" d="M631.3-201.2v0.5c0,28.3-17.2,53.7-43.4,64.2L452.6-82.2C394.8-59,394.7,22.9,452.5,46.2l135.4,54.6
+				c26.2,10.6,43.3,36,43.3,64.2l0,0c0,49.4-50.3,82.9-95.9,63.9L125.6,57.6C99.9,46.9,83.1,21.7,83.1-6.2v-24.6
+				c0-28,16.8-53.2,42.6-63.9l409.8-170.4C581.1-284,631.3-250.5,631.3-201.2z"/>
+		</g>
+	</g>
+</g>
+</svg>

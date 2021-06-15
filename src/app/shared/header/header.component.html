@@ -5,7 +5,9 @@
         <nav class="navbar">
             <div id="navbar-container-brand">
                 <a class="navbar-brand" [routerLink]="'/'" routerLinkActive="active"
-                    [routerLinkActiveOptions]="{exact:true}" (click)="eventTrigger(-1)">{{headerMenu.title}}</a>
+                    [routerLinkActiveOptions]="{exact:true}" (click)="eventTrigger(-1)">
+                    <img src="../../../assets/imgs/icons/logo_home.svg" alt="Royal Hotel">
+                </a>
             </div>
 
             <div class="navbar-nav--container">
