@@ -1,0 +1,10 @@
+.gestion {
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        &-table {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+}
