@@ -14,6 +14,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { BookingFlowComponent } from './booking/booking-flow/booking-flow.component';
 import { NumberInputComponent } from '../components/number-input/number-input.component';
+import { TablaGestionComponent } from '../components/tabla-gestion/tabla-gestion.component';
+import { ModalGestionComponent } from '../components/modal-gestion/modal-gestion.component';
 
 @NgModule({
   declarations: [
@@ -26,20 +28,24 @@ import { NumberInputComponent } from '../components/number-input/number-input.co
     LoginComponent,
     RegisterComponent,
     BookingFlowComponent,
-    NumberInputComponent
-    ],
-    exports: [
-      PagesComponent,
-      DashboardComponent,
-      UserManagementComponent,
-      HotelManagementComponent,
-      BookingSearchComponent,
-      BookingDetailsComponent,
-      LoginComponent,
-      RegisterComponent,
-      BookingFlowComponent,
-      NumberInputComponent
-      ],
+    NumberInputComponent,
+    TablaGestionComponent,
+    ModalGestionComponent
+  ],
+  exports: [
+    PagesComponent,
+    DashboardComponent,
+    UserManagementComponent,
+    HotelManagementComponent,
+    BookingSearchComponent,
+    BookingDetailsComponent,
+    LoginComponent,
+    RegisterComponent,
+    BookingFlowComponent,
+    NumberInputComponent,
+    TablaGestionComponent,
+    ModalGestionComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,

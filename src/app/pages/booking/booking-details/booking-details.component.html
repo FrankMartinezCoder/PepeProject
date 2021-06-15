@@ -1,19 +1,10 @@
 
 <div class="details container">
-    <div class="details-card-room-detail" *ngFor="let item of hoteles">
+    <div class="details-card-room-detail container" *ngFor="let item of hoteles">
         <div class="details-card-room_detail">
             <div class="details-card-img_detail">
                 <img src="{{item.img}}" alt="Sobre nosotros" title="Sobre nosotros">
                 <div class="details-card-title_detail">
-                    <div class="details-card-info-address_detail">
-                        <p>
-                            {{item.direccion}}
-                        </p>
-                    </div>
-                    <p>
-                        {{item.title}}
-                    </p>
-
                     <div class="details-card-valoration_detail">
                         <span *ngFor="let value of counter(5); let i = index" style="width: 10px; height: 10px;">
                             <img *ngIf="i < item.valoration" src="../../../assets/imgs/icons/star2.svg"
@@ -21,37 +12,36 @@
                             <img *ngIf="(i > item.valoration)||(i == item.valoration)"
                                 src="../../../assets/imgs/icons/star1.svg" alt="Valoración">
                         </span>
+                    </div>
+                    <p>
+                        {{item.title}}
+                    </p>
+                    <div class="details-card-descripcion_detail mt-2">
+                        <p>
+                            {{item.descripcion}}
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <div class="details-card-content_detail">
-                <!-- <div class="details-card-title_detail">
-                    <p>
-                        {{item.title}}
-                    </p>
-
-                    <div class="details-card-valoration_detail">
-                        <span *ngFor="let value of counter(5); let i = index" style="width: 10px; height: 10px;">
-                            <img *ngIf="i < item.valoration" src="../../../assets/imgs/icons/star2.svg"
-                                alt="Valoración">
-                            <img *ngIf="(i > item.valoration)||(i == item.valoration)"
-                                src="../../../assets/imgs/icons/star1.svg" alt="Valoración">
+            <div class="details-card-content_detail mt-4">
+                <h4 class="mt-2">Hotel: {{item.title}}</h4>
+                <div class="details-hotel">
+                    <div class="details-hotel-img">
+                        <img src="{{item.img}}" alt="Hotel mis huevos">
+                    </div>
+                    
+                    <div class="details-hotel-content">
+                        <div class="details-card-info-address">
+                            <p>
+                                {{item.direccion}}
+                            </p>
+                        </div>
+                        <span class="details-hotel-content-hotel">
+                            {{item.descripcion}}
                         </span>
                     </div>
-                </div> -->
-                <div class="details-card-descripcion_detail mt-2">
-                    <p>
-                        {{item.descripcion}}
-                    </p>
                 </div>
-                <!-- <div class="details-card-info_detail mt-2">
-                    <div class="details-card-info-address">
-                        <p>
-                            {{item.direccion}}
-                        </p>
-                    </div>
-                </div> -->
                 <h1 class="mt-2">Iframe</h1>
                 <div class="details-card-info-iframe mt-2">
                     <iframe src="https://www.google.es/" frameborder="0"></iframe>
@@ -72,43 +62,29 @@
                     </span>
                 </div>
                 <h1 class="mt-2">Comentarios</h1>
-                <!-- <div class="mt-2">
-                    
-                    <div class="d-flex justify-content-center py-2">
-                        <div class="second py-2 px-2"> <span class="text1">Type your note, and hit enter to add
-                                it</span>
-                            <div class="d-flex justify-content-between py-1 pt-2">
-                                <div><span class="text3">Upvote?</span><span class="thumbup"><i
-                                            class="fa fa-thumbs-o-up"></i></span><span class="text4">3</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center py-2">
-                        <div class="second py-2 px-2"> <span class="text1">Type your note, and hit enter to add
-                                it</span>
-                            <div class="d-flex justify-content-between py-1 pt-2">
-                                <div><img src="https://i.imgur.com/gishFbz.png" width="18" height="18"><span
-                                        class="text2">Beth</span></div>
-                                <div><span class="text3 text3o">Upvoted</span><span class="thumbup"><i
-                                            class="fa fa-thumbs-up thumbupo"></i></span><span
-                                        class="text4 text4i">1</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div> -->
                 <div class="details-comentarios">
                     <div class="details-comentarios-card">
-                        <span class="details-comentarios-card_u"><p>Usuario</p></span>
-                        <span class="details-comentarios-card_c"><p>Comentarios : Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis soluta quo in qui ad reiciendis ut, deleniti inventore ipsum corporis ipsam enim repellendus optio mollitia? Cupiditate tempore omnis placeat esse.</p></span>
+                        <span class="details-comentarios-card_c"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis soluta quo in qui ad reiciendis ut, deleniti inventore ipsum corporis ipsam enim repellendus optio mollitia? Cupiditate tempore omnis placeat esse.</p></span>
+                        <span class="details-comentarios-card_u">
+                            <p>Usuario</p>
+                            <p>05/11/2001</p>
+                        </span>
                     </div>
                     <div class="details-comentarios-card">
-                        <span class="details-comentarios-card_u"><p>Usuario</p></span>
                         <span class="details-comentarios-card_c"><p>Comentarios : Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis soluta quo in qui ad reiciendis ut, deleniti inventore ipsum corporis ipsam enim repellendus optio mollitia? Cupiditate tempore omnis placeat esse.</p></span>
+                        <span class="details-comentarios-card_u">
+                            <p>Usuario</p>
+                            <p>02/11/2001</p>
+                        </span>
                     </div>
+                    <div class="details-comentarios-card">
+                        <textarea id="comentario" name="comentario" rows="4" cols="50"></textarea>
+                        <button class="button--default">Enviar comentario</button>
+                    </div>
+                    
                 </div>
                 <!-- Servicios -->
-                <div class="details-card-reservation_details mt-2">
+                <div class="details-card-reservation_details">
                     <div class="details-card-reservation_btn">
                         <button class="button--danger">Cancelar</button>
                         <button class="button--default">Reservar</button>
