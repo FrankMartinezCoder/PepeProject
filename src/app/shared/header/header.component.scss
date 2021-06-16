@@ -1,7 +1,5 @@
 header {
-    height: var(--default-header-heigth);
     border-bottom: 4px solid var(--color-primary);
-    box-sizing: border-box;
     & .floating-button--header {
         &-box,
         &-checkbox {
@@ -9,7 +7,10 @@ header {
         }
     }
     & #navbar-container-brand {
+        width: 9rem;
+        margin-left: 18%;
         & .navbar-brand {
+            width: 100%;
             font-size: 2rem;
             font-weight: bold;
         }
@@ -29,7 +30,9 @@ header {
             flex-direction: row !important;
 
             & > .nav-item {
-                padding-right: 2em;
+                font-size: 20px;
+                font-weight: bold;
+                padding: 10px;
                 .nav-link {
                     color: black;
                     cursor: pointer;
@@ -38,6 +41,16 @@ header {
         }
     }
 }
+.navbar {
+    padding: 0;
+    margin-right: 10%;
+}
+// .raise:hover,
+// .raise:focus {
+//   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+//   -webkit-transform: translateY(-0.25em);
+//           transform: translateY(-0.25em);
+// }
 
 @media (max-width: 768px) {
     $headerWidth: 70%;
@@ -171,7 +184,8 @@ header {
                             margin-bottom: 1em;
                             border-left: 10px solid var(--color-primary);
                             padding-left: 5px;
-                            &:hover,&:active {
+                            &:hover,
+                            &:active {
                                 border: 1px solid var(--color-primary);
                                 border-left: 10px solid var(--color-primary);
                             }
