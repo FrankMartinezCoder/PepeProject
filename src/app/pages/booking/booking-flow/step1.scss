@@ -1,3 +1,27 @@
 .step-1 {
-    
+    .title {
+        font-size: 1.5em;
+        padding-bottom: 1em;
+        font-weight: bold;
+    }
+    .step-1--form {
+        display: flex;
+        flex-direction: row;
+        place-items: center;
+        height: 40vh;
+        .input-group {
+            display: flex;
+            justify-content: center;
+            .input-label {
+                width: 100%;
+                text-align: center;
+                display: block;
+                margin-bottom: 20px;
+                font-size: 1.5em;
+            }
+            .number-input {
+                display: block;
+            }
+        }
+    }
 }

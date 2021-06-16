@@ -1,13 +1,10 @@
-import { Booking } from "./Booking";
-import { RoomType } from "./RoomType";
-
 export class Room {
-    private id:number;
-    private description:string;
-    private roomNumber:number;
-    private images:string[];
-    private roomType:RoomType;
-    private price:number;
-    private personNumber:number;
-    private bookingList:Booking[];
+    private habitacionID:number;
+    private descripcion:string;
+    private numHabitacion:number;
+    private img_path:string;
+    private ocupantes:number;
+    private tipoHabitacion:string;
+    private precioHabitacionTotal:number;
+    private precioOcupante:number;
 }

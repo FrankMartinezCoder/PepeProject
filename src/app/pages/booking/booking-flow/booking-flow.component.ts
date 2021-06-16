@@ -1,48 +1,131 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-booking-flow',
   templateUrl: './booking-flow.component.html',
   styleUrls: ['./booking-flow.component.scss', './step1.scss', './step2.scss', './step3.scss']
 })
-export class BookingFlowComponent {
+export class BookingFlowComponent implements OnInit {
 
   private scenes: Array<Scene>;
   public currentScene: Scene;
-  private currentIndex: number = 0;
+  private currentIndex: number = 1;
 
-  public buttonBack: ButtonLogic = new ButtonLogic('button--danger', 'Salir');
-  public buttonNext: ButtonLogic = new ButtonLogic('button--default', 'Siguiente');
-  public isValid: boolean = false;
   //---------step 1---------
+  public adultos: number = 0;
+  public jovenes: number = 0;
+  public children: number = 0;
 
+  private max: number = 99;
+  private min: number = 0;
   //------------------------
-  constructor() {
+  ngOnInit(): void {
     this.scenes = new Array(3);
     this.scenes[0] = new Scene(0, 'Ocupantes', '.step-1', new ButtonLogic('button--danger', 'Salir', true), new ButtonLogic('button--default', 'Siguiente', true));
     this.scenes[1] = new Scene(1, 'Servicios', '.step-2', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--info', 'Siguiente', true));
     this.scenes[2] = new Scene(2, 'Resumen', '.step-3', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--verified', 'Terminar', true));
 
     this.currentScene = this.scenes[this.currentIndex];
+    this.loadScene();
   }
   // INICIO LOGICA STEP 1
 
+  public plus(id: number) {
+    switch (id) {
+      case 0:
+        if (this.adultos < this.max) {
+          this.adultos++;
+        }
+        break
+      case 1:
+        if (this.jovenes < this.max) {
+          this.jovenes++;
+        }
+        break
+      case 2:
+        if (this.children < this.max) {
+          this.children++;
+        }
+        break
+    }
+    this.updateStep(this.adultos > 0);
+  }
 
+  public less(id: number) {
+    switch (id) {
+      case 0:
+        if (this.adultos > this.min) {
+          this.adultos--;
+        }
+        break
+      case 1:
+        if (this.jovenes > this.min) {
+          this.jovenes--;
+        }
+        break
+      case 2:
+        if (this.children > this.min) {
+          this.children--;
+        }
+        break
+    }
+    this.updateStep(this.adultos > 0);
+  }
 
-
+  public checkValue(id: number) {
+    switch (id) {
+      case 0:
+        if (this.adultos < this.min) {
+          this.adultos = this.min;
+        }
+        if (this.adultos > this.max) {
+          this.adultos = this.max;
+        }
+        break
+      case 1:
+        if (this.jovenes < this.min) {
+          this.jovenes = this.min;
+        }
+        if (this.jovenes > this.max) {
+          this.jovenes = this.max;
+        }
+        break
+      case 2:
+        if (this.children < this.min) {
+          this.children = this.min;
+        }
+        if (this.children > this.max) {
+          this.children = this.max;
+        }
+        break
+    }
+    this.updateStep(this.adultos > 0);
+  }
 
   // FIN LOGICA STEP 1
+  // INICIO LOGICA STEP 2
+
+
+
+
+
+  // FIN LOGICA STEP 2
   // INICIO LOGICA FLUJO
   public close(): void {
     this.reset();
     $(".booking-flow").fadeOut();
+    $(".booking-flow--background").hide();
   }
 
   public goTo(newStep: number) {
-    if (newStep > 0 && (newStep) <= this.scenes.length && newStep != this.currentIndex) {
+    if (newStep >= 0 && (newStep + 1) <= this.scenes.length && newStep != this.currentIndex && this.scenes[newStep].isValid) {
       this.currentIndex = newStep;
       this.loadScene();
     }
+  }
+
+  public updateStep(valid: boolean = false) {
+    this.scenes[this.currentIndex].isValid = valid;
   }
 
   private loadScene() {
@@ -51,6 +134,7 @@ export class BookingFlowComponent {
     $(this.currentScene.node).fadeIn();
     this.updateHeader();
   }
+
   public back() {
     if (this.currentIndex == 0) {
       this.close();
@@ -90,15 +174,16 @@ export class BookingFlowComponent {
     this.scenes[0] = new Scene(0, 'Ocupantes', '.step-1', new ButtonLogic('button--danger', 'Salir', true), new ButtonLogic('button--default', 'Siguiente', true));
     this.scenes[1] = new Scene(1, 'Servicios', '.step-2', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--info', 'Siguiente', true));
     this.scenes[2] = new Scene(2, 'Resumen', '.step-3', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--verified', 'Terminar', true));
-
-    this.buttonBack = new ButtonLogic('button--danger', 'Salir');
-    this.buttonNext = new ButtonLogic('button--default', 'Siguiente');
-    this.isValid = false;
   }
 
   public show() {
     $(".booking-flow--background").show();
     $(".booking-flow").fadeIn();
+  }
+
+  public hide() {
+    $(".booking-flow--background").hide();
+    $(".booking-flow").fadeOut();
   }
   // FIN LOGICA FLUJO
 }

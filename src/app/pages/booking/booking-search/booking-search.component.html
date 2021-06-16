@@ -41,12 +41,12 @@
             <button class="btn btn-info" (click)="searchRooms()">Filtar</button>
         </div>
     </div>
-    <div class="container booking-list" *ngIf="!bookingList">
+    <div class="container booking-list" *ngIf="!roomList">
         <div class="no-bookings">Aún no ha realizado ninguna búsqueda</div>
 
         <div class="booking-list-detail--container" *ngIf="bookingList">
             <div class="bookingsSearched">
-                <div class="details-cards-room" *ngFor="let item of bookingList">
+                <div class="details-cards-room" *ngFor="let item of roomList">
                     <div class="details-card-room">
                         <div class="details-card-img">
                             <img src="{{item.img}}" alt="Sobre nosotros" title="Sobre nosotros">
@@ -93,3 +93,4 @@
         </div>
     </div>
 </div>
+<app-booking-flow></app-booking-flow>

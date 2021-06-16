@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { InputObject } from 'src/app/model/front-model/Input';
 
 @Component({
   selector: 'app-number-input',
@@ -7,11 +8,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class NumberInputComponent {
   
-  @Input('max') max:number = 0;
-  @Input('min') min:number = 0;
-  @Input('value') value:number = 0;
-  @Input('id') id:string;
-  @Output() currentValue:EventEmitter<object> = new EventEmitter();
+  @Input() max:number = 0;
+  @Input() min:number = 0;
+  @Input() value:number = 0;
+  @Input() id:string;
+  @Output() currentValue:EventEmitter<InputObject<number>> = new EventEmitter();
 
   public plus() {
     if(this.value < this.max) {
@@ -38,9 +39,6 @@ export class NumberInputComponent {
   }
 
   public updateOutput() {
-    this.currentValue.emit({
-      'id':this.id,
-      'value':this.value
-    });
+    this.currentValue.emit(new InputObject());
   }
 }

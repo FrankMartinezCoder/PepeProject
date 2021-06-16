@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingFilter } from 'src/app/model/front-model/BookingFilter';
-import { Booking } from 'src/app/model/back-model/Booking';
 import { BookingProvider } from 'src/app/providers/booking.provider';
+import { Room } from 'src/app/model/back-model/Room';
 
 declare function hideModal(): boolean;
 
@@ -17,8 +17,7 @@ export class BookingSearchComponent implements OnInit {
   constructor(private bookingProvider: BookingProvider) {
   }
 
-  public bookingList: Booking[];
-  public bookingPaged: Array<Booking>;
+  public roomList: Room[];
   public lastPage: number;
 
   ngOnInit(): void {
@@ -88,12 +87,12 @@ export class BookingSearchComponent implements OnInit {
     console.log(this.filter);
     
     this.bookingProvider.getListFreeRooms(this.filter).subscribe(
-      bookings => {
-        console.log("rooms",bookings);
+      rooms => {
+        console.log("rooms",rooms);
         
         let timeOut = setTimeout(function () {
           hideModal()
-          _.bookingList = bookings;
+          _.roomList = rooms;
           _.createPagination();
           clearTimeout(timeOut);
         }, 1200);

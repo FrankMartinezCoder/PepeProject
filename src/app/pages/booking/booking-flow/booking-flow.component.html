@@ -19,8 +19,38 @@
     </div>
     <div class="booking-flow--view-steps">
         <section class="step step-1">
-            step 1
-            <app-number-input [max]="10"></app-number-input>
+            <div class="container">
+                <div class="title">Seleccionar Ocupantes:</div>
+                <div class="step-1--form">
+                    <div class="input-group">
+                        <div class="input-label">Adultos</div>
+                        <div class="input-control-group">
+                            <span class="input-button-control prev" (click)="less(0)">&#45;</span>
+                            <input type="number" [(ngModel)]="adultos" min="0" max="99" (keyup.enter)="checkValue(0)">
+
+                            <span class="input-button-control next" (click)="plus(0)">&#43;</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-label">Jóvenes</div>
+                        <div class="input-control-group">
+                            <span class="input-button-control prev" (click)="less(1)">&#45;</span>
+                            <input type="number" [(ngModel)]="jovenes" min="0" max="99" (keyup.enter)="checkValue(1)">
+
+                            <span class="input-button-control next" (click)="plus(1)">&#43;</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-label">Niños (menores de 3 años)</div>
+                        <div class="input-control-group">
+                            <span class="input-button-control prev" (click)="less(2)">&#45;</span>
+                            <input type="number" [(ngModel)]="children" min="0" max="99" (keyup.enter)="checkValue(2)">
+
+                            <span class="input-button-control next" (click)="plus(2)">&#43;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <section class="step step-2" style="display: none;">step 2</section>
         <section class="step step-3" style="display: none;">step 3</section>
@@ -30,7 +60,7 @@
             <button class="{{currentScene.backButton.class}}" (click)="back()">
                 {{currentScene.backButton.text}}</button>
             <button class="{{currentScene.nextButton.class}}" (click)="next()"
-                [disabled]="!currentScene.nextButton.isValid">{{currentScene.nextButton.text}}</button>
+                [disabled]="!currentScene.isValid">{{currentScene.nextButton.text}}</button>
         </div>
     </div>
 </div>
