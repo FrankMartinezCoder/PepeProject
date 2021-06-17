@@ -19,6 +19,15 @@ export class BookingFlowComponent implements OnInit {
   private max: number = 99;
   private min: number = 0;
   //------------------------
+  //---------step 2---------
+  public pension_todo_incluido: boolean = true;
+  public pension_desayuno: boolean = false;
+  public pension_comida: boolean = false;
+  public pension_cena: boolean = false;
+
+
+  public wifi: boolean = false;
+  //------------------------
   ngOnInit(): void {
     this.scenes = new Array(3);
     this.scenes[0] = new Scene(0, 'Ocupantes', '.step-1', new ButtonLogic('button--danger', 'Salir', true), new ButtonLogic('button--default', 'Siguiente', true));
@@ -106,7 +115,43 @@ export class BookingFlowComponent implements OnInit {
   // INICIO LOGICA STEP 2
 
 
+  public checkPension(type: number) {
+    const _ = this;
+    let timeOut = setTimeout(function () {
+      let isAllIncluyed = false;
+      let pension: boolean;
+      switch (type) {
+        case 0: //todo incluido
+          isAllIncluyed = true;
+          if (_.pension_todo_incluido) {
+            _.pension_desayuno = false;
+            _.pension_comida = false;
+            _.pension_cena = false;
+          }
+          break;
+        case 1: //desayuno
+          pension = _.pension_desayuno
+          break;
+        case 2: //almuerzo
+          pension = _.pension_comida
+          break;
+        case 3: //cena
+          pension = _.pension_cena
+          break;
+      }
+      if (!isAllIncluyed) {
+        if (pension) {
+          _.pension_todo_incluido = false;
+        }
+        if (_.pension_desayuno && _.pension_comida && _.pension_cena) {
+          _.pension_todo_incluido = true;
+          _.checkPension(0);
+        }
+      }
 
+      _.updateStep(_.pension_todo_incluido||(_.pension_desayuno || _.pension_comida || _.pension_cena));
+    }, 5);
+  }
 
 
   // FIN LOGICA STEP 2
