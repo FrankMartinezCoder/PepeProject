@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { BookingFilter } from 'src/app/model/front-model/BookingFilter';
 import { BookingProvider } from 'src/app/providers/booking.provider';
 import { Room } from 'src/app/model/back-model/Room';
@@ -16,12 +16,16 @@ export class BookingSearchComponent implements OnInit {
 
   constructor(private bookingProvider: BookingProvider) {
   }
-
-  public roomList: Room[];
-  public lastPage: number;
+  private listener:EventEmitter<Array<Room>> = new EventEmitter();
+  public roomList: Array<Room>;
 
   ngOnInit(): void {
     this.filter.clear();
+    this.listener.subscribe(
+      data => {
+        this.roomList = data;
+      }
+    )
   }
 
   public plus(elem: number) {
@@ -79,21 +83,21 @@ export class BookingSearchComponent implements OnInit {
   public clearData() {
     this.filter.clear();
   }
-  private createPagination() {
-
-  }
+ 
   public searchRooms() {
     const _ = this;
-    console.log(this.filter);
     
     this.bookingProvider.getListFreeRooms(this.filter).subscribe(
       rooms => {
         console.log("rooms",rooms);
-        
         let timeOut = setTimeout(function () {
           hideModal()
-          _.roomList = rooms;
-          _.createPagination();
+          let roomsFormated = new Array<Room>(rooms.length);
+          for (let i = 0; i < rooms.length; i++) {
+            roomsFormated[i] = Room.parse(rooms[i]);
+          }
+          console.log(roomsFormated);
+          _.listener.emit(roomsFormated);
           clearTimeout(timeOut);
         }, 1200);
       },

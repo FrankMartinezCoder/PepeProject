@@ -11,7 +11,7 @@ export class BookingService {
   constructor(private httpClient: HttpClient) {}
   
   public getFreeRoomList(parameters:any):Observable<Room[]> {
-    return this.httpClient.get<Room[]>(Static.room.reservar,{params:parameters});
+    return this.httpClient.get<Array<Room>>(Static.room.reservar,{params:parameters});
   }
 
   public addBookingRoom():Observable<Booking[]> {
