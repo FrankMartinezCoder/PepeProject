@@ -1,5 +1,6 @@
 <div id="booking-list-container">
     <div class="booking-filter">
+        <div class="container">
         <div class="input-group">
             <label for="startingDate">Fecha de entrada:</label>
             <input type="date" id="startingDate" [(ngModel)]="filter.fechaEntrada">
@@ -40,6 +41,7 @@
             <button class="btn btn-warning" (click)="clearData()">Limpiar</button>
             <button class="btn btn-info" (click)="searchRooms()">Filtrar</button>
         </div>
+    </div>
     </div>
     <div class="container booking-list">
         <div class="no-bookings" *ngIf="!roomList">Aún no ha realizado ninguna búsqueda</div>
