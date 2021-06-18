@@ -1,16 +1,16 @@
 export class Room {
-    private habitacionID: number;
-    private descripcion: string;
-    private numHabitacion: number;
-    private img_path: string;
-    private ocupantes: number;
-    private tipoHabitacion: string;
-    private precioHabitacionTotal: number;
-    private precioOcupante: number;
+    public habitacionID: number;
+    public descripcion: string;
+    public numHabitacion: number;
+    public img_path: string;
+    public ocupantes: number;
+    public tipoHabitacion: string;
+    public precioHabitacionTotal: number;
+    public precioOcupante: number;
 
     public static parse(item:object){
         let newObject = new Room();
-        
+
         newObject.habitacionID = item['habitacionID'];
         newObject.descripcion = item['descripcion'];
         newObject.numHabitacion = item['numHabitacion'];
