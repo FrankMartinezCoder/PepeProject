@@ -27,8 +27,7 @@ export class BookingFlowComponent implements OnInit {
   //------------------------
   //---------step 2---------
   public pensiones: Array<Service>;
-  public tituloPensiones: string = "Sin pensión";
-
+  public tituloPensiones:string = "Sin Pension";
 
   @Input() public flowListener: EventEmitter<Room>;
 
@@ -51,6 +50,13 @@ export class BookingFlowComponent implements OnInit {
     this.pensiones[2] = new Service(1, "Desayuno", "../../../../assets/imgs/hotels/pensiones/pension-breakfast.jpg");
     this.pensiones[3] = new Service(2, "Almuerzo", "../../../../assets/imgs/hotels/pensiones/pension-lunch.jpg");
     this.pensiones[4] = new Service(3, "Cenar", "../../../../assets/imgs/hotels/pensiones/pension-dinner.jpg");
+
+    this.pensiones = new Array(5);
+
+    this.pensiones[0] = new Service(0, "Todo incluido", "../../../../assets/imgs/hotels/pensiones/pension-all.png");
+    this.pensiones[1] = new Service(1, "Desayuno", "../../../../assets/imgs/hotels/pensiones/pension-breakfast.jpg");
+    this.pensiones[2] = new Service(2, "Almuerzo", "../../../../assets/imgs/hotels/pensiones/pension-lunch.jpg");
+    this.pensiones[3] = new Service(3, "Cenar", "../../../../assets/imgs/hotels/pensiones/pension-dinner.jpg");
 
     this.flowListener.subscribe(
       room => {
@@ -163,18 +169,41 @@ export class BookingFlowComponent implements OnInit {
 
 
   public checkPension(id: number) {
-    let hasAnyActive: boolean = false;
+    let temp: Array<Service> = this.pensiones;
 
-    for (let i = 0; i < this.pensiones.length; i++) {
-      if (this.pensiones[i].isActive)
-        hasAnyActive = true;
+    switch (id) {
+      case 0:
+        if (temp[id].isActive) {
+          for (let i = 1; i < temp.length; i++) {
+            temp[i].isActive = false;
+          }
+        }
+        else {
+          temp[id].isActive = true;
+        }
+        break;
+      case 1:
+      case 2:
+      case 3:
+        let allActive = true;
+        for (let i = 1; i < temp.length && allActive; i++) {
+          allActive = temp[i].isActive
+        }
+
+        if(allActive) {
+          temp[0].isActive = true;
+
+          for (let i = 1; i < temp.length; i++) {
+            temp[i].isActive = false;
+          }
+        }
+        else {
+          temp[id].isActive = true;
+        }
+        break;
     }
 
-    if (!hasAnyActive) {
-      this.tituloPensiones = "Sin pensión"
-    }
-
-    this.updateStep(_.pension_todo_incluido || (_.pension_desayuno || _.pension_comida || _.pension_cena));
+    this.updateStep(true);
   }
 
 

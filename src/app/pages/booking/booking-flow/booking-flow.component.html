@@ -58,8 +58,7 @@
                     <div class="title">Seleccione tipo de pensión: <span>{{tituloPensiones}}</span></div>
                     <div class="service-list">
                         <div class="service-container">
-                            <input type="checkbox" class="service-checker" [(ngModel)]="pension_todo_incluido"
-                                (click)="checkPension(0)">
+                            <input type="checkbox" class="service-checker" (click)="checkPension(0)">
                             <div class="service-card">
                                 <div class="img-container">
                                     <img src="../../../../assets/imgs/hotels/pensiones/pension-all.png" alt="servicio">
@@ -73,7 +72,7 @@
                     <div class="title">Si lo desea puede disponer de estos otros servicios:</div>
                     <div class="service-list">
                         <div class="service-container">
-                            <input type="checkbox" class="service-checker" [(ngModel)]="wifi" (click)="checkPension(0)">
+                            <!-- <input type="checkbox" class="service-checker" [(ngModel)]="false" (click)="checkPension(0)"> -->
                             <div class="service-card">
                                 <div class="img-container">
                                     <img src="../../../assets/imgs/services/wifi_v2.svg" alt="Wifi" title="Wifi">
