@@ -10,12 +10,15 @@ export class BookingFlowComponent implements OnInit {
 
   private scenes: Array<Scene>;
   public currentScene: Scene;
-  private currentIndex: number = 1;
+  private currentIndex: number = 0;
 
   //---------step 1---------
   public adultos: number = 0;
   public jovenes: number = 0;
   public children: number = 0;
+  public maxOccupants:number;
+
+  public room:Room;
 
   private max: number = 99;
   private min: number = 0;
@@ -30,7 +33,9 @@ export class BookingFlowComponent implements OnInit {
   public wifi: boolean = false;
 
   public start(room:Room) {
-
+    this.reset();
+    this.maxOccupants = room.ocupantes;
+    this.show();
   }
 
   //------------------------
@@ -210,7 +215,7 @@ export class BookingFlowComponent implements OnInit {
 
   private updateHeader() {
     const _ = this;
-    $.map($(".booking-flow .header-item-dot"), function (item: HTMLElement, idx) {
+    $.map($(".booking-flow .header-item-dot"), function (item: HTMLElement, idx:number) {
       if (idx <= _.currentIndex) {
         $(item).attr('done', '');
       }
