@@ -525,7 +525,10 @@
         }
     }
 }
-
+.button-group{
+    display: flex;
+    grid-gap: 10%;
+}
 .details-card-services_detail {
     display: flex;
     flex-flow: wrap;
