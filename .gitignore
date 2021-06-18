@@ -44,3 +44,4 @@ Thumbs.db
 src/app/config/apiUrls.ts
 
 *.lock
+src/app/config/apiUrls.ts
