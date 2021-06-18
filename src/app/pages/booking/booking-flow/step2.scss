@@ -1,4 +1,19 @@
 .step-2 {
+    height: 49vh;
+    width: 100%;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: .4em;
+    }
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgb(94, 94, 94);
+        border-radius: 0.5rem;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--color-primary);
+        // outline: 1px solid slategrey;
+        border-radius: .5em;
+    }
     .services {
         .required {
             .title {
