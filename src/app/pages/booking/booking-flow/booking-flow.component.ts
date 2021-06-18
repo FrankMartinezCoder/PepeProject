@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Room } from 'src/app/model/back-model/Room';
 
 @Component({
@@ -11,14 +11,14 @@ export class BookingFlowComponent implements OnInit {
   private scenes: Array<Scene>;
   public currentScene: Scene;
   private currentIndex: number = 0;
-
+  private listener: EventEmitter<Room> = new EventEmitter();
   //---------step 1---------
   public adultos: number = 0;
   public jovenes: number = 0;
   public children: number = 0;
-  public maxOccupants:number;
+  private id:number = Math.round(Math.random()*5000+1);
 
-  public room:Room;
+  public room: Room = new Room();
 
   private max: number = 99;
   private min: number = 0;
@@ -32,62 +32,81 @@ export class BookingFlowComponent implements OnInit {
 
   public wifi: boolean = false;
 
-  public start(room:Room) {
-    this.reset();
-    this.maxOccupants = room.ocupantes;
-    this.show();
+  public start(room: Room) {
+    this.listener.emit(room);    
   }
 
+  constructor() {
+    this.ngOnInit();
+  }
   //------------------------
   ngOnInit(): void {
+    const _ = this;
     this.scenes = new Array(3);
     this.scenes[0] = new Scene(0, 'Ocupantes', '.step-1', new ButtonLogic('button--danger', 'Salir', true), new ButtonLogic('button--default', 'Siguiente', true));
     this.scenes[1] = new Scene(1, 'Servicios', '.step-2', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--info', 'Siguiente', true));
     this.scenes[2] = new Scene(2, 'Resumen', '.step-3', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--verified', 'Terminar', true));
 
     this.currentScene = this.scenes[this.currentIndex];
-    this.loadScene();
+    this.listener.subscribe(
+      roomVar=> {
+        _.room = roomVar;
+        _.show();
+        _.loadScene();
+      }
+    )
+    
   }
   // INICIO LOGICA STEP 1
 
   public plus(id: number) {
+    console.log(this);
+    
+    let temporal: number;
     switch (id) {
       case 0:
-        if (this.adultos < this.max) {
-          this.adultos++;
-        }
+        temporal = this.adultos;
         break
       case 1:
-        if (this.jovenes < this.max) {
-          this.jovenes++;
-        }
+        temporal = this.jovenes;
         break
       case 2:
-        if (this.children < this.max) {
-          this.children++;
-        }
+        temporal = this.children;
+        break
+    }
+    
+    if (temporal < this.max) {
+        temporal++;
+    }
+    switch (id) {
+      case 0:
+        this.adultos = temporal;
+        break
+      case 1:
+        this.jovenes = temporal;
+        break
+      case 2:
+        this.children = temporal;
         break
     }
     this.updateStep(this.adultos > 0);
   }
 
   public less(id: number) {
+    let temporal: number;
     switch (id) {
       case 0:
-        if (this.adultos > this.min) {
-          this.adultos--;
-        }
+        temporal = this.adultos;
         break
       case 1:
-        if (this.jovenes > this.min) {
-          this.jovenes--;
-        }
+        temporal = this.jovenes;
         break
       case 2:
-        if (this.children > this.min) {
-          this.children--;
-        }
+        temporal = this.children;
         break
+    }
+    if (temporal > this.min) {
+      temporal--;
     }
     this.updateStep(this.adultos > 0);
   }
@@ -160,7 +179,7 @@ export class BookingFlowComponent implements OnInit {
         }
       }
 
-      _.updateStep(_.pension_todo_incluido||(_.pension_desayuno || _.pension_comida || _.pension_cena));
+      _.updateStep(_.pension_todo_incluido || (_.pension_desayuno || _.pension_comida || _.pension_cena));
     }, 5);
   }
 
@@ -215,7 +234,7 @@ export class BookingFlowComponent implements OnInit {
 
   private updateHeader() {
     const _ = this;
-    $.map($(".booking-flow .header-item-dot"), function (item: HTMLElement, idx:number) {
+    $.map($(".booking-flow .header-item-dot"), function (item: HTMLElement, idx: number) {
       if (idx <= _.currentIndex) {
         $(item).attr('done', '');
       }

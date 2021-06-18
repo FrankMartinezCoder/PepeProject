@@ -18,9 +18,9 @@
         </div>
     </div>
     <div class="booking-flow--view-steps">
-        <section class="step step-1">
+        <section class="step step-1" style="display: none;">
             <div class="container">
-                <div class="title">Seleccionar Ocupantes:</div>
+                <div class="title">Seleccionar Ocupantes: <span *ngIf="room">{{room.ocupantes}}</span></div>
                 <div class="step-1--form">
                     <div class="input-group">
                         <div class="input-label">Adultos</div>

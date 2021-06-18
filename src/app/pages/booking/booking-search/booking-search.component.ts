@@ -24,6 +24,10 @@ export class BookingSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.filter.clear();
+    this.filter.ocupantes = 2;
+    this.filter.precio2 = 1000;
+    console.log("flow",this.flow);
+    
     this.listener.subscribe(
       data => {
         this.roomList = data;
@@ -87,7 +91,7 @@ export class BookingSearchComponent implements OnInit {
     this.filter.clear();
   }
   public reservar(idHabitacion) {
-    this.flow.start(null);
+    this.flow.start(this.roomList.find(item=>item.habitacionID==idHabitacion));
   }
   public searchRooms() {
     const _ = this;
