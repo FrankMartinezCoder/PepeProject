@@ -1,8 +1,7 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BookingFilter } from 'src/app/model/front-model/BookingFilter';
 import { BookingProvider } from 'src/app/providers/booking.provider';
 import { Room } from 'src/app/model/back-model/Room';
-import { BookingFlowComponent } from '../booking-flow/booking-flow.component';
 
 declare function hideModal(): boolean;
 
@@ -15,7 +14,7 @@ export class BookingSearchComponent implements OnInit {
 
   public filter: BookingFilter = new BookingFilter();
 
-  private flow:BookingFlowComponent = new BookingFlowComponent();
+  @Output() flowListener:EventEmitter<Room> = new EventEmitter();
 
   constructor(private bookingProvider: BookingProvider) {
   }
@@ -26,8 +25,8 @@ export class BookingSearchComponent implements OnInit {
     this.filter.clear();
     this.filter.ocupantes = 2;
     this.filter.precio2 = 1000;
-    console.log("flow",this.flow);
-    
+
+  
     this.listener.subscribe(
       data => {
         this.roomList = data;
@@ -91,7 +90,8 @@ export class BookingSearchComponent implements OnInit {
     this.filter.clear();
   }
   public reservar(idHabitacion) {
-    this.flow.start(this.roomList.find(room => room.habitacionID==idHabitacion));
+    //this.flow.start(this.roomList.find(room => room.habitacionID==idHabitacion));
+    this.flowListener.emit(this.roomList.find(room => room.habitacionID==idHabitacion));   
   }
   public searchRooms() {
     const _ = this;

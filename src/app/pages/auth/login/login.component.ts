@@ -21,10 +21,18 @@ export class LoginComponent implements OnInit {
     const _ = this;
     this.userProvider.watcher.subscribe(
       user => {
-        let timeOut = setTimeout(function () {
-          clearTimeout(timeOut);
-          _.reset();
-        }, 700);
+        if (user) {
+          let timeOut = setTimeout(function () {
+            clearTimeout(timeOut);
+            _.reset();
+          }, 700);
+        }
+        else {
+          $(".button--default").removeAttr('loading');
+          _.form.errorMessage = "El login ha fallado, por favor vuelva a introducir los datos introducidos"
+          _.email.reset();
+          _.password.reset();
+        }
       },
       err => {
         $(".button--default").removeAttr('loading');

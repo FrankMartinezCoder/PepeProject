@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Room } from 'src/app/model/back-model/Room';
 
 @Component({
@@ -16,7 +16,7 @@ export class BookingFlowComponent implements OnInit {
   public adultos: number = 0;
   public jovenes: number = 0;
   public children: number = 0;
-  private id:number = Math.round(Math.random()*5000+1);
+  private id: number = Math.round(Math.random() * 5000 + 1);
 
   public room: Room = new Room();
 
@@ -29,39 +29,35 @@ export class BookingFlowComponent implements OnInit {
   public pension_comida: boolean = false;
   public pension_cena: boolean = false;
 
+  @Input() public flowListener: EventEmitter<Room>;
 
   public wifi: boolean = false;
 
-  public start(room: Room) {
-    this.listener.emit(room);    
-  }
-
-  constructor() {
-    this.ngOnInit();
-  }
   //------------------------
   ngOnInit(): void {
-    const _ = this;
+
     this.scenes = new Array(3);
     this.scenes[0] = new Scene(0, 'Ocupantes', '.step-1', new ButtonLogic('button--danger', 'Salir', true), new ButtonLogic('button--default', 'Siguiente', true));
     this.scenes[1] = new Scene(1, 'Servicios', '.step-2', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--info', 'Siguiente', true));
     this.scenes[2] = new Scene(2, 'Resumen', '.step-3', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--verified', 'Terminar', true));
 
     this.currentScene = this.scenes[this.currentIndex];
-    this.listener.subscribe(
-      roomVar=> {
-        _.room = roomVar;
-        _.show();
-        _.loadScene();
+
+    this.flowListener.subscribe(
+      room => {
+        this.show();
+        this.room = room;
+        this.loadScene();
       }
     )
-    
   }
   // INICIO LOGICA STEP 1
 
   public plus(id: number) {
-    console.log(this);
-    
+    if((this.adultos + this.jovenes + this.children)+1 > this.room.ocupantes) {
+      return
+    }
+
     let temporal: number;
     switch (id) {
       case 0:
@@ -74,9 +70,9 @@ export class BookingFlowComponent implements OnInit {
         temporal = this.children;
         break
     }
-    
+
     if (temporal < this.max) {
-        temporal++;
+      temporal++;
     }
     switch (id) {
       case 0:
@@ -89,7 +85,7 @@ export class BookingFlowComponent implements OnInit {
         this.children = temporal;
         break
     }
-    this.updateStep(this.adultos > 0);
+    this.updateStep(this.adultos > 0 && (this.adultos + this.jovenes + this.children) <= this.room.ocupantes);
   }
 
   public less(id: number) {
@@ -108,7 +104,18 @@ export class BookingFlowComponent implements OnInit {
     if (temporal > this.min) {
       temporal--;
     }
-    this.updateStep(this.adultos > 0);
+    switch (id) {
+      case 0:
+        this.adultos = temporal;
+        break
+      case 1:
+        this.jovenes = temporal;
+        break
+      case 2:
+        this.children = temporal;
+        break
+    }
+    this.updateStep(this.adultos > 0 && (this.adultos + this.jovenes + this.children) <= this.room.ocupantes);
   }
 
   public checkValue(id: number) {
@@ -138,7 +145,7 @@ export class BookingFlowComponent implements OnInit {
         }
         break
     }
-    this.updateStep(this.adultos > 0);
+    this.updateStep(this.adultos > 0 && (this.adultos + this.jovenes + this.children) <= this.room.ocupantes);
   }
 
   // FIN LOGICA STEP 1

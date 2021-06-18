@@ -20,9 +20,7 @@ export class UserService {
   }
 
   public logout():Observable<void> {
-    let temporalObserver: EventEmitter<void> = new EventEmitter();
-    console.log("hola");
-    
+    let temporalObserver: EventEmitter<void> = new EventEmitter();    
     sessionStorage.removeItem("currentUser")
     temporalObserver.emit();
     return temporalObserver;

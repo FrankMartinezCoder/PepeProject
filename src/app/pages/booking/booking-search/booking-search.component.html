@@ -56,8 +56,7 @@
                                 <p>
                                     {{item.tipoHabitacion}}
                                 </p> -->
-
-                                <!-- <div class="details-card-valoration">
+                <!-- <div class="details-card-valoration">
                                     <span *ngFor="let value of counter(5); let i = index"
                                         style="width: 10px; height: 10px;">
                                         <img *ngIf="i < item.valoration" src="../../../assets/imgs/icons/star2.svg"
@@ -66,7 +65,7 @@
                                             src="../../../assets/imgs/icons/star1.svg" alt="Valoración">
                                     </span>
                                 </div> -->
-                            <!-- </div>
+                <!-- </div>
                             <div class="details-card-descripcion mt-2">
                                 <p>
                                     {{item.descripcion}}
@@ -88,10 +87,6 @@
                         </div>
                     </div>
                 </div> -->
-                
-                
-                
-                
                 <div class="details container">
                     <div class="details-cards-room" *ngFor="let item of roomList">
                         <div class="details-card-room">
@@ -103,14 +98,6 @@
                                     <p>
                                         {{item.tipoHabitacion}}
                                     </p>
-                                    <!-- <div class="details-card-valoration">
-                                        <span *ngFor="let value of counter(5); let i = index" style="width: 10px; height: 10px;">
-                                            <img *ngIf="i < item.valoration" src="../../../assets/imgs/icons/star2.svg"
-                                                alt="Valoración">
-                                            <img *ngIf="(i > item.valoration)||(i == item.valoration)"
-                                                src="../../../assets/imgs/icons/star1.svg" alt="Valoración">
-                                        </span>
-                                    </div> -->
                                 </div>
                                 <div class="details-card-descripcion mt-2">
                                     <p>
@@ -126,7 +113,8 @@
                                 </div>
                                 <div class="details-card-reservation mt-2">
                                     <div class="details-card-reservation_btn">
-                                        <button class="button button--default" (click)="reservar(item.habitacionID)">Reservar</button>
+                                        <button class="button button--default"
+                                            (click)="reservar(item.habitacionID)">Reservar</button>
                                         <button class="button button--info">Ir al detalles</button>
                                     </div>
                                 </div>
@@ -135,8 +123,7 @@
                     </div>
                 </div>
             </div>
-            <div class="pagination"></div>
         </div>
     </div>
 </div>
-<app-booking-flow ></app-booking-flow>
+<app-booking-flow [flowListener]="flowListener"></app-booking-flow>
