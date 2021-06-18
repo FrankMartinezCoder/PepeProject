@@ -184,8 +184,9 @@
             }
             &-reservation {
                 display: block;
-                position: relative;
+                position: absolute;
                 width: 100%;
+                bottom: 0;
                 &_btn {
                     display: flex;
                     justify-content: flex-end;
@@ -397,8 +398,9 @@
         }
         &-reservation {
             display: block;
-            position: relative;
+            position: absolute;
             width: 100%;
+            bottom: 0;
             &_btn {
                 display: flex;
                 justify-content: flex-end;
