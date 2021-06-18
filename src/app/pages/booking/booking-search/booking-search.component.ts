@@ -8,7 +8,7 @@ declare function hideModal(): boolean;
 @Component({
   selector: 'app-booking-search',
   templateUrl: './booking-search.component.html',
-  styleUrls: ['./booking-search.component.scss']
+  styleUrls: ['./booking-search.component.scss','./cards.scss']
 })
 export class BookingSearchComponent implements OnInit {
 

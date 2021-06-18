@@ -46,7 +46,7 @@
 
         <div class="booking-list-detail--container" *ngIf="roomList">
             <div class="bookingsSearched">
-                <div class="details-cards-room" *ngFor="let item of roomList">
+                <!-- <div class="details-cards-room" *ngFor="let item of roomList">
                     <div class="details-card-room">
                         <div class="details-card-img">
                             <img src="{{item.img_path}}" alt="Sobre nosotros" title="Sobre nosotros">
@@ -55,7 +55,7 @@
                             <div class="details-card-title">
                                 <p>
                                     {{item.tipoHabitacion}}
-                                </p>
+                                </p> -->
 
                                 <!-- <div class="details-card-valoration">
                                     <span *ngFor="let value of counter(5); let i = index"
@@ -66,7 +66,7 @@
                                             src="../../../assets/imgs/icons/star1.svg" alt="Valoración">
                                     </span>
                                 </div> -->
-                            </div>
+                            <!-- </div>
                             <div class="details-card-descripcion mt-2">
                                 <p>
                                     {{item.descripcion}}
@@ -83,6 +83,52 @@
                                 <div class="details-card-reservation_btn">
                                     <button class="button button--default">Reservar</button>
                                     <button class="button button--info">Ir al detalles</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                
+                
+                
+                
+                <div class="details container">
+                    <div class="details-cards-room" *ngFor="let item of roomList">
+                        <div class="details-card-room">
+                            <div class="details-card-img">
+                                <img src="{{item.img_path}}" alt="Sobre nosotros" title="Sobre nosotros">
+                            </div>
+                            <div class="details-card-content">
+                                <div class="details-card-title">
+                                    <p>
+                                        {{item.tipoHabitacion}}
+                                    </p>
+                                    <!-- <div class="details-card-valoration">
+                                        <span *ngFor="let value of counter(5); let i = index" style="width: 10px; height: 10px;">
+                                            <img *ngIf="i < item.valoration" src="../../../assets/imgs/icons/star2.svg"
+                                                alt="Valoración">
+                                            <img *ngIf="(i > item.valoration)||(i == item.valoration)"
+                                                src="../../../assets/imgs/icons/star1.svg" alt="Valoración">
+                                        </span>
+                                    </div> -->
+                                </div>
+                                <div class="details-card-descripcion mt-2">
+                                    <p>
+                                        {{item.descripcion}}
+                                    </p>
+                                </div>
+                                <div class="details-card-info mt-2">
+                                    <div class="details-card-info-address">
+                                        <p>
+                                            {{item.direccion}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="details-card-reservation mt-2">
+                                    <div class="details-card-reservation_btn">
+                                        <button class="button button--default">Reservar</button>
+                                        <button class="button button--info">Ir al detalles</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
