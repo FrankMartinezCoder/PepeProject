@@ -91,7 +91,7 @@ export class BookingSearchComponent implements OnInit {
     this.filter.clear();
   }
   public reservar(idHabitacion) {
-    this.flow.start(this.roomList.find(item=>item.habitacionID==idHabitacion));
+    this.flow.start(this.roomList.find(room => room.habitacionID==idHabitacion));
   }
   public searchRooms() {
     const _ = this;
