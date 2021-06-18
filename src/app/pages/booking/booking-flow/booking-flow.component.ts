@@ -1,5 +1,7 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Room } from 'src/app/model/back-model/Room';
+import { Service } from 'src/app/model/front-model/Service';
 
 @Component({
   selector: 'app-booking-flow',
@@ -24,10 +26,9 @@ export class BookingFlowComponent implements OnInit {
   private min: number = 0;
   //------------------------
   //---------step 2---------
-  public pension_todo_incluido: boolean = true;
-  public pension_desayuno: boolean = false;
-  public pension_comida: boolean = false;
-  public pension_cena: boolean = false;
+  public pensiones: Array<Service>;
+  public tituloPensiones: string = "Sin pensión";
+
 
   @Input() public flowListener: EventEmitter<Room>;
 
@@ -43,8 +44,17 @@ export class BookingFlowComponent implements OnInit {
 
     this.currentScene = this.scenes[this.currentIndex];
 
+    this.pensiones = new Array(5);
+
+    this.pensiones[0] = new Service(-1, "Sin pensiones", "");
+    this.pensiones[1] = new Service(0, "Todo incluido", "../../../../assets/imgs/hotels/pensiones/pension-all.png");
+    this.pensiones[2] = new Service(1, "Desayuno", "../../../../assets/imgs/hotels/pensiones/pension-breakfast.jpg");
+    this.pensiones[3] = new Service(2, "Almuerzo", "../../../../assets/imgs/hotels/pensiones/pension-lunch.jpg");
+    this.pensiones[4] = new Service(3, "Cenar", "../../../../assets/imgs/hotels/pensiones/pension-dinner.jpg");
+
     this.flowListener.subscribe(
       room => {
+        this.reset();
         this.show();
         this.room = room;
         this.loadScene();
@@ -54,7 +64,7 @@ export class BookingFlowComponent implements OnInit {
   // INICIO LOGICA STEP 1
 
   public plus(id: number) {
-    if((this.adultos + this.jovenes + this.children)+1 > this.room.ocupantes) {
+    if ((this.adultos + this.jovenes + this.children) + 1 > this.room.ocupantes) {
       return
     }
 
@@ -152,42 +162,19 @@ export class BookingFlowComponent implements OnInit {
   // INICIO LOGICA STEP 2
 
 
-  public checkPension(type: number) {
-    const _ = this;
-    let timeOut = setTimeout(function () {
-      let isAllIncluyed = false;
-      let pension: boolean;
-      switch (type) {
-        case 0: //todo incluido
-          isAllIncluyed = true;
-          if (_.pension_todo_incluido) {
-            _.pension_desayuno = false;
-            _.pension_comida = false;
-            _.pension_cena = false;
-          }
-          break;
-        case 1: //desayuno
-          pension = _.pension_desayuno
-          break;
-        case 2: //almuerzo
-          pension = _.pension_comida
-          break;
-        case 3: //cena
-          pension = _.pension_cena
-          break;
-      }
-      if (!isAllIncluyed) {
-        if (pension) {
-          _.pension_todo_incluido = false;
-        }
-        if (_.pension_desayuno && _.pension_comida && _.pension_cena) {
-          _.pension_todo_incluido = true;
-          _.checkPension(0);
-        }
-      }
+  public checkPension(id: number) {
+    let hasAnyActive: boolean = false;
 
-      _.updateStep(_.pension_todo_incluido || (_.pension_desayuno || _.pension_comida || _.pension_cena));
-    }, 5);
+    for (let i = 0; i < this.pensiones.length; i++) {
+      if (this.pensiones[i].isActive)
+        hasAnyActive = true;
+    }
+
+    if (!hasAnyActive) {
+      this.tituloPensiones = "Sin pensión"
+    }
+
+    this.updateStep(_.pension_todo_incluido || (_.pension_desayuno || _.pension_comida || _.pension_cena));
   }
 
 
