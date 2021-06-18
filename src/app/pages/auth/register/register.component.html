@@ -1,36 +1,50 @@
 <div id="register-component" style="display: none;">
-    <div class="form-title">Formulario de Registro</div>
-    <div id="register_form">
-        <div class="input_group">
-            <input id="email-input" type="text" [(ngModel)]="email.value" (focusout)="validator(email)" required>
-            <label for="email-input" class="noselect">Email (*)</label>
-        </div>
-        <span class="error-message"><span *ngIf="email.errorMessage!=''" class="warning-icon"></span>{{email.errorMessage}}</span>
-        <div class="input_group">
-            <input id="name" type="text" [(ngModel)]="name.value"  (focusout)="validator(name)" required>
-            <label for="name" class="noselect">Nombre (*)</label>
-        </div>
-        <span class="error-message"><span *ngIf="name.errorMessage!=''" class="warning-icon"></span>{{name.errorMessage}}</span>
-        <div class="input_group">
-            <input id="surname" type="text" [(ngModel)]="surname.value"  (focusout)="validator(surname)" required>
-            <label for="surname" class="noselect">Apellidos (*)</label>
-        </div>
-        <span class="error-message"><span *ngIf="surname.errorMessage!=''" class="warning-icon"></span>{{surname.errorMessage}}</span>
-        <div class="input_group" not-animated>
-            <input id="birthDate" type="date" [(ngModel)]="birthdate.value" required>
-            <label for="birthDate" class="noselect">Fecha de Nacimiento (*)</label>
-        </div>
-        <span class="error-message"><span *ngIf="birthdate.errorMessage!=''" class="warning-icon"></span>{{birthdate.errorMessage}}</span>
-        <div class="input_group">
-            <input id="password-input" type="password" [(ngModel)]="password.value"  (focusout)="validator(password)" required>
-            <label for="password-input" class="noselect">Contraseña (*)</label>
-        </div>
-        <span class="error-message"><span *ngIf="password.errorMessage!=''" class="warning-icon"></span>{{password.errorMessage}}</span>
+    <div class="register-form-container" modal-mobile>
+        <div class="close"></div>
+        <fieldset class="register-form">
+            <legend>Formulario de Registro</legend>
 
-        <div class="button-group">
-            <button class="button-ok noselect" [disabled]="(!email.isValid)||(!name.isValid)||(!surname.isValid)||(!birthdate.isValid)||(!password.isValid)" (click)="registerCheck()">Acceder</button>
-            <button class="button-cancel noselect" (click)="reset()" >Cancelar</button>
-        </div>
+            <div class="input_group">
+                <input id="email-input" type="text" [(ngModel)]="email.value" (focusout)="validator(email)" required>
+                <label for="email-input" class="noselect">Email (*)</label>
+            </div>
+            <span class="error-message"><span *ngIf="email.errorMessage!=''"
+                    class="warning-icon"></span>{{email.errorMessage}}</span>
+
+            <div class="input_group">
+                <input id="name" type="text" [(ngModel)]="name.value" (focusout)="validator(name)" required>
+                <label for="name" class="noselect">Nombre (*)</label>
+            </div>
+            <span class="error-message"><span *ngIf="name.errorMessage!=''"
+                    class="warning-icon"></span>{{name.errorMessage}}</span>
+            <div class="input_group">
+                <input id="surname" type="text" [(ngModel)]="surname.value" (focusout)="validator(surname)" required>
+                <label for="surname" class="noselect">Apellidos (*)</label>
+            </div>
+            <span class="error-message"><span *ngIf="surname.errorMessage!=''"
+                    class="warning-icon"></span>{{surname.errorMessage}}</span>
+            <div class="input_group">
+                <input id="birthDate" type="date" [(ngModel)]="birthdate.value" required>
+                <label for="birthDate" class="noselect">Fecha de Nacimiento (*)</label>
+            </div>
+            <span class="error-message"><span *ngIf="birthdate.errorMessage!=''"
+                    class="warning-icon"></span>{{birthdate.errorMessage}}</span>
+
+            <div class="input_group">
+                <input id="password-input" type="password" [(ngModel)]="password.value" (focusout)="validator(password)"
+                    required>
+                <label for="password-input" class="noselect">Contraseña (*)</label>
+            </div>
+            <span class="error-message"><span *ngIf="password.errorMessage!=''"
+                    class="warning-icon"></span>{{password.errorMessage}}</span>
+
+            <div class="button-group">
+                <button class="button button--default noselect"
+                    [disabled]="(!email.isValid)||(!name.isValid)||(!surname.isValid)||(!birthdate.isValid)||(!password.isValid)"
+                    (click)="registerCheck()">Acceder</button>
+                <button class="button button--danger noselect" (click)="reset()">Cancelar</button>
+            </div>
+        </fieldset>
     </div>
 </div>
 <div id="register-background" style="display: none;"></div>

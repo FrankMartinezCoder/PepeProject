@@ -80,10 +80,11 @@ export class RegisterComponent {
     this.surname.reset();
     this.birthdate.reset();
     this.email.reset();
-    this.password.reset();
+    this.password.reset(); 
 
-    $("#register-component,#register-background").attr("hidden", "true");
-    $(".button-ok").removeAttr('loading');
+    $("#register-component,#register-background").fadeOut(500);
+    $(".button--default").removeAttr('loading');
+    $("body").removeClass("locked");
   }
 
   public registerCheck() {
