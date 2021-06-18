@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Room } from 'src/app/model/back-model/Room';
 
 @Component({
   selector: 'app-booking-flow',
@@ -27,6 +28,11 @@ export class BookingFlowComponent implements OnInit {
 
 
   public wifi: boolean = false;
+
+  public start(room:Room) {
+
+  }
+
   //------------------------
   ngOnInit(): void {
     this.scenes = new Array(3);

@@ -83,7 +83,9 @@ export class BookingSearchComponent implements OnInit {
   public clearData() {
     this.filter.clear();
   }
- 
+  public reservar(idHabitacion) {
+    
+  }
   public searchRooms() {
     const _ = this;
     
