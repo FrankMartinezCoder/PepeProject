@@ -32,7 +32,7 @@ export class BookingFlowComponent implements OnInit {
   public pension_comida: Service = new Service(2, "Almuerzo", "pension-lunch.jpg");
   public pension_cena: Service = new Service(3, "Cena", "pension-dinner.jpg");
 
-  public servicios:Array<BackendService>;
+  public servicios: Array<BackendService>;
   @Input() public flowListener: EventEmitter<Room>;
 
   //------------------------
@@ -41,8 +41,8 @@ export class BookingFlowComponent implements OnInit {
 
     this.scenes = new Array(3);
     this.scenes[0] = new Scene(0, 'Ocupantes', '.step-1', new ButtonLogic('button--danger', 'Salir', true), new ButtonLogic('button--default', 'Siguiente', true));
-    this.scenes[1] = new Scene(1, 'Servicios', '.step-2', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--info', 'Siguiente', true));
-    this.scenes[2] = new Scene(2, 'Resumen', '.step-3', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--verified', 'Terminar', true));
+    this.scenes[1] = new Scene(1, 'Servicios', '.step-2', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--info', 'Siguiente', true),true);
+    this.scenes[2] = new Scene(2, 'Resumen', '.step-3', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--verified', 'Terminar', true),true);
 
     this.currentScene = this.scenes[this.currentIndex];
     this.flowListener.subscribe(
@@ -50,14 +50,14 @@ export class BookingFlowComponent implements OnInit {
         this.show();
         this.room = room;
         this.loadScene();
-        
-        this.servicesProvider.getServicesFromHotelId({'esPension':false,'hotelID':room.hotelID.hotelID}).subscribe(
+
+        this.servicesProvider.getServicesFromHotelId({ 'esPension': false, 'hotelID': room.hotelID.hotelID }).subscribe(
           services => {
             this.servicios = new Array<BackendService>(services.length);
-            
-            for(let id in services) {
+
+            for (let id in services) {
               this.servicios[id] = BackendService.parse(services[id]);
-            }            
+            }
           },
           err => {
             this.reset();
@@ -242,7 +242,7 @@ export class BookingFlowComponent implements OnInit {
   }
 
   public goTo(newStep: number) {
-    if (newStep >= 0 && (newStep + 1) <= this.scenes.length && newStep != this.currentIndex && this.scenes[newStep].isValid) {
+    if (newStep >= 0 && (newStep + 1) <= this.scenes.length && newStep != this.currentIndex && this.scenes[newStep].isDirty) {
       this.currentIndex = newStep;
       this.loadScene();
     }
@@ -254,6 +254,7 @@ export class BookingFlowComponent implements OnInit {
 
   private loadScene() {
     this.currentScene = this.scenes[this.currentIndex];
+    this.currentScene.isDirty = true;
     $(".step").hide();
     $(this.currentScene.node).fadeIn();
     this.updateHeader();
@@ -294,13 +295,29 @@ export class BookingFlowComponent implements OnInit {
   }
 
   private reset() {
-    this.scenes = new Array(3);
-    this.scenes[0] = new Scene(0, 'Ocupantes', '.step-1', new ButtonLogic('button--danger', 'Salir', true), new ButtonLogic('button--default', 'Siguiente', true));
-    this.scenes[1] = new Scene(1, 'Servicios', '.step-2', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--info', 'Siguiente', true));
-    this.scenes[2] = new Scene(2, 'Resumen', '.step-3', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--verified', 'Terminar', true));
-    this.servicios = null;
-    this.currentIndex = 1;
+
+    this.scenes = new Array<Scene>();
     this.currentScene = null;
+    this.currentIndex = 0;
+    this.listener = new EventEmitter();
+    //---------step 1---------
+    this.adultos = 0;
+    this.jovenes = 0;
+    this.children = 0;
+
+    this.room = new Room();
+
+    this.max = 99;
+    this.min = 0;
+    //------------------------
+    //---------step 2---------
+    this.tituloPension = "Sin pensión";
+    this.pension_todo_incluido = new Service(0, "Todo incluido", "pension-all.png");
+    this.pension_desayuno = new Service(1, "Desayuno", "pension-breakfast.jpg");
+    this.pension_comida = new Service(2, "Almuerzo", "pension-lunch.jpg");
+    this.pension_cena = new Service(3, "Cena", "pension-dinner.jpg");
+
+    this.ngOnInit();
     $(".step").hide();
   }
 
@@ -335,6 +352,7 @@ class Scene {
   public backButton: ButtonLogic;
   public nextButton: ButtonLogic;
   public isValid: boolean = false;
+  public isDirty: boolean = false;
 
   constructor(id: number, title: string, node: string, backButton: ButtonLogic, nextButton: ButtonLogic, isValid: boolean = false) {
     this.id = id;

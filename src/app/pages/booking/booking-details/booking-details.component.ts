@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HotelDataMock } from 'src/app/config/GetHoteles';
+import { Room } from 'src/app/model/back-model/Room';
 
 @Component({
   selector: 'app-booking-details',
@@ -8,12 +8,11 @@ import { HotelDataMock } from 'src/app/config/GetHoteles';
 })
 export class BookingDetailsComponent implements OnInit {
 
+  public room:Room;
+
   constructor() { }
 
-  public hoteles: object = HotelDataMock.data;
-
   ngOnInit(): void {
-    console.log(this.hoteles);
   }
 
   counter(i: number) {
