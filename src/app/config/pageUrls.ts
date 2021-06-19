@@ -7,6 +7,7 @@ export class StaticPages {
     public static bookingDetails:string = "booking/details";
     public static myBookings:string = "my-bookings";
     public static hotelManagement:string = "hotel-management";
+    public static hotelList:string = "hotel-list";
     public static userManagement:string = "user-management";
 
 

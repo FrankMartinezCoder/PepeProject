@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Hotel } from 'src/app/model/back-model/Hotel';
 
 @Component({
   selector: 'app-hotel-management',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hotel-management.component.scss']
 })
 export class HotelManagementComponent implements OnInit {
+
+  public title = "Registro de Hoteles";
+
+  @Output() TableDataListener:EventEmitter<Hotel> = new EventEmitter();
 
   constructor() { }
 

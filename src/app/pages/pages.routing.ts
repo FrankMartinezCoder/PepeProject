@@ -10,6 +10,7 @@ import { TestingComponent } from './testing/testing.component';
 import { BookingDetailsComponent } from './booking/booking-details/booking-details.component';
 import { BookingSearchComponent } from './booking/booking-search/booking-search.component';
 import { StaticPages } from '../config/pageUrls';
+import { HotelListComponent } from './hotel-list/hotel-list.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
             { path: StaticPages.myBookings, component: MyBookingsComponent, data: {} },
             { path: StaticPages.hotelManagement, component: HotelManagementComponent, data: {} },
             { path: StaticPages.userManagement, component: UserManagementComponent, data: {} },
+            { path: StaticPages.hotelList, component: HotelListComponent, data: {} },
             { path: StaticPages.testing, component: TestingComponent, data: {} },
         ]
     }

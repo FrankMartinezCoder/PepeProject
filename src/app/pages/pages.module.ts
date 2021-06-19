@@ -16,6 +16,7 @@ import { BookingFlowComponent } from './booking/booking-flow/booking-flow.compon
 import { NumberInputComponent } from '../components/number-input/number-input.component';
 import { TablaGestionComponent } from '../components/tabla-gestion/tabla-gestion.component';
 import { ModalGestionComponent } from '../components/modal-gestion/modal-gestion.component';
+import { HotelListComponent } from './hotel-list/hotel-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ModalGestionComponent } from '../components/modal-gestion/modal-gestion
     BookingFlowComponent,
     NumberInputComponent,
     TablaGestionComponent,
-    ModalGestionComponent
+    ModalGestionComponent,
+    HotelListComponent
   ],
   exports: [
     PagesComponent,
@@ -44,7 +46,8 @@ import { ModalGestionComponent } from '../components/modal-gestion/modal-gestion
     BookingFlowComponent,
     NumberInputComponent,
     TablaGestionComponent,
-    ModalGestionComponent
+    ModalGestionComponent,
+    HotelListComponent
   ],
   imports: [
     CommonModule,

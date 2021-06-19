@@ -10,7 +10,6 @@ import { MyBookingsComponent } from './my-bookings/my-bookings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './components/components.module';
 
-import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -26,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [DatePipe],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

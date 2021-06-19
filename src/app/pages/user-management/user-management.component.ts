@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { User } from 'src/app/model/back-model/User';
 
 @Component({
   selector: 'app-user-management',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-management.component.scss']
 })
 export class UserManagementComponent implements OnInit {
+
+  public title: string = "Registro de Usuarios";
+
+  @Output() TableDataListener:EventEmitter<User> = new EventEmitter();
 
   constructor() { }
 
