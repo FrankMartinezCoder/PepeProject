@@ -105,17 +105,17 @@
                 </div>
                 <div class="others">
                     <div class="title">Si lo desea puede disponer de estos otros servicios:</div>
-                    <!-- <div class="service-list">
-                        <div class="service-container">
-                            <input type="checkbox" class="service-checker" [(ngModel)]="wifi" (click)="checkPension(0)">
+                    <div class="service-list">
+                        <div class="service-container" *ngFor="let service of servicios">
+                            <input type="checkbox" class="service-checker" [(ngModel)]="service.isSelected">
                             <div class="service-card">
                                 <div class="img-container">
-                                    <img src="../../../assets/imgs/services/wifi_v2.svg" alt="Wifi" title="Wifi">
+                                    <img src="../../../assets/imgs/services/{{service.img_path}}" alt="{{service.tipo}}" title="{{service.tipo}}">
                                 </div>
-                                <div class="service-name">Wifi</div>
+                                <div class="service-name">{{service.tipo}}</div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
 
             </div>

@@ -1,9 +1,9 @@
 export class Static {
-    private static serverIp:string = "http://127.0.0.1:8080/"
+    private static serverIp:string = "http://192.168.0.105:8080/"
 
     private static users:string = Static.serverIp+"usuarios/";
     private static rooms:string = Static.serverIp+"habitaciones/";
-    private static bookings:string = Static.serverIp+"bookings/";
+    private static bookings:string = Static.serverIp+"reservas/";
     private static services:string = Static.serverIp+"servicios/";   
     private static valorations:string = Static.serverIp+"usuarios/";   
     
@@ -22,7 +22,7 @@ export class Static {
         delete: Static.bookings+"delete",
         list: Static.bookings+"list",
         modify: Static.bookings+"modificar",
-        getUserById: Static.bookings+"usuario"
+        getBookingsByUser: Static.bookings+"usuario"
     }
 
     public static room = {

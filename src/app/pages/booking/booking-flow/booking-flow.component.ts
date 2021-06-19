@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { BackendService } from 'src/app/model/back-model/BackendService';
 import { Room } from 'src/app/model/back-model/Room';
 import { Service } from 'src/app/model/front-model/Service';
 import { ServicesProvider } from 'src/app/providers/hotel_services.provider';
@@ -31,7 +32,7 @@ export class BookingFlowComponent implements OnInit {
   public pension_comida: Service = new Service(2, "Almuerzo", "pension-lunch.jpg");
   public pension_cena: Service = new Service(3, "Cena", "pension-dinner.jpg");
 
-  public servicios:Array<Service>;
+  public servicios:Array<BackendService>;
   @Input() public flowListener: EventEmitter<Room>;
 
   //------------------------
@@ -49,11 +50,14 @@ export class BookingFlowComponent implements OnInit {
         this.show();
         this.room = room;
         this.loadScene();
-        console.log(room);
         
         this.servicesProvider.getServicesFromHotelId({'esPension':false,'hotelID':room.hotelID.hotelID}).subscribe(
-          service => {
-            console.log(service);
+          services => {
+            this.servicios = new Array<BackendService>(services.length);
+            
+            for(let id in services) {
+              this.servicios[id] = BackendService.parse(services[id]);
+            }            
           },
           err => {
             this.reset();
@@ -229,10 +233,6 @@ export class BookingFlowComponent implements OnInit {
     }
     this.tituloPension = temporal;
     this.updateStep(this.pension_todo_incluido.isActive || (this.pension_desayuno.isActive || this.pension_comida.isActive || this.pension_cena.isActive));
-  }
-
-  public updateService(serviceId: number) {
-
   }
   // FIN LOGICA STEP 2
   // INICIO LOGICA FLUJO
