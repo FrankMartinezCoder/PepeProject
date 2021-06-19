@@ -1,9 +1,10 @@
 export class Static {
-    private static serverIp:string = "http://192.168.0.105:8080/"
+    private static serverIp:string = "http://127.0.0.1:8080/"
 
     private static users:string = Static.serverIp+"usuarios/";
     private static rooms:string = Static.serverIp+"habitaciones/";
     private static bookings:string = Static.serverIp+"bookings/";
+    private static services:string = Static.serverIp+"servicios/";   
     private static valorations:string = Static.serverIp+"usuarios/";   
     
     public static user = {
@@ -25,7 +26,6 @@ export class Static {
     }
 
     public static room = {
-        getRoomById: Static.rooms+"login",
         create: Static.rooms+"create",
         delete: Static.rooms+"delete",
         list: Static.rooms+"list",
@@ -34,20 +34,10 @@ export class Static {
     }
 
     public static valoration = {
-        login: Static.valorations+"login",
-        create: Static.valorations+"create",
-        delete: Static.valorations+"delete",
-        list: Static.valorations+"list",
-        modify: Static.valorations+"modificar",
-        getUserById: Static.valorations+"usuario"
+        // getUserById: Static.valorations+"usuario"
     }
 
     public static service = {
-        login: Static.users+"login",
-        create: Static.users+"create",
-        delete: Static.users+"delete",
-        list: Static.users+"list",
-        modify: Static.users+"modificar",
-        getUserById: Static.users+"usuario"
+        getServicesFromHotelId: Static.services+"listHotelServicios"
     }
 }

@@ -27,7 +27,7 @@ export class BookingFlowComponent implements OnInit {
   //------------------------
   //---------step 2---------
   public pensiones: Array<Service>;
-  public tituloPensiones:string = "Sin Pension";
+  public tituloPensiones: string = "Sin Pension";
 
   @Input() public flowListener: EventEmitter<Room>;
 
@@ -190,7 +190,7 @@ export class BookingFlowComponent implements OnInit {
           allActive = temp[i].isActive
         }
 
-        if(allActive) {
+        if (allActive) {
           temp[0].isActive = true;
 
           for (let i = 1; i < temp.length; i++) {
@@ -216,7 +216,7 @@ export class BookingFlowComponent implements OnInit {
   }
 
   public goTo(newStep: number) {
-    if (newStep >= 0 && (newStep + 1) <= this.scenes.length && newStep != this.currentIndex && this.scenes[newStep].isValid) {
+    if (newStep >= 0 && (newStep + 1) <= this.scenes.length && newStep != this.currentIndex && this.scenes[newStep].isDirty) {
       this.currentIndex = newStep;
       this.loadScene();
     }
@@ -228,6 +228,7 @@ export class BookingFlowComponent implements OnInit {
 
   private loadScene() {
     this.currentScene = this.scenes[this.currentIndex];
+    this.currentScene.isDirty = true;
     $(".step").hide();
     $(this.currentScene.node).fadeIn();
     this.updateHeader();
@@ -305,6 +306,7 @@ class Scene {
   public backButton: ButtonLogic;
   public nextButton: ButtonLogic;
   public isValid: boolean = false;
+  public isDirty: boolean = false;
 
   constructor(id: number, title: string, node: string, backButton: ButtonLogic, nextButton: ButtonLogic, isValid: boolean = false) {
     this.id = id;
