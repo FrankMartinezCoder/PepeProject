@@ -27,6 +27,8 @@ export class BookingFilter {
         }
     }
 
+    public 
+
     public static dateFormat(date: Date,isToDDBB:boolean):string {
         let output = "";
         if(new RegExp("(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))").test(date.toString())) {

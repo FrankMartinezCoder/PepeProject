@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { BackendService } from 'src/app/model/back-model/BackendService';
 import { Room } from 'src/app/model/back-model/Room';
+import { BookingFilter } from 'src/app/model/front-model/BookingFilter';
 import { Service } from 'src/app/model/front-model/Service';
 import { ServicesProvider } from 'src/app/providers/hotel_services.provider';
 
@@ -34,7 +35,9 @@ export class BookingFlowComponent implements OnInit {
 
   public servicios: Array<BackendService>;
   @Input() public flowListener: EventEmitter<Room>;
+  @Input() public filterListener: EventEmitter<BookingFilter>;
 
+  public filter:BookingFilter;
   //------------------------
   constructor(private servicesProvider: ServicesProvider) { }
   ngOnInit(): void {
@@ -45,6 +48,15 @@ export class BookingFlowComponent implements OnInit {
     this.scenes[2] = new Scene(2, 'Resumen', '.step-3', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--verified', 'Terminar', true),true);
 
     this.currentScene = this.scenes[this.currentIndex];
+
+    this.filterListener.subscribe(
+      filter => {
+        this.filter = filter;
+        console.log(filter);
+        
+      }
+    )
+
     this.flowListener.subscribe(
       room => {
         this.show();

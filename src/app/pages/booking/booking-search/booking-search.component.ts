@@ -15,6 +15,7 @@ export class BookingSearchComponent implements OnInit {
   public filter: BookingFilter = new BookingFilter();
 
   @Output() flowListener:EventEmitter<Room> = new EventEmitter();
+  @Output() filterListener:EventEmitter<BookingFilter> = new EventEmitter();
 
   constructor(private bookingProvider: BookingProvider) {
   }
@@ -90,6 +91,7 @@ export class BookingSearchComponent implements OnInit {
     this.filter.clear();
   }
   public reservar(idHabitacion) {
+    this.filterListener.emit(this.filter);
     this.flowListener.emit(this.roomList.find(room => room.habitacionID==idHabitacion));   
   }
   public searchRooms() {
