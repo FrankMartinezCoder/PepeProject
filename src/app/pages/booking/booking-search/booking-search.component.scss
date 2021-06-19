@@ -131,6 +131,14 @@
                 position: relative;
                 font-size: 2rem;
                 font-weight: bold;
+                &_precio{
+                    font-size: 1rem;
+                    padding: .5rem;
+                    background-color: orange;
+                    border-radius: 5px;
+                    display: flex;
+                    align-self: flex-end;
+                }
                 & > span {
                 }
             }
@@ -313,6 +321,8 @@
             position: relative;
             font-size: 2rem;
             font-weight: bold;
+            display: flex;
+                justify-content: space-between;
             &_detail {
                 font-size: 2rem;
                 font-weight: bold;
