@@ -21,6 +21,9 @@ export class BookingProvider {
         return this.bookingService.getFreeRoomList(bookingFilter.getData());
     }
 
+    public getBookingFromUser() {
+        showModal();
+    }
     public createBooking() {
 
     }

@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Room } from 'src/app/model/back-model/Room';
 import { Service } from 'src/app/model/front-model/Service';
@@ -18,7 +17,6 @@ export class BookingFlowComponent implements OnInit {
   public adultos: number = 0;
   public jovenes: number = 0;
   public children: number = 0;
-  private id: number = Math.round(Math.random() * 5000 + 1);
 
   public room: Room = new Room();
 
@@ -26,8 +24,11 @@ export class BookingFlowComponent implements OnInit {
   private min: number = 0;
   //------------------------
   //---------step 2---------
-  public pensiones: Array<Service>;
-  public tituloPensiones: string = "Sin Pension";
+  public tituloPension: string = "Sin pensión";
+  public pension_todo_incluido: Service = new Service(0, "Todo incluido", "pension-all.png");
+  public pension_desayuno: Service = new Service(1, "Desayuno", "pension-breakfast.jpg");
+  public pension_comida: Service = new Service(2, "Almuerzo", "pension-lunch.jpg");
+  public pension_cena: Service = new Service(3, "Cena", "pension-dinner.jpg");
 
   @Input() public flowListener: EventEmitter<Room>;
 
@@ -43,16 +44,8 @@ export class BookingFlowComponent implements OnInit {
 
     this.currentScene = this.scenes[this.currentIndex];
 
-    this.pensiones = new Array(4);
-
-    this.pensiones[0] = new Service(0, "Todo incluido", "pension-all.png");
-    this.pensiones[1] = new Service(1, "Desayuno", "pension-breakfast.jpg");
-    this.pensiones[2] = new Service(2, "Almuerzo", "pension-lunch.jpg");
-    this.pensiones[3] = new Service(3, "Cenar", "pension-dinner.jpg");
-
     this.flowListener.subscribe(
       room => {
-        this.reset();
         this.show();
         this.room = room;
         this.loadScene();
@@ -160,52 +153,82 @@ export class BookingFlowComponent implements OnInit {
   // INICIO LOGICA STEP 2
 
 
-  public checkPension(id: number) {
-    let temp: Array<Service> = this.pensiones;
+  public checkPension(type: number) {
 
-    switch (id) {
+    let currentService: Service = null;
+    switch (type) {
       case 0:
-        if (temp[id].isActive) {
-          temp[id].isActive = false;
-        }
-        else {
-          temp[id].isActive = true;
-          for (let i = 1; i < temp.length; i++) {
-            temp[i].isActive = false;
-          }
-        }
+        currentService = this.pension_todo_incluido;
         break;
       case 1:
+        currentService = this.pension_desayuno;
+        break;
       case 2:
+        currentService = this.pension_comida;
+        break;
       case 3:
-
-      if(temp[id].isActive) {
-        temp[id].isActive = false;
-      }
-      else {
-        
-      }
-
-
-        let allActive = true;
-        for (let i = 1; i < temp.length && allActive; i++) {
-          allActive = temp[i].isActive
-        }
-
-        if (allActive) {
-          temp[0].isActive = true;
-
-          for (let i = 1; i < temp.length; i++) {
-            temp[i].isActive = false;
-          }
-        }
-        else {
-          temp[id].isActive = true;
-        }
+        currentService = this.pension_cena;
         break;
     }
+    console.log("type",type,"currentService",currentService);
+    
+    if (currentService) {
+      if (currentService.isActive) {
+        currentService.isActive = false;
+      }
+      else {
+        currentService.isActive = true;
+      }
 
-    this.updateStep(true);
+      switch (type) {
+        case 0:
+          this.pension_todo_incluido = currentService;
+          break;
+        case 1:
+          this.pension_desayuno = currentService;
+          this.pension_todo_incluido.isActive = false;
+          break;
+        case 2:
+          this.pension_comida = currentService;
+          this.pension_todo_incluido.isActive = false;
+          break;
+        case 3:
+          this.pension_cena = currentService;
+          this.pension_todo_incluido.isActive = false;
+          break;
+      }
+
+      if (type > 0) {
+        let e = new Array(3);
+
+        e[0] = this.pension_desayuno;
+        e[1] = this.pension_comida;
+        e[2] = this.pension_cena;
+
+        this.tituloPension = Service.getTitleCombined(e);
+      }
+      else {
+        this.tituloPension = currentService.title;
+
+        this.pension_desayuno.isActive = false;
+        this.pension_comida.isActive = false;
+        this.pension_cena.isActive = false;
+      }
+
+      if (this.pension_desayuno.isActive && this.pension_comida.isActive && this.pension_cena.isActive) {
+        this.pension_todo_incluido.isActive = true;
+        this.tituloPension = this.pension_todo_incluido.title;
+
+        this.pension_desayuno.isActive = false;
+        this.pension_comida.isActive = false;
+        this.pension_cena.isActive = false;
+      }
+    }
+    else {
+      this.tituloPension = "Sin Pensión"
+    }
+
+    this.updateStep(this.pension_todo_incluido.isActive || (this.pension_desayuno.isActive || this.pension_comida.isActive || this.pension_cena.isActive));
   }
 
 
@@ -218,7 +241,7 @@ export class BookingFlowComponent implements OnInit {
   }
 
   public goTo(newStep: number) {
-    if (newStep >= 0 && (newStep + 1) <= this.scenes.length && newStep != this.currentIndex && this.scenes[newStep].isDirty) {
+    if (newStep >= 0 && (newStep + 1) <= this.scenes.length && newStep != this.currentIndex && this.scenes[newStep].isValid) {
       this.currentIndex = newStep;
       this.loadScene();
     }
@@ -230,7 +253,6 @@ export class BookingFlowComponent implements OnInit {
 
   private loadScene() {
     this.currentScene = this.scenes[this.currentIndex];
-    this.currentScene.isDirty = true;
     $(".step").hide();
     $(this.currentScene.node).fadeIn();
     this.updateHeader();
@@ -308,7 +330,6 @@ class Scene {
   public backButton: ButtonLogic;
   public nextButton: ButtonLogic;
   public isValid: boolean = false;
-  public isDirty: boolean = false;
 
   constructor(id: number, title: string, node: string, backButton: ButtonLogic, nextButton: ButtonLogic, isValid: boolean = false) {
     this.id = id;
