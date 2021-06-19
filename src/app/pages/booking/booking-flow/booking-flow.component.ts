@@ -43,20 +43,12 @@ export class BookingFlowComponent implements OnInit {
 
     this.currentScene = this.scenes[this.currentIndex];
 
-    this.pensiones = new Array(5);
+    this.pensiones = new Array(4);
 
-    this.pensiones[0] = new Service(-1, "Sin pensiones", "");
-    this.pensiones[1] = new Service(0, "Todo incluido", "../../../../assets/imgs/hotels/pensiones/pension-all.png");
-    this.pensiones[2] = new Service(1, "Desayuno", "../../../../assets/imgs/hotels/pensiones/pension-breakfast.jpg");
-    this.pensiones[3] = new Service(2, "Almuerzo", "../../../../assets/imgs/hotels/pensiones/pension-lunch.jpg");
-    this.pensiones[4] = new Service(3, "Cenar", "../../../../assets/imgs/hotels/pensiones/pension-dinner.jpg");
-
-    this.pensiones = new Array(5);
-
-    this.pensiones[0] = new Service(0, "Todo incluido", "../../../../assets/imgs/hotels/pensiones/pension-all.png");
-    this.pensiones[1] = new Service(1, "Desayuno", "../../../../assets/imgs/hotels/pensiones/pension-breakfast.jpg");
-    this.pensiones[2] = new Service(2, "Almuerzo", "../../../../assets/imgs/hotels/pensiones/pension-lunch.jpg");
-    this.pensiones[3] = new Service(3, "Cenar", "../../../../assets/imgs/hotels/pensiones/pension-dinner.jpg");
+    this.pensiones[0] = new Service(0, "Todo incluido", "pension-all.png");
+    this.pensiones[1] = new Service(1, "Desayuno", "pension-breakfast.jpg");
+    this.pensiones[2] = new Service(2, "Almuerzo", "pension-lunch.jpg");
+    this.pensiones[3] = new Service(3, "Cenar", "pension-dinner.jpg");
 
     this.flowListener.subscribe(
       room => {
@@ -174,17 +166,27 @@ export class BookingFlowComponent implements OnInit {
     switch (id) {
       case 0:
         if (temp[id].isActive) {
-          for (let i = 1; i < temp.length; i++) {
-            temp[i].isActive = false;
-          }
+          temp[id].isActive = false;
         }
         else {
           temp[id].isActive = true;
+          for (let i = 1; i < temp.length; i++) {
+            temp[i].isActive = false;
+          }
         }
         break;
       case 1:
       case 2:
       case 3:
+
+      if(temp[id].isActive) {
+        temp[id].isActive = false;
+      }
+      else {
+        
+      }
+
+
         let allActive = true;
         for (let i = 1; i < temp.length && allActive; i++) {
           allActive = temp[i].isActive

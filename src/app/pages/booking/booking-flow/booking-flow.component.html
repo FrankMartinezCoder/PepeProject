@@ -20,7 +20,7 @@
     <div class="booking-flow--view-steps">
         <section class="step step-1" style="display: none;">
             <div class="">
-                <div class="title">Seleccionar Ocupantes: <span *ngIf="room">{{room.ocupantes}}</span></div>
+                <div class="title">Seleccionar Ocupantes: <span *ngIf="room">{{adultos+jovenes+children}}/{{room.ocupantes}}</span></div>
                 <div class="step-1--form">
                     <div class="input-group">
                         <div class="input-label">Adultos</div>
@@ -57,13 +57,13 @@
                 <div class="required">
                     <div class="title">Seleccione tipo de pensión: <span>{{tituloPensiones}}</span></div>
                     <div class="service-list">
-                        <div class="service-container">
-                            <input type="checkbox" class="service-checker" (click)="checkPension(0)">
+                        <div class="service-container" *ngFor="let pension of pensiones">
+                            <input type="checkbox" class="service-checker" (click)="checkPension(pension.id)">
                             <div class="service-card">
                                 <div class="img-container">
-                                    <img src="../../../../assets/imgs/hotels/pensiones/pension-all.png" alt="servicio">
+                                    <img *ngIf="pension.img" src="../../../../assets/imgs/hotels/pensiones/{{pension.img}}" alt="servicio">
                                 </div>
-                                <div class="service-name">Todo incluído</div>
+                                <div class="service-name">{{pension.title}}</div>
                             </div>
                         </div>
                     </div>

@@ -9,5 +9,6 @@ export class Service {
         this.id = id;
         this.title = title;
         this.img = img;
+        this.isVisible = isVisible;
     }
 }
