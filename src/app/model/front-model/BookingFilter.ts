@@ -27,7 +27,9 @@ export class BookingFilter {
         }
     }
 
-    public 
+    public dateFormat():string {
+        return "";
+    }
 
     public static dateFormat(date: Date,isToDDBB:boolean):string {
         let output = "";
