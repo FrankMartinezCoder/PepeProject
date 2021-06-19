@@ -5,12 +5,12 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HotelManagementComponent } from './hotel-management/hotel-management.component';
 import { UserManagementComponent } from './user-management/user-management.component';
-import { MyBookingsComponent } from '../my-bookings/my-bookings.component';
 import { TestingComponent } from './testing/testing.component';
 import { BookingDetailsComponent } from './booking/booking-details/booking-details.component';
 import { BookingSearchComponent } from './booking/booking-search/booking-search.component';
 import { StaticPages } from '../config/pageUrls';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
+import { MyBookingsComponent } from './booking/my-bookings/my-bookings.component';
 
 
 const routes: Routes = [

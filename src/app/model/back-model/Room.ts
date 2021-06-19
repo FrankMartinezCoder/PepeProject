@@ -1,3 +1,5 @@
+import { Hotel } from "./Hotel";
+
 export class Room {
     public habitacionID: number;
     public descripcion: string;
@@ -7,6 +9,7 @@ export class Room {
     public tipoHabitacion: string;
     public precioHabitacionTotal: number;
     public precioOcupante: number;
+    public hotelID:Hotel;
 
     public static parse(item:object){
         let newObject = new Room();
@@ -19,7 +22,7 @@ export class Room {
         newObject.tipoHabitacion = item['tipoHabitacion'];
         newObject.precioHabitacionTotal = item['precioHabitacionTotal'];
         newObject.precioOcupante = item['precioOcupante'];
-
+        newObject.hotelID = Hotel.parse(item['hotelID']);
         return newObject;
     }
 }

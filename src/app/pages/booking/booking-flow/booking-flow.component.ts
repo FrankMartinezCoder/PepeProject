@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Room } from 'src/app/model/back-model/Room';
 import { Service } from 'src/app/model/front-model/Service';
+import { ServicesProvider } from 'src/app/providers/hotel_services.provider';
 
 @Component({
   selector: 'app-booking-flow',
@@ -30,11 +31,11 @@ export class BookingFlowComponent implements OnInit {
   public pension_comida: Service = new Service(2, "Almuerzo", "pension-lunch.jpg");
   public pension_cena: Service = new Service(3, "Cena", "pension-dinner.jpg");
 
+  public servicios:Array<Service>;
   @Input() public flowListener: EventEmitter<Room>;
 
-  public wifi: boolean = false;
-
   //------------------------
+  constructor(private servicesProvider: ServicesProvider) { }
   ngOnInit(): void {
 
     this.scenes = new Array(3);
@@ -43,12 +44,24 @@ export class BookingFlowComponent implements OnInit {
     this.scenes[2] = new Scene(2, 'Resumen', '.step-3', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--verified', 'Terminar', true));
 
     this.currentScene = this.scenes[this.currentIndex];
-
     this.flowListener.subscribe(
       room => {
         this.show();
         this.room = room;
         this.loadScene();
+        console.log(room);
+        
+        this.servicesProvider.getServicesFromHotelId({'esPension':false,'hotelID':room.hotelID.hotelID}).subscribe(
+          service => {
+            console.log(service);
+          },
+          err => {
+            this.reset();
+          }
+        );
+      },
+      err => {
+        this.reset();
       }
     )
   }
@@ -154,84 +167,73 @@ export class BookingFlowComponent implements OnInit {
 
 
   public checkPension(type: number) {
-
-    let currentService: Service = null;
+    const _ = this;
+    let temporal: string = "Sin Pensión";
     switch (type) {
       case 0:
-        currentService = this.pension_todo_incluido;
+        this.pension_todo_incluido.isActive = (!this.pension_todo_incluido.isActive);
+        temporal = this.pension_todo_incluido.title;
+        this.pension_desayuno.isActive = false;
+        this.pension_comida.isActive = false;
+        this.pension_cena.isActive = false;
         break;
       case 1:
-        currentService = this.pension_desayuno;
+        this.pension_desayuno.isActive = (!this.pension_desayuno.isActive);
+        this.pension_todo_incluido.isActive = false;
         break;
       case 2:
-        currentService = this.pension_comida;
+        this.pension_comida.isActive = (!this.pension_comida.isActive);
+        this.pension_todo_incluido.isActive = false;
         break;
       case 3:
-        currentService = this.pension_cena;
+        this.pension_cena.isActive = (!this.pension_cena.isActive);
+        this.pension_todo_incluido.isActive = false;
         break;
     }
-    console.log("type",type,"currentService",currentService);
-    
-    if (currentService) {
-      if (currentService.isActive) {
-        currentService.isActive = false;
-      }
-      else {
-        currentService.isActive = true;
-      }
 
-      switch (type) {
-        case 0:
-          this.pension_todo_incluido = currentService;
-          break;
-        case 1:
-          this.pension_desayuno = currentService;
-          this.pension_todo_incluido.isActive = false;
-          break;
-        case 2:
-          this.pension_comida = currentService;
-          this.pension_todo_incluido.isActive = false;
-          break;
-        case 3:
-          this.pension_cena = currentService;
-          this.pension_todo_incluido.isActive = false;
-          break;
-      }
+    if (type != 0) {
+      let services = new Array<Service>(3);
+      services[0] = this.pension_desayuno;
+      services[1] = this.pension_comida;
+      services[2] = this.pension_cena;
 
-      if (type > 0) {
-        let e = new Array(3);
-
-        e[0] = this.pension_desayuno;
-        e[1] = this.pension_comida;
-        e[2] = this.pension_cena;
-
-        this.tituloPension = Service.getTitleCombined(e);
-      }
-      else {
-        this.tituloPension = currentService.title;
-
-        this.pension_desayuno.isActive = false;
-        this.pension_comida.isActive = false;
-        this.pension_cena.isActive = false;
-      }
-
-      if (this.pension_desayuno.isActive && this.pension_comida.isActive && this.pension_cena.isActive) {
-        this.pension_todo_incluido.isActive = true;
-        this.tituloPension = this.pension_todo_incluido.title;
-
-        this.pension_desayuno.isActive = false;
-        this.pension_comida.isActive = false;
-        this.pension_cena.isActive = false;
-      }
+      temporal = Service.getTitleCombined(services);
     }
-    else {
-      this.tituloPension = "Sin Pensión"
-    }
+    console.log(temporal);
 
+    if (this.pension_desayuno.isActive && this.pension_comida.isActive && this.pension_cena.isActive) {
+      this.pension_todo_incluido.isActive = true;
+      temporal = this.pension_todo_incluido.title;
+      this.pension_desayuno.isActive = false;
+      this.pension_comida.isActive = false;
+      this.pension_cena.isActive = false;
+
+      const timeOutVar = setTimeout(function (tipo) {
+
+        switch (tipo) {
+          case 0:
+            _.pension_todo_incluido.isActive = false;
+            break;
+          case 1:
+            _.pension_desayuno.isActive = false;
+            break;
+          case 2:
+            _.pension_comida.isActive = false;
+            break;
+          case 3:
+            _.pension_cena.isActive = false;
+            break;
+        }
+        clearTimeout(timeOutVar);
+      }, 1, type);
+    }
+    this.tituloPension = temporal;
     this.updateStep(this.pension_todo_incluido.isActive || (this.pension_desayuno.isActive || this.pension_comida.isActive || this.pension_cena.isActive));
   }
 
+  public updateService(serviceId: number) {
 
+  }
   // FIN LOGICA STEP 2
   // INICIO LOGICA FLUJO
   public close(): void {

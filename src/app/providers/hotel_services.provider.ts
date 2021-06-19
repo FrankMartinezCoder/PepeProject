@@ -1,19 +1,16 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Service } from "../model/front-model/Service";
-import { HotelServicesService } from "../services/hotel_services-service.service";
+import { ServicesService } from "../services/hotel_services-service.service";
 
 @Injectable({
     providedIn: 'root'
 })
-export class HotelServicesProvider {
+export class ServicesProvider {
 
-    constructor(private hotelServicesService:HotelServicesService) {}
+    constructor(private servicesService:ServicesService) {}
 
     public getServicesFromHotelId(parameters: any): Observable<Service[]> {
-        
-
-
-        return null;
+        return this.servicesService.getServicesFromHotelId(parameters);
       }
 }

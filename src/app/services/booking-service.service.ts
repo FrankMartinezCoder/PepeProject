@@ -13,6 +13,14 @@ export class BookingService {
   public getFreeRoomList(parameters:any):Observable<Room[]> {
     return this.httpClient.get<Array<Room>>(Static.room.reservar,{params:parameters});
   }
+  
+  public getBookingFromUser(parameters:any):Observable<number[]>  {
+    return this.httpClient.get<Array<number>>(Static.booking.getBookingsByUser,{params:parameters});
+  }
+
+  public getListBookings():Observable<Booking[]>  {
+    return this.httpClient.get<Array<Booking>>(Static.booking.list);
+  }
 
   public addBookingRoom():Observable<Booking[]> {
     return null //this.httpClient.get<Booking[]>(Static.room.list);

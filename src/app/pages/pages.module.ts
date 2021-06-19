@@ -17,6 +17,7 @@ import { NumberInputComponent } from '../components/number-input/number-input.co
 import { TablaGestionComponent } from '../components/tabla-gestion/tabla-gestion.component';
 import { ModalGestionComponent } from '../components/modal-gestion/modal-gestion.component';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
+import { MyBookingsComponent } from './booking/my-bookings/my-bookings.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HotelListComponent } from './hotel-list/hotel-list.component';
     DashboardComponent,
     UserManagementComponent,
     HotelManagementComponent,
+    MyBookingsComponent,
     BookingSearchComponent,
     BookingDetailsComponent,
     LoginComponent,
@@ -39,6 +41,7 @@ import { HotelListComponent } from './hotel-list/hotel-list.component';
     DashboardComponent,
     UserManagementComponent,
     HotelManagementComponent,
+    MyBookingsComponent,
     BookingSearchComponent,
     BookingDetailsComponent,
     LoginComponent,

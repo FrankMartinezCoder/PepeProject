@@ -3,17 +3,17 @@ import { Room } from "./Room";
 import { Valoration } from "./Valoration";
 
 export class Booking {
-    private id:number;
-    private bookingDate: Date;
-    private entryDate:Date;
-    private endingDate:Date;
-    private cancelledDate:Date;
-    private room:Room;
-    private occupants:Occupant[];
-    private valoration:Valoration;
-    private isCancelled:boolean = false;
-    private basePrice:number; // room price * num ocupantes
-    private totalPrice:number; // basePrice*days + services (price * occupant)
+    public reservaID:number;
+    public bookingDate: Date;
+    public entryDate:Date;
+    public endingDate:Date;
+    public cancelledDate:Date;
+    public room:Room;
+    public occupants:number;
+    public valoration:number;
+    public isCancelled:boolean = false;
+    public basePrice:number; // room price * num ocupantes
+    public totalPrice:number; // basePrice*days + services (price * occupant)
 
     public constructor() {}
 
