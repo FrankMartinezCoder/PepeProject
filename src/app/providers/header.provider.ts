@@ -50,7 +50,7 @@ export class HeaderProvider {
     else {
       menu.items = [
         { name: 'Realizar Reserva', url: StaticPages.bookings, id:-1},
-        { name: 'iniciar sesión', url: null, id:0},
+        { name: 'Iniciar Sesión', url: null, id:0},
         { name: 'Registrarse', url: null, id:2}
       ]
     }

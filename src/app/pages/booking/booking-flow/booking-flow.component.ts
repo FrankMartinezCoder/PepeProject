@@ -203,7 +203,6 @@ export class BookingFlowComponent implements OnInit {
 
       temporal = Service.getTitleCombined(services);
     }
-    console.log(temporal);
 
     if (this.pension_desayuno.isActive && this.pension_comida.isActive && this.pension_cena.isActive) {
       this.pension_todo_incluido.isActive = true;
@@ -232,7 +231,7 @@ export class BookingFlowComponent implements OnInit {
       }, 1, type);
     }
     this.tituloPension = temporal;
-    this.updateStep(this.pension_todo_incluido.isActive || (this.pension_desayuno.isActive || this.pension_comida.isActive || this.pension_cena.isActive));
+    this.updateStep(true);
   }
   // FIN LOGICA STEP 2
   // INICIO LOGICA FLUJO
@@ -299,6 +298,10 @@ export class BookingFlowComponent implements OnInit {
     this.scenes[0] = new Scene(0, 'Ocupantes', '.step-1', new ButtonLogic('button--danger', 'Salir', true), new ButtonLogic('button--default', 'Siguiente', true));
     this.scenes[1] = new Scene(1, 'Servicios', '.step-2', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--info', 'Siguiente', true));
     this.scenes[2] = new Scene(2, 'Resumen', '.step-3', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--verified', 'Terminar', true));
+    this.servicios = null;
+    this.currentIndex = 1;
+    this.currentScene = null;
+    $(".step").hide();
   }
 
   public show() {
