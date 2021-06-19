@@ -1,6 +1,7 @@
 export class BookingFilter {
     public fechaEntrada: CustomDate;
     public fechaSalida: CustomDate;
+    public fechaActual: CustomDate;
     public precio1: number = 0;
     public precio2: number = 0;
     public ocupantes: number = 1;
@@ -12,6 +13,7 @@ export class BookingFilter {
     public clear(): void {
         this.fechaEntrada = new CustomDate();
         this.fechaSalida = new CustomDate();
+        this.fechaActual = new CustomDate();
         this.fechaSalida.setDate(this.fechaSalida.getDate() + 1);
         this.precio1 = 0;
         this.precio2 = 0;

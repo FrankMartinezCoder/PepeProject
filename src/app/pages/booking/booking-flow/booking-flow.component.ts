@@ -34,12 +34,15 @@ export class BookingFlowComponent implements OnInit {
   public pension_cena: Service = new Service(3, "Cena", "pension-dinner.jpg");
 
   public servicios: Array<BackendService>;
+
   @Input() public flowListener: EventEmitter<Room>;
   @Input() public filterListener: EventEmitter<BookingFilter>;
 
   public filter:BookingFilter;
   //------------------------
+
   constructor(private servicesProvider: ServicesProvider) { }
+  
   ngOnInit(): void {
 
     this.scenes = new Array(3);
@@ -52,8 +55,6 @@ export class BookingFlowComponent implements OnInit {
     this.filterListener.subscribe(
       filter => {
         this.filter = filter;
-        console.log(filter);
-        
       }
     )
 
