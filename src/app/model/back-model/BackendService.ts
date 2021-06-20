@@ -2,6 +2,12 @@ import { Hotel } from "./Hotel";
 import { Management } from "./management.interface";
 
 export class BackendService implements Management{
+    getFields(): string[] {
+        throw new Error("Method not implemented.");
+    }
+    get(columId: number) {
+        throw new Error("Method not implemented.");
+    }
     getColumns(): string[] {
         throw new Error("Method not implemented.");
     }

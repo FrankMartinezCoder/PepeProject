@@ -69,7 +69,7 @@ export class UserProvider {
     return user;
   }
 
-  public getAllUsers() :Observable<Array<User>> {
+  public getAllUsers():Observable<Array<User>> {
     return this.userService.getAllUsers();
   }
 }

@@ -1,8 +1,28 @@
 import { Management } from "./management.interface";
 
 export class User implements Management{
-    getColumns(): string[] {
-        throw new Error("Method not implemented.");
+    getFields(): string[] {
+        return ['nombre','apellidos','email','password'];
+    }
+    public get(columId: number):any {
+        switch (columId) {
+            case 0:
+                return this.usuarioID;
+                break;
+            case 1:
+                return this.nombre;
+                break;
+            case 2:
+                return this.apellidos;
+                break;            
+            case 3:
+                return this.email;
+                break;                                                
+        }
+    }
+
+    public getColumns(): string[] {
+        return ['ID','Nombre','Apellidos','Email'];
     }
     public usuarioID: number;
     public nombre: string;

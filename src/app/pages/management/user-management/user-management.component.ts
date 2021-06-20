@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/model/back-model/User';
+import { UserProvider } from 'src/app/providers/user.provider';
 
 @Component({
   selector: 'app-user-management',
@@ -9,12 +10,26 @@ import { User } from 'src/app/model/back-model/User';
 export class UserManagementComponent implements OnInit {
 
   public title: string = "Registro de Usuarios";
+  @Output() tableDataListener:EventEmitter<User[]> = new EventEmitter();
 
-  @Output() TableDataListener:EventEmitter<User> = new EventEmitter();
-
-  constructor() { }
-
+  constructor(private userProvider: UserProvider) { }
   ngOnInit(): void {
+    this.getUsuarios();
+  }
+
+  private getUsuarios(){
+    const _ = this;
+
+    this.userProvider.getAllUsers().subscribe(
+      data => {
+        console.log('usuarios ', data);
+        this.tableDataListener.emit(data);
+      },
+      err => {
+
+      }
+      );
+
   }
 
 }

@@ -9,6 +9,12 @@ export class Hotel implements Management{
     public direccion: string;
 
     constructor() { }
+    getFields(): string[] {
+        throw new Error("Method not implemented.");
+    }
+    get(columId: number) {
+        throw new Error("Method not implemented.");
+    }
     getColumns(): string[] {
         throw new Error("Method not implemented.");
     }

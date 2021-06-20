@@ -4,50 +4,11 @@
         <fieldset class="register_admin-form">
             <legend>Registro Habitaciones</legend>
 
-            <div class="input_group">
+            <div class="input_group" *ngFor="let item of fields">
                 <!-- <input id="email-input" type="text" [(ngModel)]="email.value" (focusout)="validator(email)" required> -->
-                <input id="descripcion" type="text" required>
-                <label for="descripcion" class="noselect">Descripcion (*)</label>
+                <input id="item" type="text" required>
+                <label for="item" class="noselect">{{}}</label>
             </div>
-            <!-- <span class="error-message"><span *ngIf="email.errorMessage!=''"
-                    class="warning-icon"></span>{{email.errorMessage}}</span> -->
-
-            <div class="input_group">
-                <!-- <input id="name" type="text" [(ngModel)]="name.value" (focusout)="validator(name)" required> -->
-                <input id="numHabitacion" type="text" required>
-                <label for="numHabitacion" class="noselect">Numero de Habitaciones (*)</label>
-            </div>
-            <!-- <span class="error-message"><span *ngIf="name.errorMessage!=''"
-                    class="warning-icon"></span>{{name.errorMessage}}</span> -->
-            <div class="input_group">
-                <!-- <input id="surname" type="text" [(ngModel)]="surname.value" (focusout)="validator(surname)" required> -->
-                <input id="img_path" type="text" required>
-                <label for="img_path" class="noselect">Imagen Path (*)</label>
-            </div>
-            <!-- <span class="error-message"><span *ngIf="surname.errorMessage!=''"
-                    class="warning-icon"></span>{{surname.errorMessage}}</span> -->
-            <div class="input_group">
-                <!-- <input id="surname" type="text" [(ngModel)]="surname.value" (focusout)="validator(surname)" required> -->
-                <input id="img_path" type="text" required>
-                <label for="img_path" class="noselect">Imagen Path (*)</label>
-            </div>
-            <!-- <span class="error-message"><span *ngIf="surname.errorMessage!=''"
-                            class="warning-icon"></span>{{surname.errorMessage}}</span> -->
-            <div class="input_group">
-                <!-- <input id="birthDate" type="date" [(ngModel)]="birthdate.value" required> -->
-                <input id="tipoHabitacion" type="text" required>
-                <label for="tipoHabitacion" class="noselect">Tipo de Habitación (*)</label>
-            </div>
-            <!-- <span class="error-message"><span *ngIf="birthdate.errorMessage!=''"
-                    class="warning-icon"></span>{{birthdate.errorMessage}}</span> -->
-            <div class="input_group">
-                <!-- <input id="birthDate" type="date" [(ngModel)]="birthdate.value" required> -->
-                <input id="tipoHabitacion" type="text" required>
-                <label for="tipoHabitacion" class="noselect">Tipo de Habitación (*)</label>
-            </div>
-            <!-- <span class="error-message"><span *ngIf="birthdate.errorMessage!=''"
-                            class="warning-icon"></span>{{birthdate.errorMessage}}</span> -->
-
 
             <div class="button-group">
                 <!-- <button class="button button--default noselect"
