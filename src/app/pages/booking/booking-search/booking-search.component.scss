@@ -134,7 +134,7 @@
                 &_precio{
                     font-size: 1rem;
                     padding: .5rem;
-                    background-color: orange;
+                    background-color: var(--color-primary--opacity);
                     border-radius: 5px;
                     display: flex;
                     align-self: flex-end;
@@ -241,6 +241,11 @@
             }
         }
     }
+    .details-card-valoration_detail-pvp{
+        display: flex;
+        justify-content: space-between;
+        
+    }
 
     @media (max-width: 425px) {
         .bookings-searched {
@@ -342,6 +347,10 @@
                 display: block;
                 width: 100%;
                 margin: 0 auto;
+                &-pvp{
+                    display: flex;
+                    justify-content: space-between;
+                }
                 & > span > img {
                     width: 1.5rem;
                     color: var(--color-primary);
@@ -478,6 +487,11 @@
 @media (max-width: 768px) {
     .details {
         &-card {
+            &-valoration_detail-pvp{
+                display: flex;
+                justify-content: space-between;
+                
+            }
             &-title {
                 display: flex;
                 align-content: flex-start;
