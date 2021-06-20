@@ -1,10 +1,10 @@
 import { Management } from "./management.interface";
 
-export class User implements Management{
+export class User implements Management {
     getFields(): string[] {
-        return ['nombre','apellidos','email','password'];
+        return ['nombre', 'apellidos', 'email', 'password'];
     }
-    public get(columId: number):any {
+    public get(columId: number): any {
         switch (columId) {
             case 0:
                 return this.usuarioID;
@@ -14,15 +14,15 @@ export class User implements Management{
                 break;
             case 2:
                 return this.apellidos;
-                break;            
+                break;
             case 3:
                 return this.email;
-                break;                                                
+                break;
         }
     }
 
     public getColumns(): string[] {
-        return ['ID','Nombre','Apellidos','Email'];
+        return ['ID', 'Nombre', 'Apellidos', 'Email'];
     }
     public usuarioID: number;
     public nombre: string;
