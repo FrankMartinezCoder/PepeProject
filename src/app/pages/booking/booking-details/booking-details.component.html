@@ -52,22 +52,18 @@
                 </div>
                 <h1 class="mt-2">Servicios</h1>
                 <div class="details-card-services_detail mt-2">
-                    <span class="details-card-service_detail">
-                        <input type="checkbox" id="checkbox1" name="checkbox01" disabled="disabled" checked="checked">
-                        <label for="checkbox1" title="Todo OK">Todo OK</label>
+                    <span class="details-card-service_detail" *ngFor="let item of pensiones">
+                        <input type="checkbox" name="checkbox01" disabled="disabled" checked="checked">
+                        <label title="{{item.tipo}}">{{item.tipo}}</label>
                     </span>
-                    <span class="details-card-service_detail">
-                        <input type="checkbox" id="checkbox2" name="checkbox02" checked="checked">
-                        <label for="checkbox2" title="Wifi">Wifi</label>
-                    </span>
-                    <span class="details-card-service_detail">
-                        <input type="checkbox" id="checkbox3" name="checkbox03">
-                        <label for="checkbox3" title="Desayuno">Desayuno</label>
+                    <span class="details-card-service_detail" *ngFor="let item of servicios">
+                        <input type="checkbox" name="checkbox01" disabled="disabled" checked="checked">
+                        <label title="{{item.tipo}}">{{item.tipo}}</label>
                     </span>
                 </div>
                 <h1 class="mt-2">Comentarios</h1>
                 <div class="details-comentarios">
-                    <div class="details-comentarios-card">
+                    <div class="details-comentarios-card" *ngIf="isBooking">
                         <textarea id="comentario" name="comentario" rows="4" cols="50" maxlength="200"></textarea>
                         <button class="button--default">Enviar comentario</button>
                     </div>
