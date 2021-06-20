@@ -17,7 +17,7 @@ export class ValoracionProvider {
         for (let i = 0; i < parameters.length; i++) {
             const param = parameters[i];
             let newParam = new ServicioContratado();
-            // newParam.servicioID = param.servicioID;
+            newParam.servicioID = param;
 
             params[i] = newParam;
         }

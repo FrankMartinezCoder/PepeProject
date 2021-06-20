@@ -19,6 +19,10 @@ export class UserService {
     return this.httpClient.get<User>(Static.user.create,{params:parameters});
   }
 
+  public getAllUsers():Observable<Array<User>> {
+    return this.httpClient.get<Array<User>>(Static.user.list);
+  }
+
   public logout():Observable<void> {
     let temporalObserver: EventEmitter<void> = new EventEmitter();    
     sessionStorage.removeItem("currentUser")

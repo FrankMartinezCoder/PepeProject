@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from '../model/back-model/User';
 import { UserService } from '../services/user-service.service';
 
@@ -66,5 +67,9 @@ export class UserProvider {
   public getUserLogged(): User {
     let user: User = User.parse(JSON.parse(sessionStorage.getItem('currentUser')));
     return user;
+  }
+
+  public getAllUsers() :Observable<Array<User>> {
+    return this.userService.getAllUsers();
   }
 }
