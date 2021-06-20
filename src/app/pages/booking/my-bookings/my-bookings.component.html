@@ -29,8 +29,11 @@
                             </div>
                             <div class="details-card-reservation mt-2">
                                 <div class="details-card-reservation_btn">
-                                    <button class="button button--danger">Cancelar</button>
-                                    <button class="button button--info">Ir a detalles</button>
+                                    <button class="button button--danger" [disabled]="item.esCancelacion" (click)="cancel(item.reservaID)">
+                                        <span *ngIf="!item.esCancelacion">Cancelar</span>
+                                        <span *ngIf="item.esCancelacion">Cancelada</span>
+                                    </button>
+                                    <button class="button button--info" (click)="verReserva(item.reservaID)">Ir a detalles</button>
                                 </div>
                             </div>
                         </div>

@@ -18,9 +18,8 @@ export class Static {
     }
 
     public static booking = {
-        login: Static.bookings+"login",
         add: Static.bookings+"add",
-        delete: Static.bookings+"delete",
+        cancel: Static.bookings+"cancela",
         list: Static.bookings+"list",
         modify: Static.bookings+"modificar",
         getBookingsByUser: Static.bookings+"usuario"

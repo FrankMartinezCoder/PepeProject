@@ -31,20 +31,26 @@ export class BookingProvider {
         showModal();
         return this.bookingService.getListBookings();
     }
-    public addBooking(adultos: number, jovenes: number, infantes: number, fechaEntrada: string, fechaSalida: string, usuarioID: number, hotelID: number, habitacionID: number, costeTotal:number, costeBase:number = 0):Observable<void> {
+    public addBooking(adultos: number, jovenes: number, infantes: number, fechaEntrada: string, fechaSalida: string, usuarioID: number, hotelID: number, habitacionID: number, costeTotal: number, costeBase: number = 0): Observable<void> {
         let params = {
-            'adultos':adultos,
-            'jovenes':jovenes,
-            'infantes':infantes,
-            'usuarioID':usuarioID,
-            'hotelID':hotelID,
-            'habitacionID':habitacionID,
-            'fechaEntrada':fechaEntrada,
-            'fechaSalida':fechaSalida,
-            'costeTotal':costeTotal,
-            'costeBase':costeBase
+            'adultos': adultos,
+            'jovenes': jovenes,
+            'infantes': infantes,
+            'usuarioID': usuarioID,
+            'hotelID': hotelID,
+            'habitacionID': habitacionID,
+            'fechaEntrada': fechaEntrada,
+            'fechaSalida': fechaSalida,
+            'costeTotal': costeTotal,
+            'costeBase': costeBase
         }
 
         return this.bookingService.addBookingRoom(params);
+    }
+
+    public cancelBooking(reservaId:number): Observable<void> {
+        console.log(reservaId);
+        
+        return this.bookingService.cancelBooking({'reservaID':reservaId});
     }
 }

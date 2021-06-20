@@ -177,13 +177,13 @@
                     </tr>
                     <tr class="item" *ngFor="let service of pensiones">
                         <td *ngIf="service.isSelected">{{service.tipo}}</td>
-                        <td *ngIf="room && service.isSelected">{{room.ocupantes}}</td>
-                        <td *ngIf="room && service.isSelected">{{room.ocupantes * service.precio * numDias}}€</td>
+                        <td *ngIf="room && service.isSelected">{{adultos+jovenes+children}}</td>
+                        <td *ngIf="room && service.isSelected">{{(adultos+jovenes+children) * service.precio * numDias}}€</td>
                     </tr>
                     <tr class="item" *ngFor="let service of servicios">
                         <td *ngIf="service.isSelected">{{service.tipo}}</td>
-                        <td *ngIf="room && service.isSelected">{{room.ocupantes}}</td>
-                        <td *ngIf="room && service.isSelected">{{room.ocupantes * service.precio * numDias}}€</td>
+                        <td *ngIf="room && service.isSelected">{{adultos+jovenes+children}}</td>
+                        <td *ngIf="room && service.isSelected">{{(adultos+jovenes+children) * service.precio * numDias}}€</td>
                     </tr>
                     <tr class="item">
                         <td></td>
