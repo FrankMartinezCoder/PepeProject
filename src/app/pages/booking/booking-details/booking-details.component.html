@@ -2,7 +2,7 @@
     <div class="details-card-room-detail container">
         <div class="details-card-room_detail">
             <div class="details-card-img_detail">
-                <img src="hola" alt="Sobre nosotros" title="Sobre nosotros">
+                <img src="../../../../assets/imgs/hotels/rooms/{{room.img_path}}" alt="Sobre nosotros" title="Sobre nosotros">
                 <div class="details-card-title_detail">
                     <div class="details-card-valoration_detail">
                         <!-- <span *ngFor="let value of counter(5); let i = index" style="width: 10px; height: 10px;">
@@ -14,41 +14,41 @@
                     </div>
                     <div class="details-card-valoration_detail-pvp">
                         <p>
-                            titulo
+                            {{room.tipoHabitacion}}
                         </p>
                         <span class="bookings-searched-card-title_precio">
-                            20€
+                            {{room.precioHabitacionTotal}}€
                         </span>
                     </div>
                     <div class="details-card-descripcion_detail mt-2">
                         <p>
-                            descripcion
+                            {{room.descripcion}}
                         </p>
                     </div>
                 </div>
             </div>
 
             <div class="details-card-content_detail mt-4">
-                <h4 class="mt-2">Hotel: Maria</h4>
+                <h4 class="mt-2">{{room.hotelID.nombre}}</h4>
                 <div class="details-hotel">
                     <div class="details-hotel-img">
-                        <img src="maria" alt="Hotel mis huevos">
+                        <img src="maria" alt="">
                     </div>
 
                     <div class="details-hotel-content">
                         <div class="details-card-info-address">
                             <p>
-                                adress+
+                                {{room.hotelID.direccion}}
                             </p>
                         </div>
                         <span class="details-hotel-content-hotel">
-                            descripcion
+                            {{room.hotelID.descripcion}}
                         </span>
                     </div>
                 </div>
-                <h1 class="mt-2">Iframe</h1>
+                <h1 class="mt-2">Localización</h1>
                 <div class="details-card-info-iframe mt-2">
-                    <iframe src="https://www.google.es/" frameborder="0"></iframe>
+                    <iframe [src]="iframeUrl |safe" frameborder="0"></iframe>
                 </div>
                 <h1 class="mt-2">Servicios</h1>
                 <div class="details-card-services_detail mt-2">

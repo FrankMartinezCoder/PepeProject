@@ -10,7 +10,7 @@ export class StaticPages {
     public static hotelList:string = "hotel-list";
     public static userManagement:string = "user-management";
     public static roomManagement:string = "room-management";
-    public static servicesManagement:string = "services-management";
+    public static servicesManagement:string = "service-management";
 
 
     public static testing:string = "testing";

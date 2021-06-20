@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BackendService } from 'src/app/model/back-model/BackendService';
 import { Room } from 'src/app/model/back-model/Room';
 import { User } from 'src/app/model/back-model/User';
 import { BookingFilter } from 'src/app/model/front-model/BookingFilter';
 import { Service } from 'src/app/model/front-model/Service';
+import { BookingProvider } from 'src/app/providers/booking.provider';
 import { ServicesProvider } from 'src/app/providers/hotel_services.provider';
 import { UserProvider } from 'src/app/providers/user.provider';
 
@@ -53,7 +55,10 @@ export class BookingFlowComponent implements OnInit {
   public numDias: number = 1;
   //------------------------
 
-  constructor(private servicesProvider: ServicesProvider, private userProvider: UserProvider) { }
+  constructor(private servicesProvider: ServicesProvider,
+    private bookingProvider: BookingProvider,
+    private userProvider: UserProvider,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -169,7 +174,7 @@ export class BookingFlowComponent implements OnInit {
     switch (id) {
       case 0:
         temporal = this.adultos;
-        if(temporal > 1)
+        if (temporal > 1)
           temporal--;
         break
       case 1:
@@ -179,7 +184,7 @@ export class BookingFlowComponent implements OnInit {
         temporal = this.children;
         break
     }
-    if (id!= 0 && temporal > this.min) {
+    if (id != 0 && temporal > this.min) {
       temporal--;
     }
     switch (id) {
@@ -324,17 +329,17 @@ export class BookingFlowComponent implements OnInit {
   }
 
   public updateTotalCoste() {
-    this.totalCosteReserva = this.costeTotalHabitacion*this.numDias;
-    
+    this.totalCosteReserva = this.costeTotalHabitacion * this.numDias;
+
     for (let i = 0; i < this.servicios.length; i++) {
-      if(this.servicios[i].isSelected) {
+      if (this.servicios[i].isSelected) {
         this.totalCosteReserva += (this.servicios[i].precio * this.room.ocupantes * this.numDias);
       }
     }
-    
+
     if (!this.pensiones.find(e => e.tipo == this.pension_todo_incluido.title) && this.pension_todo_incluido.isActive) {
       let precioXpersona = this.pensiones.find(e => e.tipo == this.pension_todo_incluido.title).precio;
-      this.totalCosteReserva += (precioXpersona?precioXpersona:1 * this.room.ocupantes * this.numDias)
+      this.totalCosteReserva += (precioXpersona ? precioXpersona : 1 * this.room.ocupantes * this.numDias)
     }
     if (!this.pensiones.find(e => e.tipo == this.pension_desayuno.title) && this.pension_desayuno.isActive) {
       let precioXpersona = this.pensiones.find(e => e.tipo == this.pension_desayuno.title).precio;
@@ -362,9 +367,21 @@ export class BookingFlowComponent implements OnInit {
 
   public next() {
     if ((this.currentIndex + 1) == this.scenes.length) {
-      console.log("final flujo");
-
-      // THROW SERVICESD
+      this.bookingProvider.addBooking(
+        this.adultos,
+        this.jovenes,
+        this.children,
+        BookingFilter.dateFormat(this.filter.fechaEntrada, true),
+        BookingFilter.dateFormat(this.filter.fechaSalida, true),
+        this.user.usuarioID,
+        this.room.hotelID.hotelID,
+        this.room.habitacionID,
+        this.totalCosteReserva).subscribe(
+          ok => {
+            this.close();
+            this.router.navigate(['/my-bookings']);
+          }
+        );
     }
     else {
       this.currentIndex++;

@@ -26,7 +26,9 @@ export class HeaderProvider {
     title: 'Administración Royal Hotel',
     items: [
       { name: 'usuarios', url: '/user-management', id:-1},
-      { name: 'habitaciones', url: '/hotel-management', id:-1},
+      { name: 'hoteles', url: '/hotel-management', id:-1},
+      { name: 'servicios', url: '/service-management', id:-1},
+      { name: 'habitaciones', url: '/room-management', id:-1},
     ]
   }
 

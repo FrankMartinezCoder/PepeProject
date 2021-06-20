@@ -18,7 +18,7 @@ export class Static {
 
     public static booking = {
         login: Static.bookings+"login",
-        create: Static.bookings+"create",
+        add: Static.bookings+"add",
         delete: Static.bookings+"delete",
         list: Static.bookings+"list",
         modify: Static.bookings+"modificar",

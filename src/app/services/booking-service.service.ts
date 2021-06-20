@@ -22,8 +22,8 @@ export class BookingService {
     return this.httpClient.get<Array<Booking>>(Static.booking.list);
   }
 
-  public addBookingRoom():Observable<Booking[]> {
-    return null //this.httpClient.get<Booking[]>(Static.room.list);
+  public addBookingRoom(parameters:any):Observable<void> {
+    return this.httpClient.get<void>(Static.booking.add,{'params':parameters});
   }
   
 }
