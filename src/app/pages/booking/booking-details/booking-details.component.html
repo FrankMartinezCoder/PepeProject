@@ -32,7 +32,7 @@
                 <h4 class="mt-2">{{room.hotelID.nombre}}</h4>
                 <div class="details-hotel">
                     <div class="details-hotel-img">
-                        <img src="maria" alt="">
+                        <img src="../../../../assets/imgs/hotels/{{room.hotelID.img_path}}" alt="">
                     </div>
 
                     <div class="details-hotel-content">
@@ -48,7 +48,7 @@
                 </div>
                 <h1 class="mt-2">Localización</h1>
                 <div class="details-card-info-iframe mt-2">
-                    <iframe [src]="iframeUrl |safe" frameborder="0"></iframe>
+                    <iframe [src]="iframeUrl" frameborder="0"></iframe>
                 </div>
                 <h1 class="mt-2">Servicios</h1>
                 <div class="details-card-services_detail mt-2">

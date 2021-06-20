@@ -113,7 +113,7 @@ export class BookingSearchComponent implements OnInit {
     this.filter.clear();
   }
   public reservar(idHabitacion) {
-    if (this.userProvider.isUserLogged()) {
+    if (!this.userProvider.isUserLogged()) {
       $("#login-component,#login-background").fadeIn(500);
     }
     else {

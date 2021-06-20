@@ -487,11 +487,6 @@
 @media (max-width: 768px) {
     .details {
         &-card {
-            &-valoration_detail-pvp{
-                display: flex;
-                justify-content: space-between;
-                
-            }
             &-title {
                 display: flex;
                 align-content: flex-start;

@@ -376,7 +376,8 @@ export class BookingFlowComponent implements OnInit {
         this.user.usuarioID,
         this.room.hotelID.hotelID,
         this.room.habitacionID,
-        this.totalCosteReserva).subscribe(
+        this.totalCosteReserva,
+        this.costeTotalHabitacion).subscribe(
           ok => {
             this.close();
             this.router.navigate(['/my-bookings']);
