@@ -29,8 +29,9 @@
             &_detail {
                 padding: 2% 0%;
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-gap: 3%;
+                justify-content: center;
+                grid-template-columns: 30% 55%;
+                grid-gap: 5%;
                 border-bottom: 2px solid var(--color-primary);
                 & > img {
                     width: 100%;
@@ -336,12 +337,12 @@ input[type="radio"] + label {
 
 input[type="radio"]:disabled + label,
 input[type="checkbox"]:disabled + label {
-    color: #ccc !important;
+    color: var(--color-primary) !important;
     cursor: not-allowed;
 }
 input[type="radio"]:checked:disabled + label:after,
 input[type="checkbox"]:checked:disabled + label:after {
-    border-color: #ccc;
+    border-color: var(--color-primary);
 }
 
 input[type="radio"] + label:before,
@@ -351,7 +352,7 @@ input[type="checkbox"] + label:before {
     height: 25px;
     float: left;
     margin-right: 0.5em;
-    border: 2px solid #ccc;
+    border: 2px solid var(--color-primary);
     background: #fff;
     margin-top: 0.7em;
 }
@@ -361,7 +362,7 @@ input[type="radio"] + label:before {
 
 input[type="radio"]:checked + label,
 input[type="checkbox"]:checked + label {
-    color: orange;
+    color: var(--color-primary);
 }
 
 input[type="radio"]:checked + label:after {
@@ -395,10 +396,10 @@ input[type="checkbox"]:checked + label:before {
 input[type="radio"]:checked:disabled + label,
 input[type="checkbox"]:checked:disabled + label {
     background: #ccc;
-    color: #fff !important;
+    color: var(--color-primary) !important;
 }
 
 input[type="radio"]:checked:disabled + label:before,
 input[type="checkbox"]:checked:disabled + label:before {
-    border-color: #bdbdbd;
+    border-color: var(--color-primary);
 }
