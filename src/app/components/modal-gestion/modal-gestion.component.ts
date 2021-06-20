@@ -9,18 +9,30 @@ import { User } from 'src/app/model/back-model/User';
 })
 export class ModalGestionComponent implements OnInit {
   public fields: string[];
-  @Input() private tableDataListener: EventEmitter<Management>;
+  @Input() private modalData: EventEmitter<Management>;
+  @Input() private modalUpdate: EventEmitter<Management>;
   public list: Management [];
   constructor() { }
 
   ngOnInit(): void {
-    this.tableDataListener.subscribe(
+    this.modalData.subscribe(
       data => {
+        console.log("data",data);
+        
+        this.list = new Array(data.length);
+        for (let i = 0; i < data.length; i++) {
+          this.list[i] = User.parse(data[i]);
+        }
         if (this.list.length) {
           this.fields =this.list[0].getFields();
         }
       }
     )
+    console.log('fields' , this.fields);
   }
 
+
+  public send() {
+    this.modalUpdate.emit();
+  }
 }

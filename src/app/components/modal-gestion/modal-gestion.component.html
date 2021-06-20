@@ -7,7 +7,7 @@
             <div class="input_group" *ngFor="let item of fields">
                 <!-- <input id="email-input" type="text" [(ngModel)]="email.value" (focusout)="validator(email)" required> -->
                 <input id="item" type="text" required>
-                <label for="item" class="noselect">{{}}</label>
+                <label for="item" class="noselect">{{item}}</label>
             </div>
 
             <div class="button-group">
