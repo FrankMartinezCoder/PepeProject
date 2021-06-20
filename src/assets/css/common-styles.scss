@@ -165,9 +165,13 @@ body {
     --scrolling-header-heigth: 6vh;
 }
 
-[class|='data'] {
+[class |= 'data'] {
+    background-color: white;
+    border-bottom: 1px solid orange;
 
     &:disabled {
-        
+        background-color: white;
+        border-bottom:none;
+
     }
 }
