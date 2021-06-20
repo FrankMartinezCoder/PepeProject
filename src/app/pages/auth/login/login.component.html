@@ -21,6 +21,7 @@
                 <button class="button button--default noselect"  tabindex="3" [disabled]="(!email.isValid || !password.isValid)" (click)="loginCheck()">Acceder</button>
                 <button class="button button--danger noselect"  tabindex="4" (click)="cancel()">Cancelar</button>
             </div>
+            <div class="button_group"><span>¿Aún no estas registrado? <a class="button_group-enlace" (click)="registrar()">Registrar</a></span></div>
             <span class="error-message"><span *ngIf="form.errorMessage!=''"
                 class="warning-icon"></span>{{form.errorMessage}}</span>
         </fieldset>

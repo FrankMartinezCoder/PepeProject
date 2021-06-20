@@ -104,6 +104,12 @@ export class LoginComponent implements OnInit {
     this.password.isValid = temp;
   }
 
+  public registrar(): void {
+    this.reset();
+    $("#register-component,#register-background").fadeIn(500);
+    $("body").addClass("locked");
+  }
+
 
 }
 
