@@ -13,7 +13,7 @@
         <tr>
         <tr *ngFor="let registro of list; let e = index">
             <td *ngFor="let item of colums; let i = index">
-                <input class="data-{{e}}" type="text" value="{{registro.get(i)}}" [disabled]="!editable[e]">
+                <input class="data-{{e}}" type="text" value="{{registro.get(i)}}" [disabled]="!editable[e]"> 
             </td>
             <td *ngIf="!editable[e]">
                 <button (click)="editar(e)" class="button--default ">Editar</button>
