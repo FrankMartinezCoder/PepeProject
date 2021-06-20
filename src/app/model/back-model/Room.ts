@@ -2,8 +2,16 @@ import { Hotel } from "./Hotel";
 import { Management } from "./management.interface";
 
 export class Room implements Management{
+    get(columId: number): any {
+        switch (columId) {
+            case 0:
+                return this.tipoHabitacion;
+            case 1:
+                return this.numHabitacion;
+        }
+    }
     getColumns(): string[] {
-        return ["","","",""];
+        return ["Tipo Habitacion","Numero Habitacion","Precio",""];
     }
     public habitacionID: number;
     public descripcion: string;

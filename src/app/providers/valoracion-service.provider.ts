@@ -19,6 +19,8 @@ export class ValoracionProvider {
             let newParam = new ServicioContratado();
             newParam.servicioID = param;
 
+            newParam.denominacion = param.tipo;
+            
             params[i] = newParam;
         }
 
@@ -28,9 +30,9 @@ export class ValoracionProvider {
 
 class ServicioContratado {
     public servicioContratadoID:number;
-    public denominacion
-    public unidades
-    public precio
+    public denominacion:string;
+    public unidades:number;
+    public precio:number;
     public reservaID:object = null;
     public servicioID:BackendService;
 

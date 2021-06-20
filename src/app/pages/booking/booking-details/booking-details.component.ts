@@ -1,6 +1,7 @@
 import { Component, OnInit, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { BackendService } from 'src/app/model/back-model/BackendService';
+import { Booking } from 'src/app/model/back-model/Booking';
 import { Room } from 'src/app/model/back-model/Room';
 import { ServicesProvider } from 'src/app/providers/hotel_services.provider';
 
@@ -12,6 +13,8 @@ import { ServicesProvider } from 'src/app/providers/hotel_services.provider';
 export class BookingDetailsComponent implements OnInit, PipeTransform {
 
   public room: Room;
+  public booking: Booking;
+
   public iframeUrl: SafeResourceUrl;
   public servicios: Array<BackendService>;
   public pensiones: Array<BackendService>;
@@ -25,7 +28,6 @@ export class BookingDetailsComponent implements OnInit, PipeTransform {
   ngOnInit(): void {
     this.isBooking = localStorage.getItem('DetailView_isBooking') == 'true';
     
-    console.log(this.isBooking);
     
 
     if(this.isBooking) {
