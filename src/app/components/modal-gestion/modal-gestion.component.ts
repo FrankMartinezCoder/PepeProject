@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Management } from 'src/app/model/back-model/management.interface';
-import { User } from 'src/app/model/back-model/User';
 
 @Component({
   selector: 'app-modal-gestion',

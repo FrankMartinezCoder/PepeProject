@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Management } from 'src/app/model/back-model/management.interface';
 import { User } from 'src/app/model/back-model/User';
 import { UserProvider } from 'src/app/providers/user.provider';
 
@@ -17,7 +16,7 @@ export class UserManagementComponent implements OnInit {
   @Output() tableDataListener:EventEmitter<User[]> = new EventEmitter();
   @Output() dataChange:EventEmitter<string[]> = new EventEmitter();
   @Output() modalUpdate:EventEmitter<string[]> = new EventEmitter();
-  @Output() modalData:EventEmitter<Management> = new EventEmitter();
+  @Output() modalData:EventEmitter<User> = new EventEmitter();
 
   constructor(private userProvider: UserProvider) { }
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Management } from 'src/app/model/back-model/management.interface';
-import { Service } from 'src/app/model/front-model/Service';
+import { BackendService } from 'src/app/model/back-model/BackendService';
+import { ServicesProvider } from 'src/app/providers/hotel_services.provider';
 
 @Component({
   selector: 'app-services-management',
@@ -9,35 +9,42 @@ import { Service } from 'src/app/model/front-model/Service';
 })
 export class ServicesManagementComponent implements OnInit {
 
-  // constructor(private serviceProvider: ServiceProvider) { }
-  @Output() tableDataListener:EventEmitter<Service[]> = new EventEmitter();
-  @Output() dataChange:EventEmitter<string[]> = new EventEmitter();
-  @Output() modalUpdate:EventEmitter<string[]> = new EventEmitter();
-  @Output() modalData:EventEmitter<Management> = new EventEmitter();
-  public servicios: Service[];
+  public title: string = "Registro de Usuarios";
 
+  public users: BackendService[];
+
+  @Output() tableDataListener: EventEmitter<BackendService[]> = new EventEmitter();
+  @Output() dataChange: EventEmitter<string[]> = new EventEmitter();
+  @Output() modalUpdate: EventEmitter<string[]> = new EventEmitter();
+  @Output() modalData: EventEmitter<BackendService> = new EventEmitter();
+
+  constructor(private serviceProvider: ServicesProvider) { }
   ngOnInit(): void {
-        /*const _ = this;
+    this.getUsuarios();
+  }
+
+  private getUsuarios() {
+    const _ = this;
 
     this.dataChange.subscribe(
-      done => {
-        this.modalData.emit(done);
+      user => {
+        // this.serviceProvider.deleteUser(user);
       }
     )
-    this.hotelProvider.getAllServices().subscribe(
-      data => {
-        this.servicios = new Array<Service>(data.length);
-        
-        for (let i = 0; i < data.length; i++) {
-          this.servicios[i] = Service.parse(data[i]);
-        }
+    // this.serviceProvider.getServicesFromHotelId().subscribe(
+    //   data => {
+    //     this.users = new Array<BackendService>(data.length);
 
-        this.tableDataListener.emit(this.servicios);
-      },
-      err => {
+    //     for (let i = 0; i < data.length; i++) {
+    //       this.users[i] = BackendService.parse(data[i]);
+    //     }
 
-      }
-      );*/
+    //     this.tableDataListener.emit(this.users);
+    //   },
+    //   err => {
+
+    //   }
+    // );
 
   }
 

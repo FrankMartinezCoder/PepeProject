@@ -19,11 +19,11 @@ import { ModalGestionComponent } from '../components/modal-gestion/modal-gestion
 import { HotelListComponent } from './hotel-list/hotel-list.component';
 import { MyBookingsComponent } from './booking/my-bookings/my-bookings.component';
 import { RoomManagementComponent } from './management/room-management/room-management.component';
-import { ModalGestionUserComponent } from '../components/modales-gestion/modal-gestion-user/modal-gestion-user.component';
-import { ModalGestionServiceComponent } from '../components/modales-gestion/modal-gestion-service/modal-gestion-service.component';
-import { ModalGestionRoomComponent } from '../components/modales-gestion/modal-gestion-room/modal-gestion-room.component';
-import { ModalGestionHotelComponent } from '../components/modales-gestion/modal-gestion-hotel/modal-gestion-hotel.component';
 import { ServicesManagementComponent } from './management/services-management/services-management.component';
+import { TablaGestionUserComponent } from '../components/tablas-gestion/tabla-gestion-user/tabla-gestion-user.component';
+import { TablaGestionRoomComponent } from '../components/tablas-gestion/tabla-gestion-room/tabla-gestion-room.component';
+import { TablaGestionHotelComponent } from '../components/tablas-gestion/tabla-gestion-hotel/tabla-gestion-hotel.component';
+import { TablaGestionServiceComponent } from '../components/tablas-gestion/tabla-gestion-service/tabla-gestion-service.component';
 
 @NgModule({
   declarations: [
@@ -43,10 +43,10 @@ import { ServicesManagementComponent } from './management/services-management/se
     TablaGestionComponent,
     ModalGestionComponent,
     HotelListComponent,
-    ModalGestionUserComponent,
-    ModalGestionServiceComponent,
-    ModalGestionRoomComponent,
-    ModalGestionHotelComponent
+    TablaGestionUserComponent,
+    TablaGestionRoomComponent,
+    TablaGestionHotelComponent,
+    TablaGestionServiceComponent
   ],
   exports: [
     PagesComponent,
@@ -65,10 +65,10 @@ import { ServicesManagementComponent } from './management/services-management/se
     TablaGestionComponent,
     ModalGestionComponent,
     HotelListComponent,
-    ModalGestionUserComponent,
-    ModalGestionServiceComponent,
-    ModalGestionRoomComponent,
-    ModalGestionHotelComponent
+    TablaGestionUserComponent,
+    TablaGestionRoomComponent,
+    TablaGestionHotelComponent,
+    TablaGestionServiceComponent
   ],
   imports: [
     CommonModule,
