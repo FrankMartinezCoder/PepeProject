@@ -175,3 +175,12 @@ body {
 
     }
 }
+
+.gestion-header{
+    display: flex;
+    justify-content: space-between;
+    &>span{
+        font-size: 1.5rem;
+        font-weight: bold
+    }
+}
