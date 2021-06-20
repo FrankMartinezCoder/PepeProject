@@ -1,23 +1,32 @@
 import { Management } from "./management.interface";
 
 export class User implements Management {
+    getField(id: number) {
+        switch (id) {
+            case 0:
+                return this.nombre;
+            case 1:
+                return this.apellidos;
+            case 2:
+                return this.email;
+            case 3:
+                return this.password;
+        }
+    }
     getFields(): string[] {
         return ['nombre', 'apellidos', 'email', 'password'];
     }
+    
     public get(columId: number): any {
         switch (columId) {
             case 0:
                 return this.usuarioID;
-                break;
             case 1:
                 return this.nombre;
-                break;
             case 2:
                 return this.apellidos;
-                break;
             case 3:
                 return this.email;
-                break;
         }
     }
 

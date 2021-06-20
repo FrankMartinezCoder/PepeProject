@@ -4,7 +4,7 @@
         <fieldset class="modal_gestion-form">
             <legend>Registro Habitaciones</legend>
 
-            <div class="input_group" *ngFor="let item of fields">
+            <div class="input_group" *ngFor="let item of fields; let i = index">
                 <input id="item" type="password" required *ngIf="item == 'password'">
                 <input id="item" type="text" required *ngIf="item != 'password'">
                 <label for="item" class="noselect">{{item}}</label>

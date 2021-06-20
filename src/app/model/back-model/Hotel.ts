@@ -1,6 +1,9 @@
 import { Management } from "./management.interface";
 
 export class Hotel implements Management{
+    getField(id: number) {
+        throw new Error("Method not implemented.");
+    }
     public hotelID: number;
     public nombre: string;
     public localizacion: string;
@@ -8,7 +11,6 @@ export class Hotel implements Management{
     public descripcion: string;
     public direccion: string;
 
-    constructor() { }
     getFields(): string[] {
         throw new Error("Method not implemented.");
     }

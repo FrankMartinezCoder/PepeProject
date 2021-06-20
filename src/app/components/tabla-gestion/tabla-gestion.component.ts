@@ -12,6 +12,9 @@ import { User } from 'src/app/model/back-model/User';
 export class TablaGestionComponent implements OnInit {
   @Input() public title: string;
   public colums: string[];
+
+  public editable:Array<boolean>;
+
   @Input() private tableDataListener: EventEmitter<Management>;
 
   @Input() private dataChange: EventEmitter<Management>;
@@ -28,12 +31,15 @@ export class TablaGestionComponent implements OnInit {
         if (this.list.length) {
           this.colums =this.list[0].getColumns();
         }
+        this.editable = new Array(data.length).fill(false);
+        console.log(this.editable);
+        
       }
     )
   }
 
-  public editar(item: Management){
-    this.dataChange.emit(item);
+  public editar(idx:number){
+    this.editable[idx] = true;
   }
 
   public eliminar(item: Management){
