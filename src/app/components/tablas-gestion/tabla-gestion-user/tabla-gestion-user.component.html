@@ -1,1 +1,39 @@
-<p>tabla-gestion-user works!</p>
+<div class="container gestion">
+    <div class="gestion-header mt-2">
+        <span class="gestion-header-table mt-2">{{title}} </span>
+        <button class="button--default">Insertar</button>
+    </div>
+    <table class="table table-striped table-bordered table-hover table-condensed mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tr>
+        <tr *ngFor="let user of users; let e = index">
+            <td>
+                <input class="data-{{e}}" type="text" [(ngModel)]="user.usuarioID" [disabled]="!editable[e]"> 
+            </td>
+            <td>
+                <input class="data-{{e}}" type="text" [(ngModel)]="user.nombre" [disabled]="!editable[e]"> 
+            </td>
+            <td>
+                <input class="data-{{e}}" type="text" [(ngModel)]="user.apellidos" [disabled]="!editable[e]"> 
+            </td>
+            <td>
+                <input class="data-{{e}}" type="text" [(ngModel)]="user.email" [disabled]="!editable[e]"> 
+            </td>
+            <td *ngIf="!editable[e]">
+                <button (click)="editar(e)" class="button--default ">Editar</button>
+                <button (click)="eliminar(registro)" class="button--danger ">Eliminar</button>
+            </td>
+            <td *ngIf="editable[e]">
+                <button (click)="editar(registro)" class="button--info">Actualizar</button>
+            </td>
+        </tr>
+    </table>
+</div>

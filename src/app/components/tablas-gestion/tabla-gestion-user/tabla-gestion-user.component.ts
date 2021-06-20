@@ -8,7 +8,6 @@ import { User } from 'src/app/model/back-model/User';
 })
 export class TablaGestionUserComponent implements OnInit {
   @Input() public title: string;
-  public colums: string[];
 
   public editable:Array<boolean>;
 
@@ -17,13 +16,13 @@ export class TablaGestionUserComponent implements OnInit {
   @Input() private dataChange: EventEmitter<User>;
 
 
-  public list: User [];
+  public users: User [];
   constructor() { }
 
   ngOnInit(): void {
     this.tableDataListener.subscribe(
       data => {
-        this.list = data;
+        this.users = data;
 
         this.editable = new Array(data.length).fill(false);
         
