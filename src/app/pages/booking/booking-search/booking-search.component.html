@@ -45,6 +45,7 @@
     </div>
     <div class="container booking-list">
         <div class="no-bookings" *ngIf="!roomList">Aún no ha realizado ninguna búsqueda</div>
+        <div class="no-bookings" *ngIf="!roomList.length">No se ha encontrado ninguna reserva.</div>
 
         <div class="booking-list-detail--container" *ngIf="roomList">
             <div class="bookingsSearched">
