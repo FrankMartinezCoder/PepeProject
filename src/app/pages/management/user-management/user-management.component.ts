@@ -28,8 +28,8 @@ export class UserManagementComponent implements OnInit {
     const _ = this;
 
     this.dataChange.subscribe(
-      done => {
-        this.modalData.emit(done);
+      user => {
+        // this.userProvider.deleteUser(user);
       }
     )
     this.userProvider.getAllUsers().subscribe(
