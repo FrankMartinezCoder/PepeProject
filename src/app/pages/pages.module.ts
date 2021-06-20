@@ -19,6 +19,10 @@ import { ModalGestionComponent } from '../components/modal-gestion/modal-gestion
 import { HotelListComponent } from './hotel-list/hotel-list.component';
 import { MyBookingsComponent } from './booking/my-bookings/my-bookings.component';
 import { RoomManagementComponent } from './management/room-management/room-management.component';
+import { ModalGestionUserComponent } from '../components/modales-gestion/modal-gestion-user/modal-gestion-user.component';
+import { ModalGestionServiceComponent } from '../components/modales-gestion/modal-gestion-service/modal-gestion-service.component';
+import { ModalGestionRoomComponent } from '../components/modales-gestion/modal-gestion-room/modal-gestion-room.component';
+import { ModalGestionHotelComponent } from '../components/modales-gestion/modal-gestion-hotel/modal-gestion-hotel.component';
 import { ServicesManagementComponent } from './management/services-management/services-management.component';
 
 @NgModule({
@@ -38,7 +42,11 @@ import { ServicesManagementComponent } from './management/services-management/se
     NumberInputComponent,
     TablaGestionComponent,
     ModalGestionComponent,
-    HotelListComponent
+    HotelListComponent,
+    ModalGestionUserComponent,
+    ModalGestionServiceComponent,
+    ModalGestionRoomComponent,
+    ModalGestionHotelComponent
   ],
   exports: [
     PagesComponent,
@@ -56,7 +64,11 @@ import { ServicesManagementComponent } from './management/services-management/se
     NumberInputComponent,
     TablaGestionComponent,
     ModalGestionComponent,
-    HotelListComponent
+    HotelListComponent,
+    ModalGestionUserComponent,
+    ModalGestionServiceComponent,
+    ModalGestionRoomComponent,
+    ModalGestionHotelComponent
   ],
   imports: [
     CommonModule,
