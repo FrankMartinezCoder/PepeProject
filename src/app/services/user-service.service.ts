@@ -23,6 +23,14 @@ export class UserService {
     return this.httpClient.get<Array<User>>(Static.user.list,{ params: {'esAdmin':'false'} });
   }
 
+  public deleteUser(parameters:any):Observable<void> {
+    return this.httpClient.get<void>(Static.user.delete,{params:parameters});
+  }
+  
+  public modifyUser(parameters:any):Observable<void> {
+    return this.httpClient.get<void>(Static.user.modify,{params:parameters});
+  }
+
   public logout():Observable<void> {
     let temporalObserver: EventEmitter<void> = new EventEmitter();    
     sessionStorage.removeItem("currentUser")

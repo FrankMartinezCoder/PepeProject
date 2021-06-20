@@ -44,6 +44,23 @@ export class UserProvider {
     )
   }
 
+  public deleteUser(user:User):Observable<void> {
+    let params = {
+      'usuarioID':user.usuarioID
+    }
+    return this.userService.deleteUser(params);
+  }
+
+  public modifyUser(user:User):Observable<void> {
+    let params = {
+      'usuarioID':user.usuarioID,
+      'email':user.email,
+      'nombre':user.nombre,
+      'apellidos':user.apellidos
+    }
+    return this.userService.modifyUser(params);
+  }
+
   public logout(): void {
     this.userService.logout().subscribe(
       _ => {

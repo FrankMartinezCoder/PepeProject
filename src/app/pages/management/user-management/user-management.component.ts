@@ -15,6 +15,8 @@ export class UserManagementComponent implements OnInit {
 
   @Output() tableDataListener:EventEmitter<User[]> = new EventEmitter();
   @Output() dataChange:EventEmitter<string[]> = new EventEmitter();
+  @Output() dataDelete:EventEmitter<string[]> = new EventEmitter();
+
   @Output() modalUpdate:EventEmitter<string[]> = new EventEmitter();
   @Output() modalData:EventEmitter<User> = new EventEmitter();
 
@@ -26,9 +28,14 @@ export class UserManagementComponent implements OnInit {
   private getUsuarios(){
     const _ = this;
 
+    this.dataDelete.subscribe(
+      user => {
+        this.userProvider.deleteUser(user);
+      }
+    )
     this.dataChange.subscribe(
       user => {
-        // this.userProvider.deleteUser(user);
+        this.userProvider.modifyUser(user);
       }
     )
     this.userProvider.getAllUsers().subscribe(

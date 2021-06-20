@@ -11,7 +11,7 @@ export class ValoracionProvider {
 
     constructor(private valoracionesService:ValoracionesService) {}
 
-    public getServicesFromHotelId(parameters: BackendService[], hotel:Hotel, unidades:number): Observable<void> {
+    public getServicesFromHotelId(parameters: BackendService[], hotel:Hotel, unidades:number): Observable<string> {
         let params = new Array<ServicioContratado>(parameters.length);
 
         for (let i = 0; i < parameters.length; i++) {
@@ -21,13 +21,12 @@ export class ValoracionProvider {
             newParam.denominacion = param.tipo;
             newParam.unidades = (unidades*param.precio);
             newParam.precio = param.precio;
-            newParam.servicioID = param.getJSON(hotel);
+            newParam.servicioID = param.servicioID;
             params[i] = newParam;
         }
-        console.log("params",params);
+        console.log("params",params,"params JSON",JSON.stringify(params));
         
         return this.valoracionesService.reservaServicios(JSON.stringify(params));
-        // return null;
       }
 }
 
@@ -37,6 +36,6 @@ class ServicioContratado {
     public unidades:number;
     public precio:number;
     public reservaID:number = 0;
-    public servicioID:object;
+    public servicioID:number;
 
 }

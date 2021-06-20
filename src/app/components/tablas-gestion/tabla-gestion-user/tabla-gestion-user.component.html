@@ -29,10 +29,11 @@
             </td>
             <td *ngIf="!editable[e]">
                 <button (click)="editar(e)" class="button--default ">Editar</button>
-                <button (click)="eliminar(registro)" class="button--danger ">Eliminar</button>
+                <button (click)="eliminar(user)" class="button--danger ">Eliminar</button>
             </td>
             <td *ngIf="editable[e]">
-                <button (click)="editar(registro)" class="button--info">Actualizar</button>
+                <button (click)="actualizar(user,e)" class="button--info">Actualizar</button>
+                <button (click)="cancelarActualizar(e)" class="button--default">Cancelar</button>
             </td>
         </tr>
     </table>

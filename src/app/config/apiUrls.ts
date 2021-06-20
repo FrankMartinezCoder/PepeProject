@@ -3,6 +3,7 @@ export class Static {
 
     private static users:string = Static.serverIp+"usuarios/";
     private static rooms:string = Static.serverIp+"habitaciones/";
+    private static hotels:string = Static.serverIp+"hoteles/";
     private static bookings:string = Static.serverIp+"reservas/";
     private static services:string = Static.serverIp+"servicios/";   
     private static servicesContratados:string = Static.serverIp+"serviciosContratados/";   
@@ -39,6 +40,12 @@ export class Static {
 
     public static serviciosContratados = {
         reservaServicios: Static.servicesContratados+"reservaServicios"
+    }
+    public static hoteles = {
+        create: Static.hotels+"new",
+        update: Static.hotels+"update",
+        list: Static.hotels+"list",
+        delete: Static.hotels+"delete"
     }
     public static service = {
         getServicesFromHotelId: Static.services+"listHotelServicios"

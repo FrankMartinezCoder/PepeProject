@@ -23,6 +23,8 @@ export class BookingSearchComponent implements OnInit {
   private listener: EventEmitter<Array<Room>> = new EventEmitter();
   public roomList: Array<Room>;
 
+  public roomListNotFound:boolean =  false;
+
   public fechaEntrada: string = "";
   public fechaSalida: string = "";
 
@@ -35,6 +37,9 @@ export class BookingSearchComponent implements OnInit {
     this.listener.subscribe(
       data => {
         this.roomList = data;
+        if(!data.length) {
+          this.roomListNotFound = true;
+        }
       }
     )
   }

@@ -38,7 +38,6 @@ export class User implements Management {
     public apellidos: string;
     public email: string;
     public password: string;
-    public birthDate: Date;
     public esAdmin: boolean;
 
 
@@ -62,7 +61,6 @@ export class User implements Management {
             userTemp.apellidos = object.apellidos;
             userTemp.email = object.email;
             userTemp.password = object.password;
-            userTemp.birthDate = object.birthDate;
             userTemp.esAdmin = object.esAdmin;
         } catch (error) {
             userTemp = null;

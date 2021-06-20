@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { StaticPages } from 'src/app/config/pageUrls';
 import { Hotel } from 'src/app/model/back-model/Hotel';
 
 @Component({
@@ -8,34 +10,48 @@ import { Hotel } from 'src/app/model/back-model/Hotel';
 })
 export class TablaGestionHotelComponent implements OnInit {
   @Input() public title: string;
-  public colums: string[];
 
-  public editable:Array<boolean>;
+  public editable: Array<boolean>;
 
   @Input() private tableDataListener: EventEmitter<Hotel>;
 
   @Input() private dataChange: EventEmitter<Hotel>;
+  @Input() private dataDelete: EventEmitter<Hotel>;
 
 
-  public list: Hotel [];
-  constructor() { }
+  public hotels: Hotel[];
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.tableDataListener.subscribe(
       data => {
-        this.list = data;
+        this.hotels = data;
+
         this.editable = new Array(data.length).fill(false);
-        
       }
     )
   }
 
-  public editar(idx:number){
+  public editar(idx: number) {
     this.editable[idx] = true;
   }
 
-  public eliminar(item: Hotel){
-    this.dataChange.emit(item);
+  public eliminar(item: Hotel) {
+    this.dataDelete.emit(item);
+    this.reload();
   }
 
+  public actualizar(item: Hotel, idx: number) {
+    this.dataChange.emit(item);
+    this.cancelarActualizar(idx);
+    this.reload();
+  }
+
+  public cancelarActualizar(idx: number) {
+    this.editable[idx] = false;
+  }
+
+  private reload() {
+    this.router.navigateByUrl(StaticPages.hotelManagement);
+  }
 }
