@@ -1,6 +1,4 @@
-import { Occupant } from "./Occupant";
 import { Room } from "./Room";
-import { Valoration } from "./Valoration";
 
 export class Booking {
     public reservaID:number;

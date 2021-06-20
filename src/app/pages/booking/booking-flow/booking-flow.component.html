@@ -151,13 +151,13 @@
                                 <tr>
                                     <td>
                                         <span *ngIf="room && room.hotelID">{{room.hotelID.nombre}}</span><br />
-                                        <span *ngIf="room && room.hotelID">{{room.hotelID.descripcion}}</span>
+                                        <span *ngIf="room && room.hotelID">{{room.hotelID.direccion}}</span>
                                     </td>
                                     <td></td>
                                     <td *ngIf="user">
-                                        Nombre cliente <span>{{user.nombre}}</span><br />
-                                        apellidos <span>{{user.apellidos}}</span><br />
-                                        email <span>{{user.email}}</span>
+                                        Nombre cliente: <span>{{user.nombre}}</span><br />
+                                        apellidos: <span>{{user.apellidos}}</span><br />
+                                        email: <span>{{user.email}}</span>
                                     </td>
                                 </tr>
                             </table>

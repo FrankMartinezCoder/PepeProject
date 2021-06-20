@@ -8,6 +8,7 @@ import { Service } from 'src/app/model/front-model/Service';
 import { BookingProvider } from 'src/app/providers/booking.provider';
 import { ServicesProvider } from 'src/app/providers/hotel_services.provider';
 import { UserProvider } from 'src/app/providers/user.provider';
+import { ValoracionProvider } from 'src/app/providers/valoracion-service.provider';
 
 @Component({
   selector: 'app-booking-flow',
@@ -58,6 +59,7 @@ export class BookingFlowComponent implements OnInit {
   constructor(private servicesProvider: ServicesProvider,
     private bookingProvider: BookingProvider,
     private userProvider: UserProvider,
+    private valoracionesProvider: ValoracionProvider,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -68,8 +70,6 @@ export class BookingFlowComponent implements OnInit {
     this.scenes[2] = new Scene(2, 'Resumen', '.step-3', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--verified', 'Terminar', true), true);
 
     this.currentScene = this.scenes[this.currentIndex];
-
-    this.user = this.userProvider.getUserLogged();
 
     this.filterListener.subscribe(
       filter => {
@@ -324,6 +324,8 @@ export class BookingFlowComponent implements OnInit {
     this.currentScene.isDirty = true;
     $(".step").hide();
     $(this.currentScene.node).fadeIn();
+    this.user = this.userProvider.getUserLogged();
+
     this.updateHeader();
     this.updateTotalCoste();
   }
@@ -367,6 +369,7 @@ export class BookingFlowComponent implements OnInit {
 
   public next() {
     if ((this.currentIndex + 1) == this.scenes.length) {
+
       this.bookingProvider.addBooking(
         this.adultos,
         this.jovenes,
@@ -383,6 +386,13 @@ export class BookingFlowComponent implements OnInit {
             this.router.navigate(['/my-bookings']);
           }
         );
+        
+      this.valoracionesProvider.getServicesFromHotelId(this.servicios.filter(e=>e.isSelected),this.room.hotelID).subscribe(
+        ok => {
+          console.log(ok);
+          
+        }
+      )
     }
     else {
       this.currentIndex++;

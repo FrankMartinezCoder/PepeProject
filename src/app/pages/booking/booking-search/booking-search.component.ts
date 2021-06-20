@@ -148,6 +148,7 @@ export class BookingSearchComponent implements OnInit {
   }
 
   public detalles(habitacionId: number) {
+    localStorage.setItem('DetailView_isBooking','true');
     localStorage.setItem('habitacionData', JSON.stringify(this.roomList.find(e => e.habitacionID == habitacionId)));
     this.router.navigate(['/booking/details']);
   }

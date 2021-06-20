@@ -5,6 +5,7 @@ export class Static {
     private static rooms:string = Static.serverIp+"habitaciones/";
     private static bookings:string = Static.serverIp+"reservas/";
     private static services:string = Static.serverIp+"servicios/";   
+    private static servicesContratados:string = Static.serverIp+"serviciosContratados/";   
     private static valorations:string = Static.serverIp+"usuarios/";   
     
     public static user = {
@@ -37,6 +38,9 @@ export class Static {
         // getUserById: Static.valorations+"usuario"
     }
 
+    public static serviciosContratados = {
+        reservaServicios: Static.servicesContratados+"reservaServicios"
+    }
     public static service = {
         getServicesFromHotelId: Static.services+"listHotelServicios"
     }

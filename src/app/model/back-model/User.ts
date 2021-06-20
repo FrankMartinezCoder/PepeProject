@@ -1,4 +1,9 @@
-export class User {
+import { Management } from "./management.interface";
+
+export class User implements Management{
+    getColumns(): string[] {
+        throw new Error("Method not implemented.");
+    }
     public usuarioID: number;
     public nombre: string;
     public apellidos: string;

@@ -23,11 +23,22 @@ export class BookingDetailsComponent implements OnInit, PipeTransform {
 
 
   ngOnInit(): void {
-    this.room = JSON.parse(localStorage.getItem('habitacionData'));
-    console.log(this.room);
+    this.isBooking = localStorage.getItem('DetailView_isBooking') == 'true';
+    
+    if(this.isBooking) {
+      
 
-    this.iframeUrl = this.transform("http://" + this.room.hotelID.localizacion);
+      
+    }
+    else {
+      this.room = JSON.parse(localStorage.getItem('habitacionData'));
+      this.iframeUrl = this.transform("http://" + this.room.hotelID.localizacion);
 
+      localStorage.removeItem('habitacionData')
+    }
+    
+    localStorage.removeItem('DetailView_isBooking');
+    
     this.serviceProvider.getServicesFromHotelId({ 'esPension':false,'hotelID': this.room.hotelID.hotelID }).subscribe(
       service => {
         this.servicios = new Array<BackendService>(service.length);
@@ -37,15 +48,6 @@ export class BookingDetailsComponent implements OnInit, PipeTransform {
         }
       }
     );
-    // this.serviceProvider.getServicesFromHotelId({ 'esPension':true,'hotelID': this.room.hotelID.hotelID }).subscribe(
-    //   pensiones => {
-    //     this.pensiones = new Array<BackendService>(pensiones.length);
-
-    //     for (let id in pensiones) {
-    //       this.pensiones[id] = BackendService.parse(pensiones[id]);
-    //     }
-    //   }
-    // );
   }
 
   transform(url) {

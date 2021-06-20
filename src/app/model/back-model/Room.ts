@@ -1,6 +1,10 @@
 import { Hotel } from "./Hotel";
+import { Management } from "./management.interface";
 
-export class Room {
+export class Room implements Management{
+    getColumns(): string[] {
+        return ["","","",""];
+    }
     public habitacionID: number;
     public descripcion: string;
     public numHabitacion: number;
