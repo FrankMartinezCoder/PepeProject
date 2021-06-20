@@ -10,7 +10,7 @@ export class  ValoracionesService {
   constructor(private httpClient: HttpClient) { }
 
   public reservaServicios(parameters: any): Observable<string> {
-    return this.httpClient.post<string>(Static.serviciosContratados.reservaServicios, parameters);
+    return this.httpClient.post<string>(Static.serviciosContratados.reservaServicios, parameters,{'headers':{ 'content-type': 'application/json'}});
   }
 
 }
