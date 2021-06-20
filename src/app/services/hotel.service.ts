@@ -13,8 +13,8 @@ export class HotelService {
     return this.httpClient.get<void>(Static.hoteles.create,{params:parameters});
   }
   
-  public listAllHotels(parameters:any):Observable<Array<Hotel>> {
-    return this.httpClient.get<Array<Hotel>>(Static.hoteles.list,{params:parameters});
+  public listAllHotels():Observable<Array<Hotel>> {
+    return this.httpClient.get<Array<Hotel>>(Static.hoteles.list);
   }
   
   public deleteHotel(parameters:any):Observable<void> {

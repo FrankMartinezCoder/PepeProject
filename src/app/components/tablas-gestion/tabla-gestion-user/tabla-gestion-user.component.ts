@@ -16,6 +16,7 @@ export class TablaGestionUserComponent implements OnInit {
   @Input() private tableDataListener: EventEmitter<User>;
 
   @Input() private dataChange: EventEmitter<User>;
+  @Input() private dataInsert: EventEmitter<User>;
   @Input() private dataDelete: EventEmitter<User>;
 
 
@@ -49,6 +50,10 @@ export class TablaGestionUserComponent implements OnInit {
 
   public cancelarActualizar(idx: number) {
     this.editable[idx] = false;
+  }
+
+  public insert() {
+    this.dataChange.emit();
   }
 
   private reload() {

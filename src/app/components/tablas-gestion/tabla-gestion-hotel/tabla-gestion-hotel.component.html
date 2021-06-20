@@ -1,7 +1,7 @@
 <div class="container gestion">
     <div class="gestion-header mt-2">
         <span class="gestion-header-table mt-2">{{title}} </span>
-        <button class="button--default">Insertar</button>
+        <button class="button--default" (click)="insert()">Insertar</button>
     </div>
     <table class="table table-striped table-bordered table-hover table-condensed mt-3">
         <thead>
@@ -24,10 +24,13 @@
                 <input class="data-{{e}}" type="text" [(ngModel)]="hotel.nombre" [disabled]="!editable[e]">
             </td>
             <td>
-                <input class="data-{{e}}" type="text" [(ngModel)]="hotel.localizacion" [disabled]="!editable[e]">
+                <input class="data-{{e}}" type="text" [(ngModel)]="hotel.descripcion" [disabled]="!editable[e]">
             </td>
             <td>
-                <input class="data-{{e}}" type="text" [(ngModel)]="hotel.descripcion" [disabled]="!editable[e]">
+                <input class="data-{{e}}" type="text" [(ngModel)]="hotel.img_path" [disabled]="!editable[e]">
+            </td>
+            <td>
+                <input class="data-{{e}}" type="text" [(ngModel)]="hotel.localizacion" [disabled]="!editable[e]">
             </td>
             <td>
                 <input class="data-{{e}}" type="text" [(ngModel)]="hotel.direccion" [disabled]="!editable[e]">

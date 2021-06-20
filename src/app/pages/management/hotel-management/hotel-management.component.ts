@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Hotel } from 'src/app/model/back-model/Hotel';
+import { HotelProvider } from 'src/app/providers/hotel.provider';
 
 @Component({
   selector: 'app-hotel-management',
@@ -10,14 +11,15 @@ export class HotelManagementComponent implements OnInit {
 
   public title: string = "Registro de Usuarios";
 
-  public users: Hotel[];
+  public hotels: Hotel[];
 
   @Output() tableDataListener: EventEmitter<Hotel[]> = new EventEmitter();
   @Output() dataChange: EventEmitter<string[]> = new EventEmitter();
+  @Output() dataDelete: EventEmitter<string[]> = new EventEmitter();
   @Output() modalUpdate: EventEmitter<string[]> = new EventEmitter();
   @Output() modalData: EventEmitter<Hotel> = new EventEmitter();
 
-  // constructor(private userProvider: UserProvider) { }
+  constructor(private hotelProvider:HotelProvider) { }
   ngOnInit(): void {
     this.getUsuarios();
   }
@@ -26,24 +28,24 @@ export class HotelManagementComponent implements OnInit {
     const _ = this;
 
     this.dataChange.subscribe(
-      user => {
-        // this.userProvider.deleteUser(user);
+      hotel => {
+        this.hotelProvider.modify(hotel);
       }
     )
-    // this.userProvider.getAllUsers().subscribe(
-    //   data => {
-    //     this.users = new Array<User>(data.length);
+    this.hotelProvider.listAll().subscribe(
+      data => {
+        this.hotels = new Array<Hotel>(data.length);
 
-    //     for (let i = 0; i < data.length; i++) {
-    //       this.users[i] = User.parse(data[i]);
-    //     }
+        for (let i = 0; i < data.length; i++) {
+          this.hotels[i] = Hotel.parse(data[i]);
+        }
 
-    //     this.tableDataListener.emit(this.users);
-    //   },
-    //   err => {
+        this.tableDataListener.emit(this.hotels);
+      },
+      err => {
 
-    //   }
-    // );
+      }
+    );
 
   }
 

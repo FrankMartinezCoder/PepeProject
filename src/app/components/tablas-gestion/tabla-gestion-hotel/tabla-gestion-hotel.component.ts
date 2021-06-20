@@ -54,4 +54,8 @@ export class TablaGestionHotelComponent implements OnInit {
   private reload() {
     this.router.navigateByUrl(StaticPages.hotelManagement);
   }
+
+  public insert() {
+    this.dataChange.emit();
+  }
 }

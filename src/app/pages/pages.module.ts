@@ -14,7 +14,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { BookingFlowComponent } from './booking/booking-flow/booking-flow.component';
 import { NumberInputComponent } from '../components/number-input/number-input.component';
-import { TablaGestionComponent } from '../components/tabla-gestion/tabla-gestion.component';
 import { ModalGestionComponent } from '../components/modal-gestion/modal-gestion.component';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
 import { MyBookingsComponent } from './booking/my-bookings/my-bookings.component';
@@ -40,7 +39,6 @@ import { TablaGestionServiceComponent } from '../components/tablas-gestion/tabla
     RegisterComponent,
     BookingFlowComponent,
     NumberInputComponent,
-    TablaGestionComponent,
     ModalGestionComponent,
     HotelListComponent,
     TablaGestionUserComponent,
@@ -62,7 +60,6 @@ import { TablaGestionServiceComponent } from '../components/tablas-gestion/tabla
     RegisterComponent,
     BookingFlowComponent,
     NumberInputComponent,
-    TablaGestionComponent,
     ModalGestionComponent,
     HotelListComponent,
     TablaGestionUserComponent,

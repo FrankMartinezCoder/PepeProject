@@ -3,7 +3,7 @@ export class Static {
 
     private static users:string = Static.serverIp+"usuarios/";
     private static rooms:string = Static.serverIp+"habitaciones/";
-    private static hotels:string = Static.serverIp+"hoteles/";
+    private static hotels:string = Static.serverIp+"hotel/";
     private static bookings:string = Static.serverIp+"reservas/";
     private static services:string = Static.serverIp+"servicios/";   
     private static servicesContratados:string = Static.serverIp+"serviciosContratados/";   
