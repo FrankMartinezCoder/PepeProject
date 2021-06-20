@@ -6,10 +6,10 @@ export class Booking {
     public entryDate:Date;
     public endingDate:Date;
     public cancelledDate:Date;
-    public room:Room;
+    public habitacionID:Room;
     public occupants:number;
     public valoration:number;
-    public isCancelled:boolean = false;
+    public esCancelacion:boolean = false;
     public basePrice:number; // room price * num ocupantes
     public totalPrice:number; // basePrice*days + services (price * occupant)
 

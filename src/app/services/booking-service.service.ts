@@ -25,5 +25,9 @@ export class BookingService {
   public addBookingRoom(parameters:any):Observable<void> {
     return this.httpClient.get<void>(Static.booking.add,{'params':parameters});
   }
+
+  public cancelBooking(parameters:any):Observable<void> {
+    return this.httpClient.get<void>(Static.booking.cancel,{'params':parameters});
+  }
   
 }

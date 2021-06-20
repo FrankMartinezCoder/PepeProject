@@ -386,7 +386,7 @@ export class BookingFlowComponent implements OnInit {
           }
         );
         
-      this.valoracionesProvider.getServicesFromHotelId(this.servicios.filter(e=>e.isSelected),this.room.hotelID).subscribe(
+      this.valoracionesProvider.getServicesFromHotelId(this.servicios.filter(e=>e.isSelected),this.room.hotelID, (this.room.ocupantes * this.numDias)).subscribe(
         ok => {
           console.log(ok);
           

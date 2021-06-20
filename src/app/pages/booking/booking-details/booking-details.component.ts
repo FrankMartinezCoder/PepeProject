@@ -26,14 +26,14 @@ export class BookingDetailsComponent implements OnInit, PipeTransform {
 
 
   ngOnInit(): void {
-    this.isBooking = localStorage.getItem('DetailView_isBooking') == 'true';
-    
-    
+    this.isBooking = localStorage.getItem('DetailView_isBooking') == 'true';  
 
     if(this.isBooking) {
-      
-
-      
+      this.booking = JSON.parse(localStorage.getItem('bookingInfo'));
+      this.room = this.booking.habitacionID;
+      this.iframeUrl = this.transform("http://" + this.room.hotelID.localizacion);
+            
+      localStorage.removeItem('bookingInfo')
     }
     else {
       this.room = JSON.parse(localStorage.getItem('habitacionData'));
