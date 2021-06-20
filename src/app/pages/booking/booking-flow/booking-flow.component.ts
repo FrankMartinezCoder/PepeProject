@@ -50,7 +50,7 @@ export class BookingFlowComponent implements OnInit {
   public costeTotalHabitacion: number;
   public totalCosteReserva: number;
 
-  public numDias: number;
+  public numDias: number = 1;
   //------------------------
 
   constructor(private servicesProvider: ServicesProvider, private userProvider: UserProvider) { }
@@ -69,6 +69,7 @@ export class BookingFlowComponent implements OnInit {
     this.filterListener.subscribe(
       filter => {
         this.filter = filter;
+        this.numDias = this.filter.fechaSalida.getDate() - this.filter.fechaEntrada.getDate();
       }
     )
 
@@ -76,6 +77,7 @@ export class BookingFlowComponent implements OnInit {
       room => {
         this.show();
         this.room = room;
+        this.costeTotalHabitacion = ((this.adultos * this.room.precioOcupante) + (this.jovenes * (0.7 * this.room.precioOcupante))) > this.room.precioHabitacionTotal ? this.room.precioHabitacionTotal : ((this.adultos * this.room.precioOcupante) + (this.jovenes * (0.7 * this.room.precioOcupante)));
 
         this.servicesProvider.getServicesFromHotelId({ 'esPension': false, 'hotelID': room.hotelID.hotelID }).subscribe(
           services => {
@@ -128,7 +130,7 @@ export class BookingFlowComponent implements OnInit {
 
   public plus(id: number) {
     if ((this.adultos + this.jovenes + this.children) + 1 > this.room.ocupantes) {
-      return
+      return;
     }
 
     let temporal: number;
@@ -322,15 +324,17 @@ export class BookingFlowComponent implements OnInit {
   }
 
   public updateTotalCoste() {
-    this.totalCosteReserva = this.costeTotalHabitacion;
-
+    this.totalCosteReserva = this.costeTotalHabitacion*this.numDias;
+    
     for (let i = 0; i < this.servicios.length; i++) {
-      this.totalCosteReserva += this.servicios[i].precio;
+      if(this.servicios[i].isSelected) {
+        this.totalCosteReserva += (this.servicios[i].precio * this.room.ocupantes * this.numDias);
+      }
     }
-
+    
     if (!this.pensiones.find(e => e.tipo == this.pension_todo_incluido.title) && this.pension_todo_incluido.isActive) {
       let precioXpersona = this.pensiones.find(e => e.tipo == this.pension_todo_incluido.title).precio;
-      this.totalCosteReserva += (precioXpersona * this.room.ocupantes * this.numDias)
+      this.totalCosteReserva += (precioXpersona?precioXpersona:1 * this.room.ocupantes * this.numDias)
     }
     if (!this.pensiones.find(e => e.tipo == this.pension_desayuno.title) && this.pension_desayuno.isActive) {
       let precioXpersona = this.pensiones.find(e => e.tipo == this.pension_desayuno.title).precio;
@@ -387,7 +391,7 @@ export class BookingFlowComponent implements OnInit {
     this.currentIndex = 0;
     this.listener = new EventEmitter();
     //---------step 1---------
-    this.adultos = 0;
+    this.adultos = 1;
     this.jovenes = 0;
     this.children = 0;
 

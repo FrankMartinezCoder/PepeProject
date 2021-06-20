@@ -55,6 +55,7 @@
         </section>
         <section class="step step-2" style="display: none;">
             <div class="services">
+                <div *ngIf="!pensiones && !servicios">No hay ningún servicio disponible</div>
                 <div class="required" *ngIf="pension_todo_incluido.isVisible || pension_desayuno.isVisible || pension_comida.isVisible || pension_cena.isVisible">
                     <div class="title">Seleccione tipo de pensión: <span>{{tituloPension}}</span></div>
                     <div class="service-list">
@@ -104,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="others">
+                <div class="others" *ngIf="servicios">
                     <div class="title">Si lo desea puede disponer de estos <span *ngIf="pension_todo_incluido.isVisible || pension_desayuno.isVisible || pension_comida.isVisible || pension_cena.isVisible">otros </span>servicios:</div>
                     <div class="service-list">
                         <div class="service-container" *ngFor="let service of servicios">
@@ -149,8 +150,8 @@
                             <table>
                                 <tr>
                                     <td>
-                                        Nombre hotel: <span *ngIf="room && room.hotelID">{{room.hotelID.nombre}}</span><br />
-                                        dirección hotel: <span *ngIf="room && room.hotelID">{{room.hotelID.descripcion}}</span>
+                                        <span *ngIf="room && room.hotelID">{{room.hotelID.nombre}}</span><br />
+                                        <span *ngIf="room && room.hotelID">{{room.hotelID.descripcion}}</span>
                                     </td>
                                     <td></td>
                                     <td *ngIf="user">
@@ -177,12 +178,12 @@
                     <tr class="item" *ngFor="let service of pensiones">
                         <td *ngIf="service.isSelected">{{service.tipo}}</td>
                         <td *ngIf="room && service.isSelected">{{room.ocupantes}}</td>
-                        <td *ngIf="room && service.isSelected">{{room.ocupantes * service.precio}}€</td>
+                        <td *ngIf="room && service.isSelected">{{room.ocupantes * service.precio * numDias}}€</td>
                     </tr>
                     <tr class="item" *ngFor="let service of servicios">
                         <td *ngIf="service.isSelected">{{service.tipo}}</td>
                         <td *ngIf="room && service.isSelected">{{room.ocupantes}}</td>
-                        <td *ngIf="room && service.isSelected">{{room.ocupantes * service.precio}}€</td>
+                        <td *ngIf="room && service.isSelected">{{room.ocupantes * service.precio * numDias}}€</td>
                     </tr>
                     <tr class="item">
                         <td></td>
