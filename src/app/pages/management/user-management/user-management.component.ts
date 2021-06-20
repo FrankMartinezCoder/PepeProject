@@ -15,6 +15,7 @@ export class UserManagementComponent implements OnInit {
 
   @Output() tableDataListener:EventEmitter<User[]> = new EventEmitter();
   @Output() dataChange:EventEmitter<User> = new EventEmitter();
+  @Output() dataInsert:EventEmitter<User> = new EventEmitter();
   @Output() dataDelete:EventEmitter<User> = new EventEmitter();
 
   @Output() modalUpdate:EventEmitter<string[]> = new EventEmitter();
