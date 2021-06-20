@@ -32,7 +32,6 @@ export class TablaGestionComponent implements OnInit {
           this.colums =this.list[0].getColumns();
         }
         this.editable = new Array(data.length).fill(false);
-        console.log(this.editable);
         
       }
     )
@@ -43,15 +42,7 @@ export class TablaGestionComponent implements OnInit {
   }
 
   public eliminar(item: Management){
-    if (item instanceof Room) {
-      
-    }else if(item instanceof User){
-
-    }else if(item instanceof Hotel){
-
-    }else{
-
-    }
+    this.dataChange.emit(item);
   }
 
 }
