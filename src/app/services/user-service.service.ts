@@ -20,7 +20,7 @@ export class UserService {
   }
 
   public getAllUsers():Observable<Array<User>> {
-    return this.httpClient.get<Array<User>>(Static.user.list);
+    return this.httpClient.get<Array<User>>(Static.user.list,{ params: {'esAdmin':'false'} });
   }
 
   public logout():Observable<void> {

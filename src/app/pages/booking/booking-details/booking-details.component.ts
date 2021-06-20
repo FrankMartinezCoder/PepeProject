@@ -25,6 +25,9 @@ export class BookingDetailsComponent implements OnInit, PipeTransform {
   ngOnInit(): void {
     this.isBooking = localStorage.getItem('DetailView_isBooking') == 'true';
     
+    console.log(this.isBooking);
+    
+
     if(this.isBooking) {
       
 

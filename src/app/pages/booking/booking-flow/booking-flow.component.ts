@@ -94,12 +94,12 @@ export class BookingFlowComponent implements OnInit {
 
             this.servicesProvider.getServicesFromHotelId({ 'esPension': true, 'hotelID': room.hotelID.hotelID }).subscribe(
               pensiones => {
+                
                 this.pensiones = new Array<BackendService>(pensiones.length);
 
                 for (let id in pensiones) {
                   this.pensiones[id] = BackendService.parse(pensiones[id]);
                 }
-
                 if (!this.pensiones.find(e => e.tipo == this.pension_todo_incluido.title)) {
                   this.pension_todo_incluido.isVisible = false;
                 }
@@ -112,7 +112,6 @@ export class BookingFlowComponent implements OnInit {
                 if (!this.pensiones.find(e => e.tipo == this.pension_cena.title)) {
                   this.pension_cena.isVisible = false;
                 }
-
 
                 this.loadScene();
               },

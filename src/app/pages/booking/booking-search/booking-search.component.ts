@@ -126,14 +126,14 @@ export class BookingSearchComponent implements OnInit {
 
     this.bookingProvider.getListFreeRooms(this.filter).subscribe(
       rooms => {
-        console.log("rooms", rooms);
+
         let timeOut = setTimeout(function () {
           hideModal()
           let roomsFormated = new Array<Room>(rooms.length);
           for (let i = 0; i < rooms.length; i++) {
             roomsFormated[i] = Room.parse(rooms[i]);
           }
-          console.log(roomsFormated);
+
           _.listener.emit(roomsFormated);
           clearTimeout(timeOut);
         }, 1200);
@@ -148,7 +148,7 @@ export class BookingSearchComponent implements OnInit {
   }
 
   public detalles(habitacionId: number) {
-    localStorage.setItem('DetailView_isBooking','true');
+    localStorage.setItem('DetailView_isBooking','false');
     localStorage.setItem('habitacionData', JSON.stringify(this.roomList.find(e => e.habitacionID == habitacionId)));
     this.router.navigate(['/booking/details']);
   }
