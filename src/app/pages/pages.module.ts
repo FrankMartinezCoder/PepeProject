@@ -6,8 +6,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserManagementComponent } from './user-management/user-management.component';
-import { HotelManagementComponent } from './hotel-management/hotel-management.component';
+import { UserManagementComponent } from './management/user-management/user-management.component';
+import { HotelManagementComponent } from './management/hotel-management/hotel-management.component';
 import { BookingSearchComponent } from './booking/booking-search/booking-search.component';
 import { BookingDetailsComponent } from './booking/booking-details/booking-details.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -18,6 +18,8 @@ import { TablaGestionComponent } from '../components/tabla-gestion/tabla-gestion
 import { ModalGestionComponent } from '../components/modal-gestion/modal-gestion.component';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
 import { MyBookingsComponent } from './booking/my-bookings/my-bookings.component';
+import { RoomManagementComponent } from './management/room-management/room-management.component';
+import { ServicesManagementComponent } from './management/services-management/services-management.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { MyBookingsComponent } from './booking/my-bookings/my-bookings.component
     DashboardComponent,
     UserManagementComponent,
     HotelManagementComponent,
+    RoomManagementComponent,
+    ServicesManagementComponent,
     MyBookingsComponent,
     BookingSearchComponent,
     BookingDetailsComponent,
@@ -41,6 +45,8 @@ import { MyBookingsComponent } from './booking/my-bookings/my-bookings.component
     DashboardComponent,
     UserManagementComponent,
     HotelManagementComponent,
+    RoomManagementComponent,
+    ServicesManagementComponent,
     MyBookingsComponent,
     BookingSearchComponent,
     BookingDetailsComponent,

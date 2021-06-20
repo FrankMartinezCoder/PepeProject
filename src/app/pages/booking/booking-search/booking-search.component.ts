@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BookingFilter } from 'src/app/model/front-model/BookingFilter';
 import { BookingProvider } from 'src/app/providers/booking.provider';
 import { Room } from 'src/app/model/back-model/Room';
+import { UserProvider } from 'src/app/providers/user.provider';
 
 declare function hideModal(): boolean;
 
@@ -17,8 +18,7 @@ export class BookingSearchComponent implements OnInit {
   @Output() flowListener:EventEmitter<Room> = new EventEmitter();
   @Output() filterListener:EventEmitter<BookingFilter> = new EventEmitter();
 
-  constructor(private bookingProvider: BookingProvider) {
-  }
+  constructor(private bookingProvider: BookingProvider, private userProvider:UserProvider) {}
   private listener:EventEmitter<Array<Room>> = new EventEmitter();
   public roomList: Array<Room>;
 
@@ -91,8 +91,13 @@ export class BookingSearchComponent implements OnInit {
     this.filter.clear();
   }
   public reservar(idHabitacion) {
-    this.filterListener.emit(this.filter);
-    this.flowListener.emit(this.roomList.find(room => room.habitacionID==idHabitacion));   
+    if(this.userProvider.isUserLogged()) {
+      $("#login-component,#login-background").fadeIn(500);
+    }
+    else {
+      this.filterListener.emit(this.filter);
+      this.flowListener.emit(this.roomList.find(room => room.habitacionID==idHabitacion));   
+    }
   }
   public searchRooms() {
     const _ = this;

@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { BackendService } from 'src/app/model/back-model/BackendService';
 import { Room } from 'src/app/model/back-model/Room';
+import { User } from 'src/app/model/back-model/User';
 import { BookingFilter } from 'src/app/model/front-model/BookingFilter';
 import { Service } from 'src/app/model/front-model/Service';
 import { ServicesProvider } from 'src/app/providers/hotel_services.provider';
+import { UserProvider } from 'src/app/providers/user.provider';
 
 @Component({
   selector: 'app-booking-flow',
@@ -17,7 +19,7 @@ export class BookingFlowComponent implements OnInit {
   private currentIndex: number = 0;
   private listener: EventEmitter<Room> = new EventEmitter();
   //---------step 1---------
-  public adultos: number = 0;
+  public adultos: number = 1;
   public jovenes: number = 0;
   public children: number = 0;
 
@@ -28,29 +30,41 @@ export class BookingFlowComponent implements OnInit {
   //------------------------
   //---------step 2---------
   public tituloPension: string = "Sin pensión";
+
   public pension_todo_incluido: Service = new Service(0, "Todo incluido", "pension-all.png");
   public pension_desayuno: Service = new Service(1, "Desayuno", "pension-breakfast.jpg");
   public pension_comida: Service = new Service(2, "Almuerzo", "pension-lunch.jpg");
   public pension_cena: Service = new Service(3, "Cena", "pension-dinner.jpg");
 
   public servicios: Array<BackendService>;
+  public pensiones: Array<BackendService>;
 
   @Input() public flowListener: EventEmitter<Room>;
-  @Input() public filterListener: EventEmitter<BookingFilter>;
+  //------------------------
+  //---------step 3---------
 
-  public filter:BookingFilter;
+  @Input() public filterListener: EventEmitter<BookingFilter>;
+  public filter: BookingFilter;
+
+  public user: User = new User();
+  public costeTotalHabitacion: number;
+  public totalCosteReserva: number;
+
+  public numDias: number;
   //------------------------
 
-  constructor(private servicesProvider: ServicesProvider) { }
-  
+  constructor(private servicesProvider: ServicesProvider, private userProvider: UserProvider) { }
+
   ngOnInit(): void {
 
     this.scenes = new Array(3);
-    this.scenes[0] = new Scene(0, 'Ocupantes', '.step-1', new ButtonLogic('button--danger', 'Salir', true), new ButtonLogic('button--default', 'Siguiente', true));
-    this.scenes[1] = new Scene(1, 'Servicios', '.step-2', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--info', 'Siguiente', true),true);
-    this.scenes[2] = new Scene(2, 'Resumen', '.step-3', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--verified', 'Terminar', true),true);
+    this.scenes[0] = new Scene(0, 'Ocupantes', '.step-1', new ButtonLogic('button--danger', 'Salir', true), new ButtonLogic('button--default', 'Siguiente', true), true);
+    this.scenes[1] = new Scene(1, 'Servicios', '.step-2', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--info', 'Siguiente', true), true);
+    this.scenes[2] = new Scene(2, 'Resumen', '.step-3', new ButtonLogic('button--default', 'Atrás', true), new ButtonLogic('button--verified', 'Terminar', true), true);
 
     this.currentScene = this.scenes[this.currentIndex];
+
+    this.user = this.userProvider.getUserLogged();
 
     this.filterListener.subscribe(
       filter => {
@@ -62,7 +76,6 @@ export class BookingFlowComponent implements OnInit {
       room => {
         this.show();
         this.room = room;
-        this.loadScene();
 
         this.servicesProvider.getServicesFromHotelId({ 'esPension': false, 'hotelID': room.hotelID.hotelID }).subscribe(
           services => {
@@ -71,6 +84,35 @@ export class BookingFlowComponent implements OnInit {
             for (let id in services) {
               this.servicios[id] = BackendService.parse(services[id]);
             }
+
+            this.servicesProvider.getServicesFromHotelId({ 'esPension': true, 'hotelID': room.hotelID.hotelID }).subscribe(
+              pensiones => {
+                this.pensiones = new Array<BackendService>(pensiones.length);
+
+                for (let id in pensiones) {
+                  this.pensiones[id] = BackendService.parse(pensiones[id]);
+                }
+
+                if (!this.pensiones.find(e => e.tipo == this.pension_todo_incluido.title)) {
+                  this.pension_todo_incluido.isVisible = false;
+                }
+                if (!this.pensiones.find(e => e.tipo == this.pension_desayuno.title)) {
+                  this.pension_desayuno.isVisible = false;
+                }
+                if (!this.pensiones.find(e => e.tipo == this.pension_comida.title)) {
+                  this.pension_comida.isVisible = false;
+                }
+                if (!this.pensiones.find(e => e.tipo == this.pension_cena.title)) {
+                  this.pension_cena.isVisible = false;
+                }
+
+
+                this.loadScene();
+              },
+              err => {
+                this.reset();
+              }
+            );
           },
           err => {
             this.reset();
@@ -116,6 +158,7 @@ export class BookingFlowComponent implements OnInit {
         this.children = temporal;
         break
     }
+    this.costeTotalHabitacion = ((this.adultos * this.room.precioOcupante) + (this.jovenes * (0.7 * this.room.precioOcupante))) > this.room.precioHabitacionTotal ? this.room.precioHabitacionTotal : ((this.adultos * this.room.precioOcupante) + (this.jovenes * (0.7 * this.room.precioOcupante)));
     this.updateStep(this.adultos > 0 && (this.adultos + this.jovenes + this.children) <= this.room.ocupantes);
   }
 
@@ -124,6 +167,8 @@ export class BookingFlowComponent implements OnInit {
     switch (id) {
       case 0:
         temporal = this.adultos;
+        if(temporal > 1)
+          temporal--;
         break
       case 1:
         temporal = this.jovenes;
@@ -132,7 +177,7 @@ export class BookingFlowComponent implements OnInit {
         temporal = this.children;
         break
     }
-    if (temporal > this.min) {
+    if (id!= 0 && temporal > this.min) {
       temporal--;
     }
     switch (id) {
@@ -146,6 +191,7 @@ export class BookingFlowComponent implements OnInit {
         this.children = temporal;
         break
     }
+    this.costeTotalHabitacion = ((this.adultos * this.room.precioOcupante) + (this.jovenes * (0.7 * this.room.precioOcupante))) > this.room.precioHabitacionTotal ? this.room.precioHabitacionTotal : ((this.adultos * this.room.precioOcupante) + (this.jovenes * (0.7 * this.room.precioOcupante)));
     this.updateStep(this.adultos > 0 && (this.adultos + this.jovenes + this.children) <= this.room.ocupantes);
   }
 
@@ -176,6 +222,7 @@ export class BookingFlowComponent implements OnInit {
         }
         break
     }
+    this.costeTotalHabitacion = ((this.adultos * this.room.precioOcupante) + (this.jovenes * (0.7 * this.room.precioOcupante))) > this.room.precioHabitacionTotal ? this.room.precioHabitacionTotal : ((this.adultos * this.room.precioOcupante) + (this.jovenes * (0.7 * this.room.precioOcupante)));
     this.updateStep(this.adultos > 0 && (this.adultos + this.jovenes + this.children) <= this.room.ocupantes);
   }
 
@@ -271,6 +318,32 @@ export class BookingFlowComponent implements OnInit {
     $(".step").hide();
     $(this.currentScene.node).fadeIn();
     this.updateHeader();
+    this.updateTotalCoste();
+  }
+
+  public updateTotalCoste() {
+    this.totalCosteReserva = this.costeTotalHabitacion;
+
+    for (let i = 0; i < this.servicios.length; i++) {
+      this.totalCosteReserva += this.servicios[i].precio;
+    }
+
+    if (!this.pensiones.find(e => e.tipo == this.pension_todo_incluido.title) && this.pension_todo_incluido.isActive) {
+      let precioXpersona = this.pensiones.find(e => e.tipo == this.pension_todo_incluido.title).precio;
+      this.totalCosteReserva += (precioXpersona * this.room.ocupantes * this.numDias)
+    }
+    if (!this.pensiones.find(e => e.tipo == this.pension_desayuno.title) && this.pension_desayuno.isActive) {
+      let precioXpersona = this.pensiones.find(e => e.tipo == this.pension_desayuno.title).precio;
+      this.totalCosteReserva += (precioXpersona * this.room.ocupantes * this.numDias)
+    }
+    if (!this.pensiones.find(e => e.tipo == this.pension_comida.title) && this.pension_comida.isActive) {
+      let precioXpersona = this.pensiones.find(e => e.tipo == this.pension_comida.title).precio;
+      this.totalCosteReserva += (precioXpersona * this.room.ocupantes * this.numDias)
+    }
+    if (!this.pensiones.find(e => e.tipo == this.pension_cena.title) && this.pension_cena.isActive) {
+      let precioXpersona = this.pensiones.find(e => e.tipo == this.pension_cena.title).precio;
+      this.totalCosteReserva += (precioXpersona * this.room.ocupantes * this.numDias)
+    }
   }
 
   public back() {

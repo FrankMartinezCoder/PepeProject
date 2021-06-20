@@ -24,10 +24,10 @@
                         *ngIf="room">{{adultos+jovenes+children}}/{{room.ocupantes}}</span></div>
                 <div class="step-1--form">
                     <div class="input-group">
-                        <div class="input-label">Adultos</div>
+                        <div class="input-label">Adultos (*)</div>
                         <div class="input-control-group">
                             <span class="input-button-control prev" (click)="less(0)">&#45;</span>
-                            <input type="number" [(ngModel)]="adultos" min="0" max="99" (keyup.enter)="checkValue(0)">
+                            <input type="number" [(ngModel)]="adultos" min="1" max="99" (keyup.enter)="checkValue(0)">
 
                             <span class="input-button-control next" (click)="plus(0)">&#43;</span>
                         </div>
@@ -55,7 +55,7 @@
         </section>
         <section class="step step-2" style="display: none;">
             <div class="services">
-                <div class="required">
+                <div class="required" *ngIf="pension_todo_incluido.isVisible || pension_desayuno.isVisible || pension_comida.isVisible || pension_cena.isVisible">
                     <div class="title">Seleccione tipo de pensión: <span>{{tituloPension}}</span></div>
                     <div class="service-list">
                         <div class="service-container">
@@ -63,7 +63,8 @@
                                 (click)="checkPension(pension_todo_incluido.id)">
                             <div class="service-card">
                                 <div class="img-container">
-                                    <img src="../../../../assets/imgs/hotels/pensiones/{{pension_todo_incluido.img}}" alt="servicio">
+                                    <img src="../../../../assets/imgs/hotels/pensiones/{{pension_todo_incluido.img}}"
+                                        alt="servicio">
                                 </div>
                                 <div class="service-name">Todo incluído</div>
                             </div>
@@ -104,13 +105,14 @@
                     </div>
                 </div>
                 <div class="others">
-                    <div class="title">Si lo desea puede disponer de estos otros servicios:</div>
+                    <div class="title">Si lo desea puede disponer de estos <span *ngIf="pension_todo_incluido.isVisible || pension_desayuno.isVisible || pension_comida.isVisible || pension_cena.isVisible">otros </span>servicios:</div>
                     <div class="service-list">
                         <div class="service-container" *ngFor="let service of servicios">
                             <input type="checkbox" class="service-checker" [(ngModel)]="service.isSelected">
                             <div class="service-card">
                                 <div class="img-container">
-                                    <img src="../../../assets/imgs/services/{{service.img_path}}" alt="{{service.tipo}}" title="{{service.tipo}}">
+                                    <img src="../../../assets/imgs/services/{{service.img_path}}" alt="{{service.tipo}}"
+                                        title="{{service.tipo}}">
                                 </div>
                                 <div class="service-name">{{service.tipo}}</div>
                             </div>
@@ -131,13 +133,11 @@
                                         <img src="../../../../assets/imgs/icons/PTL_Logo.svg" alt="logo"
                                             style="width: 100%; max-width: 300px" />
                                     </td>
-
                                     <td></td>
-
                                     <td>
-                                        Fecha registro: <span>{{filter.fechaActual}}</span> <br />
-                                        Fecha entrada: <span>{{filter.fechaEntrada}}</span><br />
-                                        Fecha salida: <span>{{filter.fechaSalida}}</span>
+                                        Fecha registro: <span *ngIf="filter">{{filter.fechaActual.getString()}}</span> <br />
+                                        Fecha entrada: <span *ngIf="filter">{{filter.fechaEntrada.getString()}}</span><br />
+                                        Fecha salida: <span *ngIf="filter">{{filter.fechaSalida.getString()}}</span>
                                     </td>
                                 </tr>
                             </table>
@@ -149,14 +149,14 @@
                             <table>
                                 <tr>
                                     <td>
-                                        Nombre hotel: <span>{{room.hotelID.nombre}}</span><br />
-                                        dirección hotel <span>{{room.hotelID.descripcion}}</span>
+                                        Nombre hotel: <span *ngIf="room && room.hotelID">{{room.hotelID.nombre}}</span><br />
+                                        dirección hotel: <span *ngIf="room && room.hotelID">{{room.hotelID.descripcion}}</span>
                                     </td>
                                     <td></td>
-                                    <td>
-                                        Nombre cliente<br />
-                                        apellidos<br />
-                                        email
+                                    <td *ngIf="user">
+                                        Nombre cliente <span>{{user.nombre}}</span><br />
+                                        apellidos <span>{{user.apellidos}}</span><br />
+                                        email <span>{{user.email}}</span>
                                     </td>
                                 </tr>
                             </table>
@@ -166,34 +166,28 @@
 
                     <tr class="heading">
                         <td>Concepto</td>
-
                         <td>Unidad</td>
-
                         <td>Precio</td>
                     </tr>
-
-                    <tr class="item">
-                        <td>Website design</td>
+                    <tr class="item" *ngIf="room">
+                        <td>{{room.tipoHabitacion}}</td>
                         <td>1</td>
-                        <td>$300.00</td>
+                        <td>{{costeTotalHabitacion}}€</td>
                     </tr>
-
+                    <tr class="item" *ngFor="let service of pensiones">
+                        <td *ngIf="service.isSelected">{{service.tipo}}</td>
+                        <td *ngIf="room && service.isSelected">{{room.ocupantes}}</td>
+                        <td *ngIf="room && service.isSelected">{{room.ocupantes * service.precio}}€</td>
+                    </tr>
+                    <tr class="item" *ngFor="let service of servicios">
+                        <td *ngIf="service.isSelected">{{service.tipo}}</td>
+                        <td *ngIf="room && service.isSelected">{{room.ocupantes}}</td>
+                        <td *ngIf="room && service.isSelected">{{room.ocupantes * service.precio}}€</td>
+                    </tr>
                     <tr class="item">
-                        <td>Hosting (months)</td>
-                        <td>3</td>
-                        <td>$75.00</td>
-                    </tr>
-
-                    <tr class="item">
-                        <td>Domain name (1 year)</td>
-                        <td>1</td>
-                        <td>$10.00</td>
-                    </tr>
-
-                    <tr class="total">
                         <td></td>
                         <td></td>
-                        <td>Total: $385.00</td>
+                        <td>TOTAL: {{totalCosteReserva}}€</td>
                     </tr>
                 </table>
             </div>

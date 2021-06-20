@@ -2,8 +2,8 @@ export class BackendService {
     public servicioID:number;
     public tipo:string;
     public descripcion:string;
-    public precio:string;
-    public esPension:string;
+    public precio:number;
+    public esPension:boolean;
     public img_path:string;
     public isSelected:boolean = false;
 
