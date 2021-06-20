@@ -11,28 +11,36 @@ export class ModalGestionComponent implements OnInit {
   public fields: string[];
   @Input() private modalData: EventEmitter<Management>;
   @Input() private modalUpdate: EventEmitter<Management>;
-  public list: Management [];
+  public elem: Management;
   constructor() { }
 
   ngOnInit(): void {
     this.modalData.subscribe(
       data => {
-        console.log("data",data);
-        
-        this.list = new Array(data.length);
-        for (let i = 0; i < data.length; i++) {
-          this.list[i] = User.parse(data[i]);
-        }
-        if (this.list.length) {
-          this.fields =this.list[0].getFields();
-        }
+        this.elem = data;
+        this.fields = data.getFields();
+        this.show();
       }
     )
-    console.log('fields' , this.fields);
+  }
+
+  public show() {
+    $("#modal_gestion-component, #modal_gestion-background").fadeIn(300);
+
+  }
+
+  public close() {
+    $("#modal_gestion-component, #modal_gestion-background").fadeOut(300);
+    this.reset();
+  }
+
+  public reset() {
+    this.elem = null;
   }
 
 
   public send() {
-    this.modalUpdate.emit();
+    this.modalUpdate.emit(this.elem);
+    this.close();
   }
 }

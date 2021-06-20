@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Management } from 'src/app/model/back-model/management.interface';
 import { User } from 'src/app/model/back-model/User';
 import { UserProvider } from 'src/app/providers/user.provider';
 
@@ -10,10 +11,13 @@ import { UserProvider } from 'src/app/providers/user.provider';
 export class UserManagementComponent implements OnInit {
 
   public title: string = "Registro de Usuarios";
+
+  public users:User[];
+
   @Output() tableDataListener:EventEmitter<User[]> = new EventEmitter();
   @Output() dataChange:EventEmitter<string[]> = new EventEmitter();
   @Output() modalUpdate:EventEmitter<string[]> = new EventEmitter();
-  @Output() modalData:EventEmitter<string[]> = new EventEmitter();
+  @Output() modalData:EventEmitter<Management> = new EventEmitter();
 
   constructor(private userProvider: UserProvider) { }
   ngOnInit(): void {
@@ -30,8 +34,13 @@ export class UserManagementComponent implements OnInit {
     )
     this.userProvider.getAllUsers().subscribe(
       data => {
-        console.log('usuarios ', data);
-        this.tableDataListener.emit(data);
+        this.users = new Array<User>(data.length);
+        
+        for (let i = 0; i < data.length; i++) {
+          this.users[i] = User.parse(data[i]);
+        }
+
+        this.tableDataListener.emit(this.users);
       },
       err => {
 
